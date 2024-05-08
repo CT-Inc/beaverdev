@@ -17,3 +17,6 @@ script = ExtResource("1_l7a8f")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0854422, 0)
 shape = SubResource("CylinderShape3D_wtgns")
+
+[node name="FPCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15846, 0)

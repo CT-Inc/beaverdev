@@ -20,11 +20,6 @@ shape = SubResource("BoxShape3D_vhsn2")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("BoxMesh_2ywih")
 
-[node name="CameraPivot" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.605711, 0.795685, 0, -0.795685, 0.605711, 0, 9.54938, 0)
-
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0240309, 0.999711, 0, -0.999711, -0.0240309, 0, 7.65244, 0)
 
