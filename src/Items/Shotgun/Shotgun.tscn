@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6t1phg2bl1h7"]
+
+[ext_resource type="Script" path="res://src/Items/Shotgun/Shotgun.gd" id="1_7x3jd"]
+[ext_resource type="ArrayMesh" uid="uid://bmweehf87utmf" path="res://shotgun.obj" id="1_s52f6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pjgy1"]
+size = Vector3(0.143768, 0.254211, 0.580185)
+
+[node name="Shotgun" type="RigidBody3D"]
+script = ExtResource("1_7x3jd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+mesh = ExtResource("1_s52f6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00123596, 0.0085144, -0.0127028)
+shape = SubResource("BoxShape3D_pjgy1")
+
+[node name="BulletStartPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0435175, 0.323314)

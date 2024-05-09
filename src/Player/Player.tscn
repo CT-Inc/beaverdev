@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddfqgintwj560"]
+
+[ext_resource type="Script" path="res://src/Player/Player.gd" id="1_xcyo4"]
+[ext_resource type="PackedScene" uid="uid://bwdt1u2j6ljwq" path="res://src/Items/Shotgun/shotty.tscn" id="2_kyjr3"]
+[ext_resource type="Script" path="res://src/Singletons/FPCamera.gd" id="3_i5bgs"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_do1e8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_b1un7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8guu6"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_xcyo4")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Character" type="Node3D" parent="Pivot"]
+
+[node name="Body" type="MeshInstance3D" parent="Pivot/Character"]
+mesh = SubResource("CapsuleMesh_do1e8")
+
+[node name="Shoulder" type="Node3D" parent="Pivot/Character/Body"]
+
+[node name="Arm" type="MeshInstance3D" parent="Pivot/Character/Body/Shoulder"]
+transform = Transform3D(0.2, 0, 0, 0, 0.00340338, 0.199995, 0, -0.499988, 0.00136135, 0.470531, 0.331381, -0.328552)
+mesh = SubResource("CapsuleMesh_b1un7")
+
+[node name="ItemMount" type="Node3D" parent="Pivot/Character/Body/Shoulder"]
+
+[node name="Shotty" parent="Pivot/Character/Body/Shoulder/ItemMount" instance=ExtResource("2_kyjr3")]
+transform = Transform3D(-7, 0, -6.11959e-07, 0, 7, 0, 6.11959e-07, 0, -7, 0.411631, 0.393815, -0.761544)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00233601, 0)
+shape = SubResource("CapsuleShape3D_8guu6")
+
+[node name="FPCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.682733, -0.201427)
+current = true
+script = ExtResource("3_i5bgs")
+
+[node name="RayMount" type="Node3D" parent="FPCamera"]
+
+[node name="LookAtRayCast" type="RayCast3D" parent="FPCamera/RayMount"]
