@@ -35,11 +35,6 @@ func _input(event: InputEvent) -> void:
 
 	if event is InputEventMouse:
 		_latest_mouse_pos = event.position
-	
-	### Handle ray cast here, in theory this should be in process?
-	if event is InputEventMouseButton and event.pressed and event.button_index == 1:
-		var from = camera.project_ray_origin(event.position)
-		var to = from + camera.project_ray_normal(event.position) * Global.RAY_LENGTH
 
 # Functions for quake-like movement
 func clip_velocity(normal: Vector3, overbounce: float, delta) -> void:
@@ -149,16 +144,8 @@ func _process(delta):
 	#shooting
 	if is_shooting:
 		for weapon in $Pivot/Character/Body/Shoulder/ItemMount.get_children():
-			print("fire")
 			weapon.fire(target)
 	
-	# process shooting 
-	#var is_shooting := false
-	#if Input.is_action_just_pressed("shoot"):
-	#	is_shooting = true
-		
-	#if is_shooting: for weapon in $Pivot/Body/Shoulder/ItemMount.get_children():
-	#	weapon.fire(target)
 	
 
 func _physics_process(delta):

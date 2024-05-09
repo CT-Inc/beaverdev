@@ -9,7 +9,7 @@ const FRICTION: float = 4
 const ACCEL: float = 12
 const ACCEL_AIR: float = 40
 
-var GRAVITY = ProjectSettings.get_setting("physics/3d/default_gravity")
+const GRAVITY := 40.0
 
 const TOP_SPEED_GROUND: float = 15
 const TOP_SPEED_AIR: float = 2.5
@@ -27,8 +27,8 @@ const MOUSE_ACCEL_Y: float = 10.0
 var _root_node: Node
 
 @onready var _scene_bullet := ResourceLoader.load("res://src/Bullet/Bullet.tscn")
-#@onready var _scene_bullet_glow := ResourceLoader.load("res://assets/BulletGlow.tscn")
-#@onready var _scene_bullet_spark := ResourceLoader.load("res://assets/BulletSpark.tscn")
+@onready var _scene_bullet_glow := ResourceLoader.load("res://src/BulletGlow/BulletGlow.tscn")
+@onready var _scene_bullet_spark := ResourceLoader.load("res://src/BulletSpark/BulletSpark.tscn")
 
 func create_bullet(parent, start_pos, target_pos, bullet_type):
 	var bullet = _scene_bullet.instantiate()
@@ -37,6 +37,11 @@ func create_bullet(parent, start_pos, target_pos, bullet_type):
 	bullet.global_transform.origin = start_pos
 	Global.safe_look_at(bullet, target_pos)
 	bullet.start(bullet_type)
+	
+func create_bullet_spark(pos):
+	var spark = _scene_bullet_spark.instantiate()
+	Global._root_node.add_child(spark)
+	spark.global_transform.origin = pos
 	
 func safe_look_at(spatial: Node3D, target: Vector3):
 	var origin := spatial.global_transform.origin
@@ -70,7 +75,7 @@ const DB = {
 		BulletType._308 : {
 			"mass" : 0.018,
 			"speed" : 1219.0,
-			"max_distance" : 5000.0,
+			"max_distance" : 500.0,
 		}
 	}
 }

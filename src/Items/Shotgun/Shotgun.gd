@@ -6,15 +6,6 @@ class_name Shotty
 # im not sure which one we're going to use right now, because I think rigidbody has more
 # movement flexbility, but theyre both in items/shotgun/ folder for now until i decide
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func fire(target_pos):
 	var bullet_type := Global.BulletType._308
 	var start_pos = $BulletStartPosition.global_transform.origin
