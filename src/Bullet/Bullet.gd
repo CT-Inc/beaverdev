@@ -20,6 +20,8 @@ func _physics_process(delta):
 	if not _is_setup: return
 	var is_destroyed := false
 	
+	_glow.update(self.global_transform.origin)
+	
 	var distance: float = _velocity.length() * delta
 	self.transform.origin -= _velocity * delta
 	
@@ -45,20 +47,29 @@ func _physics_process(delta):
 		# ricochet functionality, here need to be added
 		
 		#hit object, to be added
-		if collider.is_in_group("item"):
-			pass
-			
-		#delete slow bullet
-		if distance < 1.0:
+		if collider.is_in_group("terrain"):
+			print("hitting terrain")
+			is_destroyed = true
+		else:
 			is_destroyed = true
 			
-		#delete if bullet travels max distance
-		_total_distance += distance
-		if _total_distance > _max_distance:
-			is_destroyed = true
+		Global.create_bullet_spark(self.global_transform.origin)
 			
-		if is_destroyed:
-			self.queue_free()
+	#update glow
+	_glow.update(self.global_transform.origin)
+			
+	#delete slow bullet
+	if distance < 1.0:
+		is_destroyed = true
+		
+	#delete if bullet travels max distance
+	_total_distance += distance
+	if _total_distance > _max_distance:
+		is_destroyed = true
+		
+	if is_destroyed:
+		self.queue_free()
+		_glow._is_parent_bullet_destroyed = true
 			
 		
 func start(bullet_type):
@@ -68,5 +79,11 @@ func start(bullet_type):
 	_max_distance = entry["max_distance"]
 	_speed = entry["speed"]
 	_velocity = self.transform.basis.z * _speed
+	
+	# add bullet glow
+	_glow = Global._scene_bullet_glow.instantiate()
+	Global._root_node.add_child(_glow)
+	_glow.global_transform.origin = self.global_transform.origin
+	_glow.start(self.global_transform.origin)
 	
 	_is_setup = true

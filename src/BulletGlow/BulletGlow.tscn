@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://esd00xlqdtnv"]
+
+[ext_resource type="Script" path="res://src/BulletGlow/BulletGlow.gd" id="1_mwue6"]
+[ext_resource type="Material" path="res://src/BulletGlow/glow_material.tres" id="1_psyjg"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_rv336"]
+
+[node name="BulletGlow" type="MeshInstance3D"]
+material_override = ExtResource("1_psyjg")
+mesh = SubResource("ImmediateMesh_rv336")
+script = ExtResource("1_mwue6")
