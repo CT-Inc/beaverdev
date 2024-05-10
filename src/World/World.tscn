@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dna3vxikvu7oo"]
+[gd_scene load_steps=8 format=3 uid="uid://dna3vxikvu7oo"]
 
 [ext_resource type="PackedScene" uid="uid://ddfqgintwj560" path="res://src/Player/Player.tscn" id="1_d45gn"]
 [ext_resource type="Script" path="res://src/World/World.gd" id="1_swx6y"]
@@ -7,7 +7,9 @@
 size = Vector3(60, 2, 60)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ddtdw"]
-size = Vector3(60, 2, 60)
+size = Vector3(100, 2, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0oql"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_un1tq"]
 
@@ -25,12 +27,13 @@ shape = SubResource("BoxShape3D_8q7c8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("BoxMesh_ddtdw")
+surface_material_override/0 = SubResource("StandardMaterial3D_y0oql")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.308868, 0.951105, 0, -0.951105, 0.308868, 0, 5.06436, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_d45gn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70149, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0137854, 0.986472, 0.0331036)
 collision_layer = 2
 
 [node name="Pyramid" type="StaticBody3D" parent="." groups=["terrain"]]
