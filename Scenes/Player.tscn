@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://car5o216tw28j"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_4tctq"]
+[ext_resource type="PackedScene" uid="uid://dfnji12pv1ern" path="res://Scenes/Rifle.tscn" id="2_c7bsb"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mmfmj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nqycn"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_4tctq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_mmfmj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_nqycn")
+
+[node name="Head" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0328057, 0.419336, -0.152275)
+
+[node name="Rifle" parent="Head/Camera3D" instance=ExtResource("2_c7bsb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.307711, -0.242679, -0.674963)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpskod2f8j3ks"]
+
+[ext_resource type="PackedScene" uid="uid://p7g3pwr1wy1o" path="res://Models/ground_grass.glb" id="1_6g11l"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_dp7c4"]
+data = PackedVector3Array(0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, 0, 0.5)
+
+[node name="ground_grass2" instance=ExtResource("1_6g11l")]
+
+[node name="ground_grass" parent="tmpParent" index="0"]
+transform = Transform3D(3.37295, 0, 0, 0, 1.26126, 0, 0, 0, 4.06141, 0, 0.000255298, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tmpParent/ground_grass" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tmpParent/ground_grass/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_dp7c4")
