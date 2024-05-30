@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://cohd0ruxg0o55"]
+
+[ext_resource type="PackedScene" uid="uid://c636e4idxytf5" path="res://Scenes/World.tscn" id="1_5dtit"]
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_i2ty8"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_i2ty8")
+
+[node name="World" parent="." instance=ExtResource("1_5dtit")]
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MainMenu" type="PanelContainer" parent="GUI"]
+offset_right = 452.0
+offset_bottom = 283.0
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/MainMenu"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/MainMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="GUI/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Multiplayer"
+horizontal_alignment = 1
+
+[node name="Host Button" type="Button" parent="GUI/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Host
+"
+
+[node name="Join Button" type="Button" parent="GUI/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Join"
+
+[node name="Address" type="LineEdit" parent="GUI/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Address"
+alignment = 1
+
+[connection signal="pressed" from="GUI/MainMenu/MarginContainer/VBoxContainer/Host Button" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="GUI/MainMenu/MarginContainer/VBoxContainer/Join Button" to="." method="_on_join_button_pressed"]
