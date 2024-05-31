@@ -31,6 +31,7 @@ func _on_host_button_pressed():
 	add_player(multiplayer.get_unique_id())
 	
 	print("Server started. Waiting for clients to connect...")
+	print(is_multiplayer_authority())
 
 func _on_join_button_pressed():
 	_start_game()
