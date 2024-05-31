@@ -1,18 +1,24 @@
 extends Node
 
-@onready var main_menu = $Gui/MainMenu
-@onready var address_entry = $Gui/MainMenu/MarginContainer/VBoxContainer/Address
+@onready var main_menu = $CanvasLayer/MainMenu
+@onready var address_entry = $CanvasLayer/MainMenu/MarginContainer/VBoxContainer/Address
+@onready var world = $World  # Add a reference to the World node
 
 const Player = preload("res://Scenes/Player.tscn")
 const PORT = 9999
 var enet_peer = ENetMultiplayerPeer.new()
+
+func _ready():
+	world.visible = false  # Ensure the World is hidden initially
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)  # Ensure mouse is visible
+
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Quit"):
 		get_tree().quit()
 
 func _on_host_button_pressed():
-	main_menu.hide()
+	_start_game()
 	
 	enet_peer.create_server(PORT)
 	multiplayer.multiplayer_peer = enet_peer
@@ -24,7 +30,7 @@ func _on_host_button_pressed():
 	print("Server started. Waiting for clients to connect...")
 
 func _on_join_button_pressed():
-	main_menu.hide()
+	_start_game()
 	
 	var address = address_entry.text
 	enet_peer.create_client(address, PORT)
@@ -34,6 +40,11 @@ func _on_join_button_pressed():
 	multiplayer.peer_disconnected.connect(remove_player)
 	
 	print("Connecting to server at %s..." % address)
+
+func _start_game():
+	main_menu.hide()
+	world.visible = true  # Make the World visible
+
 
 func add_player(peer_id):
 	var player = Player.instantiate()
