@@ -13,8 +13,6 @@ var enet_peer = ENetMultiplayerPeer.new()
 func _ready():
 	world.visible = false  # Ensure the World is hidden initially
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)  # Ensure mouse is visible
-	
-	spawner.add_spawnable_scene("Bullet")
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Quit"):
@@ -28,17 +26,18 @@ func _on_host_button_pressed():
 	multiplayer.peer_connected.connect(add_player)
 	multiplayer.peer_disconnected.connect(remove_player)
 	
-	add_player(multiplayer.get_unique_id())
+
 	
 	print("Server started. Waiting for clients to connect...")
 	print(is_multiplayer_authority())
 
 func _on_join_button_pressed():
-	_start_game()
+
 	
 	var address = address_entry.text
 	enet_peer.create_client(address, PORT)
 	multiplayer.multiplayer_peer = enet_peer
+	_start_game()
 	
 	multiplayer.peer_connected.connect(add_player)
 	multiplayer.peer_disconnected.connect(remove_player)
