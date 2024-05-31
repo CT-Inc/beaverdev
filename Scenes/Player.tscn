@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://car5o216tw28j"]
+[gd_scene load_steps=6 format=3 uid="uid://car5o216tw28j"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_4tctq"]
 [ext_resource type="PackedScene" uid="uid://dfnji12pv1ern" path="res://Scenes/Rifle.tscn" id="2_c7bsb"]
@@ -6,6 +6,17 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mmfmj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nqycn"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_d8knc"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Head/Camera3D:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_4tctq")
@@ -25,3 +36,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0328057, 0.419336, -0.1522
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.307711, -0.242679, -0.674963)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_d8knc")
