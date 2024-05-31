@@ -23,3 +23,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0328057, 0.419336, -0.1522
 
 [node name="Rifle" parent="Head/Camera3D" instance=ExtResource("2_c7bsb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.307711, -0.242679, -0.674963)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

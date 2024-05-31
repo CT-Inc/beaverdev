@@ -3,15 +3,18 @@ extends Node
 @onready var main_menu = $CanvasLayer/MainMenu
 @onready var address_entry = $CanvasLayer/MainMenu/MarginContainer/VBoxContainer/Address
 @onready var world = $World  # Add a reference to the World node
+@onready var spawner = $MultiplayerSpawner
 
 const Player = preload("res://Scenes/Player.tscn")
+const Bullet = preload("res://Scenes/Bullet.tscn")
 const PORT = 9999
 var enet_peer = ENetMultiplayerPeer.new()
 
 func _ready():
 	world.visible = false  # Ensure the World is hidden initially
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)  # Ensure mouse is visible
-
+	
+	spawner.add_spawnable_scene("Bullet")
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Quit"):
@@ -57,3 +60,10 @@ func remove_player(peer_id):
 	if player:
 		player.queue_free()
 		print("Player %s disconnected" % str(peer_id))
+		
+@rpc
+func shoot_bullet(origin, direction):
+	var bullet = Bullet.instantiate()
+	bullet.global_transform.origin = origin
+	bullet.look_at(origin + direction)
+	spawner.spawn("Bullet",bullet.global_transform)
