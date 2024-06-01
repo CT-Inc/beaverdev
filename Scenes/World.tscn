@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://c636e4idxytf5"]
+[gd_scene load_steps=12 format=3 uid="uid://c636e4idxytf5"]
 
 [ext_resource type="PackedScene" uid="uid://bpskod2f8j3ks" path="res://Objects/Ground/grass_ground.tscn" id="1_we8se"]
-[ext_resource type="PackedScene" uid="uid://car5o216tw28j" path="res://Scenes/Player.tscn" id="2_xb7w8"]
 [ext_resource type="PackedScene" uid="uid://bi4l31af4yl3g" path="res://Objects/Cliffs/cliff_block_slope_half_walls_rock.tscn" id="3_eph3a"]
 [ext_resource type="PackedScene" uid="uid://cs0io0xroqbi6" path="res://Objects/Rocks/rock_large_a.tscn" id="4_wjfyv"]
 [ext_resource type="PackedScene" uid="uid://c8ejpvcm1qyjw" path="res://Objects/Rocks/rock_tall_a.tscn" id="5_nuue1"]
@@ -30,7 +29,7 @@ volumetric_fog_albedo = Color(1.98299e-05, 0.960996, 0.968917, 1)
 volumetric_fog_emission = Color(0.447287, 0.482965, 0.734815, 1)
 
 [node name="World" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0846599, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.831938, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ro7m0")
@@ -40,9 +39,6 @@ transform = Transform3D(8.57798, 0, 0.0372073, 0, 1.02298, 0, -0.0342847, 0, 9.3
 
 [node name="ground_grass3" parent="." instance=ExtResource("1_we8se")]
 transform = Transform3D(8.57805, 0, 0, 0, 1.02298, 0, 0, 0, 9.30929, 0, -0.0846599, 37.6491)
-
-[node name="Player" parent="." instance=ExtResource("2_xb7w8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.138717, 0.80324, -0.204261)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.224374, -0.821574, 0.524092, -0.9213, -0.00356695, 0.388835, -0.317588, -0.57009, -0.757717, 6.16633, 12.0205, -16.191)

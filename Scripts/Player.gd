@@ -55,13 +55,21 @@ var _looking_at = null
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var gun_anim = $Head/Camera3D/Rifle/AnimationPlayer
 @onready var gun_barrel = $Head/Camera3D/Rifle/RayCast3D
-@onready var synchronizer = $MultiplayerSynchronizer
+
+func _enter_tree():
+	set_multiplayer_authority(str(name).to_int())
 
 func _ready():
+	if not is_multiplayer_authority():
+		return 
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	camera.current = true
 
 	
 func _input(event: InputEvent) -> void:
+	if not is_multiplayer_authority():
+		return 
+	
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):
@@ -75,6 +83,9 @@ func _input(event: InputEvent) -> void:
 			_latest_mouse_pos = event.position
 	
 func _unhandled_input(event):
+	if not is_multiplayer_authority():
+		return  # Only the local player handles input
+	
 	if event is InputEventMouseMotion:
 		pass
 		#head.rotate_y(-event.relative.x * SENSITIVITY)
@@ -82,29 +93,30 @@ func _unhandled_input(event):
 		#camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
 		
 func _process(delta):
-	if is_multiplayer_authority():
+	if not is_multiplayer_authority():
+		return
 		# angle camera
-		_camera_x_new = lerpf(_camera_x_new, _camera_x, delta * MOUSE_ACCEL)
-		self.rotation_degrees.y = _camera_x_new
-		camera.rotation_degrees.x = lerpf(camera.rotation_degrees.x, _camera_y, delta * MOUSE_ACCEL)
-		
-		# get ray where camera is looking
-		var target := Vector3.INF
-		var from := camera.project_ray_origin(_latest_mouse_pos)
-		var to := from + camera.project_ray_normal(_latest_mouse_pos) * RAY_LENGTH
-		var space_state := get_world_3d().direct_space_state
-		var query := PhysicsRayQueryParameters3D.create(from, to)
-		var result := space_state.intersect_ray(query)
-		target = result.position if result else to
-		
-		#Shooting
-		if Input.is_action_pressed("shoot"):
-			if !gun_anim.is_playing():
-				gun_anim.play("Shoot")
-				instance = bullet.instantiate()
-				instance.position = gun_barrel.global_position
-				instance.transform.basis = gun_barrel.global_transform.basis
-				get_parent().add_child(instance)
+	_camera_x_new = lerpf(_camera_x_new, _camera_x, delta * MOUSE_ACCEL)
+	self.rotation_degrees.y = _camera_x_new
+	camera.rotation_degrees.x = lerpf(camera.rotation_degrees.x, _camera_y, delta * MOUSE_ACCEL)
+	
+	# get ray where camera is looking
+	var target := Vector3.INF
+	var from := camera.project_ray_origin(_latest_mouse_pos)
+	var to := from + camera.project_ray_normal(_latest_mouse_pos) * RAY_LENGTH
+	var space_state := get_world_3d().direct_space_state
+	var query := PhysicsRayQueryParameters3D.create(from, to)
+	var result := space_state.intersect_ray(query)
+	target = result.position if result else to
+	
+	#Shooting
+	if Input.is_action_pressed("shoot"):
+		if !gun_anim.is_playing():
+			gun_anim.play("Shoot")
+			instance = bullet.instantiate()
+			instance.position = gun_barrel.global_position
+			instance.transform.basis = gun_barrel.global_transform.basis
+			get_parent().add_child(instance)
 				
 
 
@@ -115,21 +127,22 @@ func _physics_process(delta):
 	#	speed = SPRINT_SPEED
 	#else:
 	#	speed = WALK_SPEED
-	if is_multiplayer_authority():
-		grounded_prev = grounded
-		
-		#Get the input direction and handle the movement/deceleration
-		var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-		wish_dir = (transform.basis * Vector3(input_dir.x, 0 , input_dir.y)).normalized()
-		projected_speed = (velocity * Vector3(1,0,1)).dot(wish_dir)
-		 
-		if not is_on_floor():
+	if not is_multiplayer_authority():
+		return
+	grounded_prev = grounded
+	
+	#Get the input direction and handle the movement/deceleration
+	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	wish_dir = (transform.basis * Vector3(input_dir.x, 0 , input_dir.y)).normalized()
+	projected_speed = (velocity * Vector3(1,0,1)).dot(wish_dir)
+	 
+	if not is_on_floor():
 			set_move(false, delta, "air_move")
-		if is_on_floor():
-			if velocity.y > 10:
-				set_move(false, delta, "air_move")
-			else:
-				set_move(true, delta, "ground_move")
+	if is_on_floor():
+		if velocity.y > 10:
+			set_move(false, delta, "air_move")
+		else:
+			set_move(true, delta, "ground_move")
 
 		#Head bob 
 		#Leaving this to tinker with later, player moves too fast right now
@@ -138,7 +151,7 @@ func _physics_process(delta):
 		#FOV
 		#set_fov(delta, velocity)
 				
-		move_and_slide()
+	move_and_slide()
 			
 			
 func set_fov(delta, velocity):

@@ -19,6 +19,7 @@ properties/2/spawn = true
 properties/2/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56028, 0)
 script = ExtResource("1_4tctq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
