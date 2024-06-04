@@ -36,7 +36,7 @@ const TOP_SPEED_GROUND: float = 15.0
 const GRAVITY: float = 40.0
 const JUMP_FORCE: float = 14
 const LIN_FRICTION_SPEED: float = 10.0
-const MOUSE_SENS: float = 0.1
+var MOUSE_SENS: float = 0.1
 const MOUSE_Y_MAX: float = 60.0
 const MOUSE_Y_MIN: float = -80.0
 var projected_speed: float = 0
@@ -64,6 +64,8 @@ func _ready():
 		return 
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera.current = true
+	GlobalSettings.connect("fov_updated", _on_fov_updated)
+	GlobalSettings.connect("mouse_sens_updated", _on_mouse_sens_updated)
 
 	
 func _input(event: InputEvent) -> void:
@@ -260,3 +262,10 @@ func shoot_bullet(origin, direction):
 		bullet.global_transform.origin = origin
 		bullet.look_at(origin + direction)
 		get_parent().add_child(bullet)
+
+func _on_fov_updated(value):
+	camera.fov = value
+
+func _on_mouse_sens_updated(value):
+	MOUSE_SENS = value
+	print(value)

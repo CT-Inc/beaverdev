@@ -3,6 +3,8 @@ extends Node
 @onready var main_menu = $CanvasLayer/MainMenu
 @onready var address_entry = $CanvasLayer/MainMenu/MarginContainer/VBoxContainer/Address
 @onready var world = $World  # Add a reference to the World node
+@onready var settings_menu = $SettingsMenu
+
 
 const Player = preload("res://Scenes/Player.tscn")
 const PORT = 9999
@@ -20,7 +22,8 @@ func _ready():
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Quit"):
-		get_tree().quit()
+		settings_menu.popup_centered()
+		
 		
 
 func _on_host_button_pressed():
@@ -73,3 +76,13 @@ func remove_player(peer_id):
 		print("Player %s disconnected" % str(peer_id))
 		
 
+
+
+func _on_quit_game_pressed():
+	get_tree().quit()
+
+
+func _on_settings_pressed():
+	print("settings")
+	settings_menu.popup_centered()
+	

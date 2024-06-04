@@ -1,0 +1,133 @@
+[gd_scene load_steps=3 format=3 uid="uid://04veyn23iiai"]
+
+[ext_resource type="Script" path="res://Scripts/SettingsMenu.gd" id="1_j8b34"]
+
+[sub_resource type="Theme" id="Theme_a778a"]
+
+[node name="SettingsMenu" type="Popup"]
+initial_position = 1
+size = Vector2i(250, 250)
+visible = true
+script = ExtResource("1_j8b34")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Video" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Video"]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 78.0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VideoSettings" type="GridContainer" parent="TabContainer/Video/MarginContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 25
+columns = 2
+
+[node name="ScreenMode" type="Label" parent="TabContainer/Video/MarginContainer/VideoSettings"]
+layout_mode = 2
+text = "Screen Mode"
+
+[node name="ScreenModeBtn" type="OptionButton" parent="TabContainer/Video/MarginContainer/VideoSettings"]
+layout_mode = 2
+
+[node name="DisplayFPS" type="Label" parent="TabContainer/Video/MarginContainer/VideoSettings"]
+layout_mode = 2
+text = "Display FPS"
+
+[node name="DisplayFPSBtn" type="CheckButton" parent="TabContainer/Video/MarginContainer/VideoSettings"]
+layout_mode = 2
+
+[node name="Brightness" type="Label" parent="TabContainer/Video/MarginContainer/VideoSettings"]
+layout_mode = 2
+text = "Brightness"
+
+[node name="BrightnessSlider" type="HSlider" parent="TabContainer/Video/MarginContainer/VideoSettings"]
+layout_mode = 2
+
+[node name="Audio" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Audio"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Audio/MarginContainer"]
+layout_mode = 2
+
+[node name="Gameplay" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Gameplay"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="GameplaySettings" type="GridContainer" parent="TabContainer/Gameplay/MarginContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 25
+columns = 2
+
+[node name="FOV" type="Label" parent="TabContainer/Gameplay/MarginContainer/GameplaySettings"]
+layout_mode = 2
+text = "FOV"
+
+[node name="FOVOption" type="HBoxContainer" parent="TabContainer/Gameplay/MarginContainer/GameplaySettings"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="FOVAmt" type="Label" parent="TabContainer/Gameplay/MarginContainer/GameplaySettings/FOVOption"]
+layout_mode = 2
+text = "50"
+
+[node name="FOVSlider" type="HSlider" parent="TabContainer/Gameplay/MarginContainer/GameplaySettings/FOVOption"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="MouseSens" type="Label" parent="TabContainer/Gameplay/MarginContainer/GameplaySettings"]
+layout_mode = 2
+text = "Mouse Sensitivity"
+
+[node name="MouseSensOption" type="HBoxContainer" parent="TabContainer/Gameplay/MarginContainer/GameplaySettings"]
+layout_mode = 2
+theme = SubResource("Theme_a778a")
+
+[node name="MouseSensAmt" type="Label" parent="TabContainer/Gameplay/MarginContainer/GameplaySettings/MouseSensOption"]
+layout_mode = 2
+text = "50"
+
+[node name="MouseSensSlider" type="HSlider" parent="TabContainer/Gameplay/MarginContainer/GameplaySettings/MouseSensOption"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[connection signal="value_changed" from="TabContainer/Gameplay/MarginContainer/GameplaySettings/FOVOption/FOVSlider" to="." method="_on_fov_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Gameplay/MarginContainer/GameplaySettings/MouseSensOption/MouseSensSlider" to="." method="_on_mouse_sens_slider_value_changed"]
