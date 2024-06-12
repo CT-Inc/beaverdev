@@ -1,13 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://c636e4idxytf5"]
+[gd_scene load_steps=10 format=3 uid="uid://c636e4idxytf5"]
 
 [ext_resource type="PackedScene" uid="uid://bpskod2f8j3ks" path="res://Objects/Ground/grass_ground.tscn" id="1_we8se"]
 [ext_resource type="PackedScene" uid="uid://bi4l31af4yl3g" path="res://Objects/Cliffs/cliff_block_slope_half_walls_rock.tscn" id="3_eph3a"]
 [ext_resource type="PackedScene" uid="uid://cs0io0xroqbi6" path="res://Objects/Rocks/rock_large_a.tscn" id="4_wjfyv"]
 [ext_resource type="PackedScene" uid="uid://c8ejpvcm1qyjw" path="res://Objects/Rocks/rock_tall_a.tscn" id="5_nuue1"]
-[ext_resource type="PackedScene" uid="uid://vs6orrk7v8d5" path="res://Objects/Cliffs/cliff_top_rock.tscn" id="7_l6hrp"]
-[ext_resource type="PackedScene" uid="uid://7onh7ghcarki" path="res://Objects/Cliffs/cliff_top_stone.tscn" id="8_28h25"]
+[ext_resource type="PackedScene" uid="uid://d1xot4e8rgoty" path="res://Objects/Cliffs/cliff_half_corner_inner_rock.tscn" id="6_jgbmw"]
 [ext_resource type="PackedScene" uid="uid://bf8ad11ay7nf7" path="res://Objects/Trees/tree_default.tscn" id="9_mwobl"]
-[ext_resource type="PackedScene" uid="uid://2jknd8dcoyub" path="res://Objects/Cliffs/cliff_waterfall_stone.tscn" id="9_thd75"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b4fhu"]
 
@@ -29,26 +27,23 @@ volumetric_fog_albedo = Color(1.98299e-05, 0.960996, 0.968917, 1)
 volumetric_fog_emission = Color(0.447287, 0.482965, 0.734815, 1)
 
 [node name="World" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.831938, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00905228, 0.843547, -0.00338936)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ro7m0")
 
-[node name="ground_grass2" parent="." instance=ExtResource("1_we8se")]
-transform = Transform3D(8.57798, 0, 0.0372073, 0, 1.02298, 0, -0.0342847, 0, 9.30922, -0.0610466, -0.0846599, 0)
-
 [node name="ground_grass3" parent="." instance=ExtResource("1_we8se")]
-transform = Transform3D(8.57805, 0, 0, 0, 1.02298, 0, 0, 0, 9.30929, 0, -0.0846599, 37.6491)
+transform = Transform3D(100, 0, 0, 0, 11.926, 0, 0, 0, 108.522, 0.00332069, -0.0846599, 37.6555)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.224374, -0.821574, 0.524092, -0.9213, -0.00356695, 0.388835, -0.317588, -0.57009, -0.757717, 6.16633, 12.0205, -16.191)
+transform = Transform3D(0.224374, -0.821574, 0.524091, -0.9213, -0.00356684, 0.388836, -0.317588, -0.57009, -0.757717, 6.2151, 11.7734, -15.8617)
 shadow_enabled = true
 shadow_reverse_cull_face = true
 shadow_opacity = 0.75
 shadow_blur = 0.0
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.319139, -0.813473, 0.486223, 0.883265, 0.441267, 0.158516, -0.343503, 0.378875, 0.859337, -0.755286, 11.2956, 48.1913)
+transform = Transform3D(0.319139, -0.813473, 0.486223, 0.883265, 0.441267, 0.158516, -0.343503, 0.378875, 0.859337, -1.25957, 12.6617, 48.0834)
 light_energy = 0.97
 shadow_reverse_cull_face = true
 shadow_opacity = 0.75
@@ -79,21 +74,6 @@ transform = Transform3D(1.28981, 0, 0, 0, 1.61013, 0, 0, 0, 1.5453, 10.3054, -0.
 [node name="rock_tallA3" parent="." instance=ExtResource("5_nuue1")]
 transform = Transform3D(0.919549, 0, 1.08362, 0, 1.61013, 0, -0.904459, 0, 1.1017, -10.5411, -0.0843987, 6.20575)
 
-[node name="cliff_top_rock2" parent="." instance=ExtResource("7_l6hrp")]
-transform = Transform3D(8.04725, 0, 0, 0, 4.14149, 0, 0, 0, 1, 9.758, -0.034, -13.337)
-
-[node name="cliff_top_rock3" parent="." instance=ExtResource("7_l6hrp")]
-transform = Transform3D(8.08858, 0, 0, 0, 4.14149, 0, 0, 0, 1, -10.2229, -0.0338605, -13.3369)
-
-[node name="cliff_waterfall_stone2" parent="." instance=ExtResource("9_thd75")]
-transform = Transform3D(-3.78103, 0, -8.74228e-08, 0, 4.5581, 0, 3.30548e-07, 0, -1, -0.215426, -0.0843987, -12.9651)
-
-[node name="cliff_top_stone2" parent="." instance=ExtResource("8_28h25")]
-transform = Transform3D(4.355, 0, 0, 0, 4.19655, 0, 0, 0, 1, -4.1503, -0.084, -13.337)
-
-[node name="cliff_top_stone3" parent="." instance=ExtResource("8_28h25")]
-transform = Transform3D(4.45524, 0, 0, 0, 4.19655, 0, 0, 0, 1, 3.83438, -0.084, -13.337)
-
 [node name="tree_default2" parent="." instance=ExtResource("9_mwobl")]
 transform = Transform3D(2.21175, 0, 0, 0, 1.87059, 0, 0, 0, 1.64877, -8.35638, -0.0843987, -8.50039)
 
@@ -108,3 +88,9 @@ transform = Transform3D(2.21175, 0, 0, 0, 1.87059, 0, 0, 0, 1.64877, 3.71476, -0
 
 [node name="tree_default4" parent="." instance=ExtResource("9_mwobl")]
 transform = Transform3D(2.21175, 0, 0, 0, 1.87059, 0, 0, 0, 1.64877, -7.59865, -0.0843987, -5.37895)
+
+[node name="cliff_halfCornerInner_rock3" parent="." instance=ExtResource("6_jgbmw")]
+transform = Transform3D(-3.97111, 0, 9.28501, 0, 22.4287, 0, -18.1417, 0, -2.03244, 22.6439, 0.00883585, -5.81142)
+
+[node name="cliff_halfCornerInner_rock4" parent="." instance=ExtResource("6_jgbmw")]
+transform = Transform3D(-9.06966, 0, -2.40676, 0, 22.278, 0, 2.0774, 0, -10.5076, 19.5837, 0.061784, -20.0819)

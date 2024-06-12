@@ -61,6 +61,7 @@ layout_mode = 2
 text = "Quit Game"
 
 [node name="World" parent="." instance=ExtResource("1_5dtit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0205917, 0.843543, -0.0820026)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Scenes/Player.tscn")
