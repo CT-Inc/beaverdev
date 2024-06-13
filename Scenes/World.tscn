@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://c636e4idxytf5"]
+[gd_scene load_steps=11 format=3 uid="uid://c636e4idxytf5"]
 
 [ext_resource type="PackedScene" uid="uid://bpskod2f8j3ks" path="res://Objects/Ground/grass_ground.tscn" id="1_we8se"]
 [ext_resource type="PackedScene" uid="uid://bi4l31af4yl3g" path="res://Objects/Cliffs/cliff_block_slope_half_walls_rock.tscn" id="3_eph3a"]
 [ext_resource type="PackedScene" uid="uid://cs0io0xroqbi6" path="res://Objects/Rocks/rock_large_a.tscn" id="4_wjfyv"]
 [ext_resource type="PackedScene" uid="uid://c8ejpvcm1qyjw" path="res://Objects/Rocks/rock_tall_a.tscn" id="5_nuue1"]
 [ext_resource type="PackedScene" uid="uid://d1xot4e8rgoty" path="res://Objects/Cliffs/cliff_half_corner_inner_rock.tscn" id="6_jgbmw"]
+[ext_resource type="PackedScene" uid="uid://1yu23sfi22ld" path="res://Objects/Cliffs/cliff_block_slope_rock.tscn" id="7_aj116"]
 [ext_resource type="PackedScene" uid="uid://bf8ad11ay7nf7" path="res://Objects/Trees/tree_default.tscn" id="9_mwobl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b4fhu"]
@@ -94,3 +95,6 @@ transform = Transform3D(-3.97111, 0, 9.28501, 0, 22.4287, 0, -18.1417, 0, -2.032
 
 [node name="cliff_halfCornerInner_rock4" parent="." instance=ExtResource("6_jgbmw")]
 transform = Transform3D(-9.06966, 0, -2.40676, 0, 22.278, 0, 2.0774, 0, -10.5076, 19.5837, 0.061784, -20.0819)
+
+[node name="cliff_blockSlope_rock2" parent="." instance=ExtResource("7_aj116")]
+transform = Transform3D(12.1047, 0, 3.0485, 0, 10.2385, 0, -2.7759, 0, 13.2934, 16.249, 0.366986, -31.8887)

@@ -53,8 +53,10 @@ var _looking_at = null
 
 @onready var head = $Head
 @onready var camera: Camera3D = $Head/Camera3D
-@onready var gun_anim = $Head/Camera3D/Rifle/AnimationPlayer
-@onready var gun_barrel = $Head/Camera3D/Rifle/RayCast3D
+@onready var gun_anim = $Head/Camera3D/Weapons_Manager/Rifle/AnimationPlayer
+@onready var gun_barrel = $Head/Camera3D/Weapons_Manager/Rifle/RayCast3D
+@onready var weapons_manager = $Head/Camera3D/Weapons_Manager
+
 
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
@@ -83,6 +85,11 @@ func _input(event: InputEvent) -> void:
 			_camera_y = clampf(_camera_y - event.relative.y * MOUSE_SENS, MOUSE_Y_MIN, MOUSE_Y_MAX)
 		if event is InputEventMouse:
 			_latest_mouse_pos = event.position
+		if Input.is_action_pressed("switch_weapon_up"):
+			weapons_manager.switch_weapon(1)  # Scroll up
+		if Input.is_action_pressed("switch_weapon_down"):
+			weapons_manager.switch_weapon(-1) # Scroll down
+
 	
 func _unhandled_input(event):
 	if not is_multiplayer_authority():
