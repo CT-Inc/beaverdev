@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://car5o216tw28j"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_4tctq"]
+[ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_u3g2h"]
 [ext_resource type="Script" path="res://Scripts/Weapons_Manager.gd" id="2_7jxn8"]
 [ext_resource type="PackedScene" uid="uid://dfnji12pv1ern" path="res://Scenes/Rifle.tscn" id="2_c7bsb"]
 
@@ -21,7 +21,7 @@ properties/2/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56028, 0)
-script = ExtResource("1_4tctq")
+script = ExtResource("1_u3g2h")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_mmfmj")

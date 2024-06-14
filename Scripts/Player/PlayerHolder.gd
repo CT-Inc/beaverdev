@@ -7,11 +7,6 @@ const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.004
 const HIT_STAGGER = 8.0
 
-#variables for player bobbing
-const BOB_FREQ = 2.4
-const BOB_AMP = 0.08 
-var t_bob = 0.0
-
 #variables for FOV
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
@@ -144,6 +139,7 @@ func _physics_process(delta):
 	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	wish_dir = (transform.basis * Vector3(input_dir.x, 0 , input_dir.y)).normalized()
 	projected_speed = (velocity * Vector3(1,0,1)).dot(wish_dir)
+	emit_signal("input_vector_changed", input_dir)
 	 
 	if not is_on_floor():
 			set_move(false, delta, "air_move")
@@ -152,10 +148,6 @@ func _physics_process(delta):
 			set_move(false, delta, "air_move")
 		else:
 			set_move(true, delta, "ground_move")
-
-		#Head bob 
-		#Leaving this to tinker with later, player moves too fast right now
-		#set_bob(delta, velocity)
 		
 		#FOV
 		#set_fov(delta, velocity)
@@ -172,17 +164,6 @@ func set_move(grounded_status, delta, air_or_ground):
 	grounded = grounded_status
 	call(air_or_ground, delta)
 	
-func set_bob(delta, velocity):
-	pass
-	#t_bob += delta * velocity.length() * float(is_on_floor()) / 100.0
-	#camera.transform.origin = _headbob(t_bob)
-
-func _headbob(time) -> Vector3:
-	var pos = Vector3.ZERO
-	pos.y = sin(time * BOB_FREQ) * BOB_AMP
-	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
-	return pos
-
 func hit(dir):
 	emit_signal("player_hit")
 	velocity += dir * HIT_STAGGER
