@@ -35,7 +35,6 @@ func _physics_process(delta):
 	var input_dir: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	wish_dir = (player.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	projected_speed = (player.velocity * Vector3(1, 0, 1)).dot(wish_dir)
-	player.emit_signal("input_vector_changed", input_dir)
 	 
 	if not player.is_on_floor():
 		set_move(false, delta, "air_move")

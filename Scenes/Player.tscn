@@ -1,12 +1,238 @@
-[gd_scene load_steps=7 format=3 uid="uid://car5o216tw28j"]
+[gd_scene load_steps=15 format=3 uid="uid://car5o216tw28j"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_u3g2h"]
-[ext_resource type="Script" path="res://Scripts/Weapons_Manager.gd" id="2_7jxn8"]
 [ext_resource type="PackedScene" uid="uid://dfnji12pv1ern" path="res://Scenes/Rifle.tscn" id="2_c7bsb"]
+[ext_resource type="Script" path="res://Scripts/Weapons/Weapons_Manager.gd" id="2_jli8k"]
+[ext_resource type="PackedScene" uid="uid://b1soh3ki3bxkw" path="res://Scenes/blaster_AR.tscn" id="4_e6jd8"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mmfmj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nqycn"]
+
+[sub_resource type="Animation" id="Animation_b1ew0"]
+resource_name = "Rifle Activate"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FPS_Rig/Rifle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0483705, 0.0930744, -0.140154), Vector3(0.0530944, 0.748415, -0.140154), Vector3(0.0562436, 1.18531, -0.140154)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FPS_Rig/Rifle:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FPS_Rig/Rifle:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.010472, 3.14159, -0.00698132), Vector3(-0.010472, 1.5708, -0.00698132), Vector3(-0.192839, 1.03629, 0.0999414), Vector3(-0.00349066, 0.523599, -0.00174533), Vector3(-0.00349066, 3.48787e-16, -0.00174533)]
+}
+
+[sub_resource type="Animation" id="Animation_gggb3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FPS_Rig/Rifle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0483705, 0.0930744, -0.140154)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FPS_Rig/Rifle:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FPS_Rig/Rifle:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.010472, 3.14159, -0.00698132)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FPS_Rig/Rifle:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.999999, 0.999999, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5mydt"]
+resource_name = "Rifle Deactivate"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FPS_Rig/Rifle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0562436, 1.18531, -0.140154), Vector3(0.0554699, 1.07799, -0.140154), Vector3(0.0502514, 0.354016, -0.140154)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FPS_Rig/Rifle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3.48787e-16, 3.48787e-16, -0.0244346), Vector3(-0.443806, 0.753837, -0.0244946)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FPS_Rig/Rifle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_of1s8"]
+resource_name = "Rifle Shoot"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FPS_Rig/Rifle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 0.231706, 1),
+"update": 0,
+"values": [Vector3(0.0562436, 1.18531, -0.140154), Vector3(0.056, 1.185, -0.1), Vector3(0.056, 1.185, -0.14)]
+}
+
+[sub_resource type="Animation" id="Animation_fvds2"]
+resource_name = "Rifle Reload"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FPS_Rig/Rifle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.00349066, 0, -0.00174533), Vector3(1.03515, -0.0121946, -0.00870264), Vector3(-0.00349066, 0, -0.00174533)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FPS_Rig/Rifle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0562436, 1.18531, -0.140154), Vector3(0.0569132, 1.2782, -0.140154), Vector3(0.0562436, 1.18531, -0.140154)]
+}
+
+[sub_resource type="Animation" id="Animation_tqwgx"]
+resource_name = "Rifle OOA"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FPS_Rig/Rifle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.056, 1.185, -0.14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FPS_Rig/Rifle:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FPS_Rig/Rifle:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.00349066, -9.58334e-13, -0.00174533), Vector3(0.228231, -0.00170017, -0.00194312), Vector3(-0.00349066, -9.58334e-13, -0.00174533)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8jffx"]
+_data = {
+"RESET": SubResource("Animation_gggb3"),
+"Rifle Activate": SubResource("Animation_b1ew0"),
+"Rifle Deactivate": SubResource("Animation_5mydt"),
+"Rifle OOA": SubResource("Animation_tqwgx"),
+"Rifle Reload": SubResource("Animation_fvds2"),
+"Rifle Shoot": SubResource("Animation_of1s8")
+}
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_d8knc"]
 properties/0/path = NodePath(".:position")
@@ -37,10 +263,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0328057, 0.419336, -0.1522
 
 [node name="Weapons_Manager" type="Node3D" parent="Head/Camera3D"]
 transform = Transform3D(0.999974, -0.00720815, 0, 0.00720815, 0.999974, 0, 0, 0, 1, 0.379812, -0.34816, -0.534809)
-script = ExtResource("2_7jxn8")
+script = ExtResource("2_jli8k")
 
-[node name="Rifle" parent="Head/Camera3D/Weapons_Manager" instance=ExtResource("2_c7bsb")]
-transform = Transform3D(0.999974, 0.00720777, 7.42242e-05, -0.00720815, 0.999921, 0.010297, 0, -0.0102973, 0.999947, 0.0483705, 0.0930744, -0.140154)
+[node name="FPS_Rig" type="Node3D" parent="Head/Camera3D/Weapons_Manager"]
+transform = Transform3D(1, 1.26859e-10, 0, 1.26859e-10, 1, 0, 0, 0, 1, -0.0084438, -1.1714, 0)
+
+[node name="Rifle" parent="Head/Camera3D/Weapons_Manager/FPS_Rig" instance=ExtResource("2_c7bsb")]
+transform = Transform3D(-0.999975, -0.00698126, -8.7418e-08, -0.00698087, 0.99992, 0.0104718, -7.30188e-05, 0.0104715, -0.999945, 0.0483705, 0.0930744, -0.140154)
+visible = false
+
+[node name="blasterD2" parent="Head/Camera3D/Weapons_Manager/FPS_Rig" instance=ExtResource("4_e6jd8")]
+transform = Transform3D(1, -3.38802e-10, -1.28485e-12, -3.38802e-10, 1, -1.78244e-10, -4.02859e-12, 1.06177e-09, 1, 0, -1.19209e-07, -5.96046e-08)
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/Weapons_Manager/FPS_Rig"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_8jffx")
+}
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_d8knc")

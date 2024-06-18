@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dfnji12pv1ern"]
 
 [ext_resource type="PackedScene" uid="uid://beylmx8mc8h0i" path="res://Objects/Gun/Steampunk Rifle.glb" id="1_3vau2"]
-[ext_resource type="Script" path="res://Scripts/Rifle.gd" id="2_12npa"]
+[ext_resource type="Script" path="res://Scripts/Weapons/Rifle.gd" id="2_cqqvr"]
 [ext_resource type="Material" uid="uid://bds863cq6gruq" path="res://Objects/Gun/Metal.tres" id="2_guumd"]
 [ext_resource type="Material" uid="uid://dsbxaujpenxuh" path="res://Objects/Gun/Metal3.tres" id="2_sebp6"]
 [ext_resource type="Material" uid="uid://bi0jeon1tbvt0" path="res://Objects/Gun/Wood.tres" id="3_d42oy"]
@@ -33,7 +33,7 @@ _data = {
 }
 
 [node name="Rifle" instance=ExtResource("1_3vau2")]
-script = ExtResource("2_12npa")
+script = ExtResource("2_cqqvr")
 
 [node name="Node" parent="." index="0"]
 cast_shadow = 0

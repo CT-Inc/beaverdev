@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1soh3ki3bxkw"]
+
+[ext_resource type="PackedScene" uid="uid://dbd0msfvi81o8" path="res://Objects/Gun/blasterD.glb" id="1_uqe0r"]
+
+[node name="blasterD2" instance=ExtResource("1_uqe0r")]
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="1"]
