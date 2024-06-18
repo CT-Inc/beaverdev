@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://car5o216tw28j"]
+[gd_scene load_steps=19 format=3 uid="uid://car5o216tw28j"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_u3g2h"]
 [ext_resource type="PackedScene" uid="uid://dfnji12pv1ern" path="res://Scenes/Rifle.tscn" id="2_c7bsb"]
@@ -98,6 +98,54 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.999999, 0.999999, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FPS_Rig/Blaster_AR:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.19209e-07, -5.96046e-08)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FPS_Rig/Blaster_AR:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.06177e-09, 4.02859e-12, -3.38802e-10)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("FPS_Rig/Blaster_AR:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("FPS_Rig/Blaster_AR:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.999999, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_5mydt"]
@@ -224,8 +272,160 @@ tracks/2/keys = {
 "values": [Vector3(-0.00349066, -9.58334e-13, -0.00174533), Vector3(0.228231, -0.00170017, -0.00194312), Vector3(-0.00349066, -9.58334e-13, -0.00174533)]
 }
 
+[sub_resource type="Animation" id="Animation_niwau"]
+resource_name = "Blaster_AR Activate"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FPS_Rig/Blaster_AR:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.19209e-07, -5.96046e-08), Vector3(0.00782371, 1.08538, -5.96046e-08), Vector3(0.00842756, 1.16916, -5.96046e-08)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FPS_Rig/Blaster_AR:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.06177e-09, 4.02859e-12, -3.38802e-10), Vector3(0.601203, 3.06428, -0.0306318), Vector3(0.0340082, 3.07397, 0.0121262)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FPS_Rig/Blaster_AR:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FPS_Rig/Blaster_AR:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_3xvay"]
+resource_name = "Blaster_AR Deactivate"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FPS_Rig/Blaster_AR:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.00842756, 1.16916, -5.96046e-08), Vector3(0.00779331, 1.08117, -5.96046e-08), Vector3(0.00709191, 0.983866, -5.96046e-08), Vector3(0.0023199, 0.321852, -5.96046e-08)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FPS_Rig/Blaster_AR:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0340082, 3.07397, 0.0121262), Vector3(0.358785, 3.07186, -0.0105507), Vector3(0.356047, 3.42608, -0.010472), Vector3(0.356047, 3.07178, -0.010472)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FPS_Rig/Blaster_AR:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_4gmmo"]
+resource_name = "Blaster_AR Shoot"
+step = 0.0001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FPS_Rig/Blaster_AR:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0682, 0.1255),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.00842756, 1.16916, -5.96046e-08), Vector3(0.008, 1.169, 0.3), Vector3(0.00842756, 1.16916, -5.96046e-08)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FPS_Rig/Blaster_AR:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0340082, 3.07397, 0.0121262)]
+}
+
+[sub_resource type="Animation" id="Animation_qbrpt"]
+resource_name = "Blaster_AR Reload"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FPS_Rig/Blaster_AR:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.00842317, 1.16916, 0.00307912), Vector3(0.0094316, 1.30905, 0.00307912), Vector3(0.00842317, 1.16916, 0.00307912)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FPS_Rig/Blaster_AR:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0340082, 3.07397, 0.0121262), Vector3(-1.43678, 2.54639, 0.599035), Vector3(0.0340082, 3.07397, 0.0121262)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8jffx"]
 _data = {
+"Blaster_AR Activate": SubResource("Animation_niwau"),
+"Blaster_AR Deactivate": SubResource("Animation_3xvay"),
+"Blaster_AR Reload": SubResource("Animation_qbrpt"),
+"Blaster_AR Shoot": SubResource("Animation_4gmmo"),
 "RESET": SubResource("Animation_gggb3"),
 "Rifle Activate": SubResource("Animation_b1ew0"),
 "Rifle Deactivate": SubResource("Animation_5mydt"),
@@ -272,8 +472,8 @@ transform = Transform3D(1, 1.26859e-10, 0, 1.26859e-10, 1, 0, 0, 0, 1, -0.008443
 transform = Transform3D(-0.999975, -0.00698126, -8.7418e-08, -0.00698087, 0.99992, 0.0104718, -7.30188e-05, 0.0104715, -0.999945, 0.0483705, 0.0930744, -0.140154)
 visible = false
 
-[node name="blasterD2" parent="Head/Camera3D/Weapons_Manager/FPS_Rig" instance=ExtResource("4_e6jd8")]
-transform = Transform3D(1, -3.38802e-10, -1.28485e-12, -3.38802e-10, 1, -1.78244e-10, -4.02859e-12, 1.06177e-09, 1, 0, -1.19209e-07, -5.96046e-08)
+[node name="Blaster_AR" parent="Head/Camera3D/Weapons_Manager/FPS_Rig" instance=ExtResource("4_e6jd8")]
+transform = Transform3D(0.999999, 3.38802e-10, 4.02858e-12, -3.38802e-10, 1, -1.06177e-09, -4.02858e-12, 1.06177e-09, 1, 0, -1.19209e-07, -5.96046e-08)
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/Weapons_Manager/FPS_Rig"]
