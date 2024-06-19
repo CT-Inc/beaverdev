@@ -18,6 +18,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalSettings="*res://Scripts/global_settings.gd"
+Save="*res://Scripts/save.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [input]
 

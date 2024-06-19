@@ -21,11 +21,14 @@ func load_data():
 			"sfx_vol": -10,
 			"fov": 70,
 			"mouse_sens": .1,
+			"game_state": 1,
+			# game_state = 1, in game moving etc
+			# game_state = 0, paused, all input restricted
 		}
 		save_data()
-		var file = FileAccess.open(SAVEFILE, FileAccess.READ)
-		game_data = file.get_var()
-		file.close()
+	var file = FileAccess.open(SAVEFILE, FileAccess.READ)
+	game_data = file.get_var()
+	file.close()
 	
 func save_data():
 	var file = FileAccess.open(SAVEFILE, FileAccess.WRITE)

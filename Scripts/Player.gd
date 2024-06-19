@@ -51,6 +51,8 @@ var _input_vector := Vector3.ZERO
 var _velocity := Vector3.ZERO
 var _looking_at = null
 
+var can_move: int = 1
+
 @onready var head = $Head
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var gun_anim = $Head/Camera3D/Rifle/AnimationPlayer
@@ -66,11 +68,15 @@ func _ready():
 	camera.current = true
 	GlobalSettings.connect("fov_updated", _on_fov_updated)
 	GlobalSettings.connect("mouse_sens_updated", _on_mouse_sens_updated)
+	GlobalSettings.connect("game_state_updated", _on_game_state_updated)
 
 	
 func _input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
 		return 
+	if can_move == 0:
+		print("cant move here")
+		return
 	
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -268,4 +274,7 @@ func _on_fov_updated(value):
 
 func _on_mouse_sens_updated(value):
 	MOUSE_SENS = value
-	print(value)
+	
+func _on_game_state_updated(value):
+	can_move = value
+	print("can_move", value)

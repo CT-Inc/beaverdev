@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://04veyn23iiai"]
+[gd_scene load_steps=4 format=3 uid="uid://04veyn23iiai"]
 
 [ext_resource type="Script" path="res://Scripts/SettingsMenu.gd" id="1_j8b34"]
+
+[sub_resource type="Theme" id="Theme_mcjhx"]
 
 [sub_resource type="Theme" id="Theme_a778a"]
 
 [node name="SettingsMenu" type="Popup"]
 initial_position = 1
-size = Vector2i(250, 250)
+size = Vector2i(500, 350)
 visible = true
 script = ExtResource("1_j8b34")
 
@@ -16,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(1, 0.772549, 0.643137, 1)
 
 [node name="TabContainer" type="TabContainer" parent="."]
 anchors_preset = 15
@@ -23,6 +26,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
+theme = SubResource("Theme_mcjhx")
 
 [node name="Video" type="TabBar" parent="TabContainer"]
 layout_mode = 2
@@ -31,6 +36,7 @@ layout_mode = 2
 layout_mode = 0
 offset_right = 150.0
 offset_bottom = 78.0
+mouse_filter = 0
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
@@ -38,7 +44,8 @@ theme_override_constants/margin_bottom = 25
 
 [node name="VideoSettings" type="GridContainer" parent="TabContainer/Video/MarginContainer"]
 layout_mode = 2
-theme_override_constants/v_separation = 25
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 30
 columns = 2
 
 [node name="ScreenMode" type="Label" parent="TabContainer/Video/MarginContainer/VideoSettings"]
@@ -82,6 +89,7 @@ layout_mode = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 0
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
@@ -129,5 +137,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
+[connection signal="value_changed" from="TabContainer/Video/MarginContainer/VideoSettings/BrightnessSlider" to="." method="_on_brightness_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/Gameplay/MarginContainer/GameplaySettings/FOVOption/FOVSlider" to="." method="_on_fov_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/Gameplay/MarginContainer/GameplaySettings/MouseSensOption/MouseSensSlider" to="." method="_on_mouse_sens_slider_value_changed"]
