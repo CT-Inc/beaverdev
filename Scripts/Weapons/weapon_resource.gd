@@ -1,6 +1,6 @@
 extends Resource
 
-class_name Wepaon_Resource
+class_name Weapon_Resource
 
 @export var Weapon_Name: String
 @export var Activate_Anim: String

@@ -58,10 +58,6 @@ func _input(event: InputEvent) -> void:
 			_camera_y = clampf(_camera_y - event.relative.y * MOUSE_SENS, MOUSE_Y_MIN, MOUSE_Y_MAX)
 		if event is InputEventMouse:
 			_latest_mouse_pos = event.position
-		if Input.is_action_pressed("switch_weapon_up"):
-			weapons_manager.switch_weapon(1)  # Scroll up
-		if Input.is_action_pressed("switch_weapon_down"):
-			weapons_manager.switch_weapon(-1) # Scroll down
 
 func _process(delta):
 	if not is_multiplayer_authority():
@@ -78,13 +74,13 @@ func _process(delta):
 	var result := space_state.intersect_ray(query)
 	target = result.position if result else to
 	
-	if Input.is_action_pressed("shoot"):
-		if not gun_anim.is_playing():
-			gun_anim.play("Shoot")
-			instance = bullet.instantiate()
-			instance.position = gun_barrel.global_position
-			instance.transform.basis = gun_barrel.global_transform.basis
-			get_parent().add_child(instance)
+	#if Input.is_action_pressed("shoot"):
+		#if not gun_anim.is_playing():
+			#gun_anim.play("Shoot")
+			#instance = bullet.instantiate()
+			#instance.position = gun_barrel.global_position
+			#instance.transform.basis = gun_barrel.global_transform.basis
+			#get_parent().add_child(instance)
 
 func _on_fov_updated(value):
 	camera.fov = value

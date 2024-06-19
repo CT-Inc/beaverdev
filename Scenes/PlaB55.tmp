@@ -1,9 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://car5o216tw28j"]
+[gd_scene load_steps=22 format=3 uid="uid://car5o216tw28j"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_u3g2h"]
 [ext_resource type="PackedScene" uid="uid://dfnji12pv1ern" path="res://Scenes/Rifle.tscn" id="2_c7bsb"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Weapons_Manager.gd" id="2_jli8k"]
-[ext_resource type="Script" path="res://Scenes/HUD.gd" id="2_pg353"]
 [ext_resource type="Resource" uid="uid://cwj06778101um" path="res://Weapon Resources/Rifle.tres" id="3_i24px"]
 [ext_resource type="PackedScene" uid="uid://b1soh3ki3bxkw" path="res://Scenes/blaster_AR.tscn" id="4_e6jd8"]
 [ext_resource type="Resource" uid="uid://g4k6htvtw1v0" path="res://Weapon Resources/Blaster_AR.tres" id="4_yfv0j"]
@@ -401,7 +400,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_euath"]
-resource_name = "Blaster_AR OOA"
+resource_name = "Blaster_AR OOA "
 length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -432,7 +431,7 @@ tracks/1/keys = {
 _data = {
 "Blaster_AR Activate": SubResource("Animation_niwau"),
 "Blaster_AR Deactivate": SubResource("Animation_3xvay"),
-"Blaster_AR OOA": SubResource("Animation_euath"),
+"Blaster_AR OOA ": SubResource("Animation_euath"),
 "Blaster_AR Reload": SubResource("Animation_qbrpt"),
 "Blaster_AR Shoot": SubResource("Animation_4gmmo"),
 "RESET": SubResource("Animation_gggb3"),
@@ -457,43 +456,6 @@ properties/2/replication_mode = 1
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56028, 0)
 script = ExtResource("1_u3g2h")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("2_pg353")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Current Weapon:"
-
-[node name="CurrentWeapon" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-text = "Ammo:"
-
-[node name="CurrentAmmo" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-text = "Weapon Stack:"
-
-[node name="WeaponStack" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_mmfmj")
@@ -533,7 +495,4 @@ libraries = {
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_d8knc")
 
-[connection signal="Update_Ammo" from="Head/Camera3D/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_update_ammo"]
-[connection signal="Update_Weapon_Stack" from="Head/Camera3D/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_update_weapon_stack"]
-[connection signal="Weapon_Changed" from="Head/Camera3D/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_weapon_changed"]
 [connection signal="animation_finished" from="Head/Camera3D/Weapons_Manager/FPS_Rig/AnimationPlayer" to="Head/Camera3D/Weapons_Manager" method="_on_animation_player_animation_finished"]

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://g4k6htvtw1v0"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/weapon_resource.gd" id="1_pf5lu"]
+
+[resource]
+script = ExtResource("1_pf5lu")
+Weapon_Name = "Blaster_AR"
+Activate_Anim = "Blaster_AR Activate"
+Shoot_Anim = "Blaster_AR Shoot"
+Reload_Anim = "Blaster_AR Reload"
+Deactivate_Anim = "Blaster_AR Deactivate"
+Out_of_Ammo_Anim = "Blaster_AR OOA"
+Current_Ammo = 30
+Reserve_Ammo = 30
+Magazine = 120
+Max_Ammo = 30
+Auto_Fire = true
