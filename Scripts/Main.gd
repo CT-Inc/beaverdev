@@ -11,6 +11,9 @@ extends Node
 #Reference to the World node
 @onready var world = $World  
 
+@onready var world_env = $WorldEnvironment
+var settings_open = false
+
 #Preload player and the class selection menu scenes
 const Player = preload("res://Scenes/Player.tscn")
 const ClassSelectionMenu = preload("res://Scripts/Settings (GUIs)/ClassSelectionMenu.tscn")
@@ -39,7 +42,10 @@ func _ready():
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Quit"):
+		if main_menu.is_visible_in_tree():
+			return
 		settings_menu.popup_centered()
+		_handle_gui_shit(true)
 		
 		
 
@@ -134,4 +140,19 @@ func _on_settings_pressed():
 	settings_menu.popup_centered()
 	
 	
+func _handle_gui_shit(state):
+	settings_open = state
+	if settings_open:
+		print("we are visible/OPEN MENU MODE/taking control from you")
+		GlobalSettings.update_game_state(0)
+		# restrict player input to gui only, apply blur or some thing 
+	else:
+		# give back player input
+		print("we are closing now fuck you bye bbye/giving back movement control")
+		GlobalSettings.update_game_state(1)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#remove control of player input froom game world and oonly popup
 
+
+func _on_settings_menu_popup_hide():
+	_handle_gui_shit(false)

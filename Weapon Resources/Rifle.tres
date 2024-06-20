@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Wepaon_Resource" load_steps=2 format=3 uid="uid://cwj06778101um"]
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://cwj06778101um"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/weapon_resource.gd" id="1_b3ic5"]
 

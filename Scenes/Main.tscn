@@ -1,8 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://cohd0ruxg0o55"]
+[gd_scene load_steps=7 format=3 uid="uid://cohd0ruxg0o55"]
 
 [ext_resource type="PackedScene" uid="uid://c636e4idxytf5" path="res://Scenes/World.tscn" id="1_5dtit"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_i2ty8"]
 [ext_resource type="PackedScene" uid="uid://04veyn23iiai" path="res://Scenes/SettingsMenu.tscn" id="3_8mi8s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_46t3x"]
+
+[sub_resource type="Sky" id="Sky_8nsn2"]
+sky_material = SubResource("ShaderMaterial_46t3x")
+
+[sub_resource type="Environment" id="Environment_8lb14"]
+background_mode = 1
+background_color = Color(0.454234, 0.804569, 1, 1)
+background_energy_multiplier = 0.66
+sky = SubResource("Sky_8nsn2")
+ambient_light_color = Color(0.93408, 0.93408, 0.93408, 1)
+tonemap_mode = 2
+tonemap_exposure = 1.01
+glow_intensity = 1.0
+fog_light_color = Color(0.384314, 0.552941, 0.607843, 1)
+volumetric_fog_density = 0.02
+volumetric_fog_albedo = Color(1.98299e-05, 0.960996, 0.968917, 1)
+volumetric_fog_emission = Color(0.447287, 0.482965, 0.734815, 1)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_i2ty8")
@@ -69,7 +88,11 @@ spawn_path = NodePath("..")
 
 [node name="SettingsMenu" parent="." instance=ExtResource("3_8mi8s")]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8lb14")
+
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/Host Button" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/Join Button" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/Quit Game" to="." method="_on_quit_game_pressed"]
+[connection signal="popup_hide" from="SettingsMenu" to="." method="_on_settings_menu_popup_hide"]

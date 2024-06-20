@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c636e4idxytf5"]
+[gd_scene load_steps=8 format=3 uid="uid://c636e4idxytf5"]
 
 [ext_resource type="PackedScene" uid="uid://bpskod2f8j3ks" path="res://Objects/Ground/grass_ground.tscn" id="1_we8se"]
 [ext_resource type="PackedScene" uid="uid://bi4l31af4yl3g" path="res://Objects/Cliffs/cliff_block_slope_half_walls_rock.tscn" id="3_eph3a"]
@@ -8,30 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://1yu23sfi22ld" path="res://Objects/Cliffs/cliff_block_slope_rock.tscn" id="7_aj116"]
 [ext_resource type="PackedScene" uid="uid://bf8ad11ay7nf7" path="res://Objects/Trees/tree_default.tscn" id="9_mwobl"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b4fhu"]
-
-[sub_resource type="Sky" id="Sky_8nsn2"]
-sky_material = SubResource("ShaderMaterial_b4fhu")
-
-[sub_resource type="Environment" id="Environment_ro7m0"]
-background_mode = 1
-background_color = Color(0.454234, 0.804569, 1, 1)
-background_energy_multiplier = 0.66
-sky = SubResource("Sky_8nsn2")
-ambient_light_color = Color(0.93408, 0.93408, 0.93408, 1)
-tonemap_mode = 2
-tonemap_exposure = 1.01
-glow_intensity = 1.0
-fog_light_color = Color(0.384314, 0.552941, 0.607843, 1)
-volumetric_fog_density = 0.02
-volumetric_fog_albedo = Color(1.98299e-05, 0.960996, 0.968917, 1)
-volumetric_fog_emission = Color(0.447287, 0.482965, 0.734815, 1)
-
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00905228, 0.843547, -0.00338936)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ro7m0")
 
 [node name="ground_grass3" parent="." instance=ExtResource("1_we8se")]
 transform = Transform3D(100, 0, 0, 0, 11.926, 0, 0, 0, 108.522, 0.00332069, -0.0846599, 37.6555)
