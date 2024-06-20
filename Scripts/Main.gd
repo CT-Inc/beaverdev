@@ -7,11 +7,14 @@ extends Node
 
 
 const Player = preload("res://Scenes/Player.tscn")
+const ClassSelectionMenu = preload("res://Scripts/Settings (GUIs)/ClassSelectionMenu.tscn")
 const PORT = 9999
 var enet_peer = ENetMultiplayerPeer.new()
+var class_selection_menu
 
 func _ready():
 	world.visible = false  # Ensure the World is hidden initially
+	settings_menu.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)  # Ensure mouse is visible
 	
 	if OS.has_feature("dedicated_server"):
@@ -61,7 +64,17 @@ func _start_server():
 func _start_game():
 	main_menu.hide()
 	world.visible = true  # Make the World visible
+	class_selection_menu = ClassSelectionMenu.instantiate()
+	add_child(class_selection_menu)
+	class_selection_menu.connect("class_selected" , _on_class_selected)
 
+
+func _on_class_selected(className):
+	var player = Player.instantiate()
+	add_child(player)
+	player.set_class(load("res://Scripts/Classes/%s.tres" % className))
+	class_selection_menu.queue_free()
+	print("Class selected: %s" % className)
 
 func add_player(peer_id):
 	var player = Player.instantiate()
@@ -86,3 +99,5 @@ func _on_settings_pressed():
 	print("settings")
 	settings_menu.popup_centered()
 	
+	
+

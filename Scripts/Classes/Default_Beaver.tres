@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterClass" load_steps=2 format=3 uid="uid://cgfejj58e5hv5"]
+
+[ext_resource type="Script" path="res://Scripts/Classes/Classes.gd" id="1_7essb"]
+
+[resource]
+script = ExtResource("1_7essb")
+name = "Default_Beaver"
+health = 100
+speed = 10.0
+start_weapons = Array[String](["Rifle", "Blaster_AR"])

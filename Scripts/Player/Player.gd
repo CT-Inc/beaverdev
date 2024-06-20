@@ -20,14 +20,14 @@ var _latest_mouse_pos := Vector2.ZERO
 var _looking_at = null
 var MOUSE_SENS: float = 0.1
 
+var current_class: CharacterClass
+
 # Signals
 signal player_hit
 signal send_ray
 
 @onready var head = $Head
 @onready var camera: Camera3D = $Head/Camera3D
-@onready var weapon_anim = $Head/Camera3D/Weapons_Manager/Rifle/AnimationPlayer
-@onready var weapon_barrel = $Head/Camera3D/Weapons_Manager/Rifle/RayCast3D
 @onready var weapons_manager = $Head/Camera3D/Weapons_Manager
 @onready var fps_rig = $Head/Camera3D/Weapons_Manager/FPS_Rig
 @onready var movement = preload("res://Scripts/Player/PlayerMovement.gd").new()
@@ -60,6 +60,12 @@ func _input(event: InputEvent) -> void:
 			_camera_y = clampf(_camera_y - event.relative.y * MOUSE_SENS, MOUSE_Y_MIN, MOUSE_Y_MAX)
 		if event is InputEventMouse:
 			_latest_mouse_pos = event.position
+
+func set_class(new_class: CharacterClass):
+	current_class = new_class
+	self.speed = new_class.speed
+	self.health = new_class.health
+	weapons_manager.Initialize(new_class.start_weapons)
 
 func _process(delta):
 	if not is_multiplayer_authority():
