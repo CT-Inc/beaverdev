@@ -20,6 +20,10 @@ var Weapon_List = {}
 
 @export var Start_Weapons: Array[String]
 
+var bullet = load("res://Scenes/Bullet.tscn")
+var instance = null
+var cur_ray
+
 func _ready():
 	Initialize(Start_Weapons) #enter the state machine
 
@@ -80,11 +84,23 @@ func _on_animation_player_animation_finished(anim_name):
 			shoot()
 
 func shoot():
+	#print(get_global_transform().basis.z)
 	if Current_Weapon.Current_Ammo != 0:
 		if !Animation_Player.is_playing(): #enforces the fire rate set by the animation
 			Animation_Player.play(Current_Weapon.Shoot_Anim)
 			Current_Weapon.Current_Ammo -= 1
 			emit_signal("Update_Ammo", [Current_Weapon.Current_Ammo, Current_Weapon.Reserve_Ammo])
+			instance = bullet.instantiate()
+			instance.position = self.position
+			instance.transform.basis = self.transform.basis
+			# this here is a quick fix to align the bullet origin with the gun barrel
+			# should fix this as itll prob be different for all weapons
+			instance.position += Vector3(.2, -.1, -.1)
+			
+			# setting this to false will make the bullets follow the cursor and player
+			instance.set_as_top_level(true)
+			get_parent().add_child(instance)
+			print(cur_ray)
 	else:
 		reload()
 	
@@ -103,5 +119,20 @@ func reload():
 			
 		else:
 			Animation_Player.play(Current_Weapon.Out_of_Ammo_Anim)
+
+func _on_player_send_ray(ray, result):
+	cur_ray = result
 	
+	#The whole point of this signal is that whenever player.gd gets a mouse
+	#click, a signal is emitted with the player's position and transform, because, we
 	
+	#instance = bullet.instantiate()
+	#instance.position = self.position
+	#instance.transform.basis = self.transform.basis
+	##
+	# this here is a quick fix to align the bullet origin with the gun barrel
+	# should fix this as itll prob be different for all weapons
+	#instance.position += Vector3(.1, 0, -1)
+	##
+	
+	#shoot(instance)

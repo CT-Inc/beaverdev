@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bi4l31af4yl3g" path="res://Objects/Cliffs/cliff_block_slope_half_walls_rock.tscn" id="3_eph3a"]
 [ext_resource type="PackedScene" uid="uid://cs0io0xroqbi6" path="res://Objects/Rocks/rock_large_a.tscn" id="4_wjfyv"]
 [ext_resource type="PackedScene" uid="uid://c8ejpvcm1qyjw" path="res://Objects/Rocks/rock_tall_a.tscn" id="5_nuue1"]
-[ext_resource type="PackedScene" uid="uid://d1xot4e8rgoty" path="res://Objects/Cliffs/cliff_half_corner_inner_rock.tscn" id="6_jgbmw"]
-[ext_resource type="PackedScene" uid="uid://1yu23sfi22ld" path="res://Objects/Cliffs/cliff_block_slope_rock.tscn" id="7_aj116"]
+[ext_resource type="PackedScene" path="res://Objects/Cliffs/cliff_half_corner_inner_rock.tscn" id="6_jgbmw"]
+[ext_resource type="PackedScene" path="res://Objects/Cliffs/cliff_block_slope_rock.tscn" id="7_aj116"]
 [ext_resource type="PackedScene" uid="uid://bf8ad11ay7nf7" path="res://Objects/Trees/tree_default.tscn" id="9_mwobl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b4fhu"]

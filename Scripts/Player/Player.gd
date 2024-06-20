@@ -22,12 +22,14 @@ var MOUSE_SENS: float = 0.1
 
 # Signals
 signal player_hit
+signal send_ray
 
 @onready var head = $Head
 @onready var camera: Camera3D = $Head/Camera3D
-@onready var gun_anim = $Head/Camera3D/Weapons_Manager/Rifle/AnimationPlayer
-@onready var gun_barrel = $Head/Camera3D/Weapons_Manager/Rifle/RayCast3D
+@onready var weapon_anim = $Head/Camera3D/Weapons_Manager/Rifle/AnimationPlayer
+@onready var weapon_barrel = $Head/Camera3D/Weapons_Manager/Rifle/RayCast3D
 @onready var weapons_manager = $Head/Camera3D/Weapons_Manager
+@onready var fps_rig = $Head/Camera3D/Weapons_Manager/FPS_Rig
 @onready var movement = preload("res://Scripts/Player/PlayerMovement.gd").new()
 
 func _enter_tree():
@@ -74,13 +76,10 @@ func _process(delta):
 	var result := space_state.intersect_ray(query)
 	target = result.position if result else to
 	
-	#if Input.is_action_pressed("shoot"):
-		#if not gun_anim.is_playing():
-			#gun_anim.play("Shoot")
-			#instance = bullet.instantiate()
-			#instance.position = gun_barrel.global_position
-			#instance.transform.basis = gun_barrel.global_transform.basis
-			#get_parent().add_child(instance)
+	if Input.is_action_pressed("shoot"):
+		#emitting the weapons_manager, and ray query to weapon_manager.gd
+		# weapons_manager.pos and transform.basis are used
+		emit_signal("send_ray", query, result)
 
 func _on_fov_updated(value):
 	camera.fov = value
@@ -92,6 +91,7 @@ func _on_mouse_sens_updated(value):
 @rpc
 func shoot_bullet(origin, direction):
 	if is_multiplayer_authority():
+		print("shooting herein player.gd")
 		var bullet = bullet.instantiate()
 		bullet.global_transform.origin = origin
 		bullet.look_at(origin + direction)
