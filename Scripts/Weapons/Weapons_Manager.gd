@@ -25,7 +25,7 @@ var instance = null
 var cur_ray
 
 func _ready():
-	Initialize(Start_Weapons) #enter the state machine
+	pass
 
 func _input(event):
 	if event.is_action_pressed("switch_weapon_up"):
@@ -48,7 +48,7 @@ func Initialize(_start_weapons: Array):
 		Weapon_List[weapon.Weapon_Name] = weapon
 		
 	for i in _start_weapons:
-		Weapon_Stack.push_back(i) #Add out start weapons
+		Weapon_Stack.push_back(i) #Add our start weapons
 		
 	Current_Weapon = Weapon_List[Weapon_Stack[0]] #Set the first weapon in the stack to current
 	emit_signal("Update_Weapon_Stack", Weapon_Stack)

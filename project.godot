@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 GlobalSettings="*res://Scripts/Settings (GUIs)/global_settings.gd"
 
+[display]
+
+window/size/mode=3
+
 [input]
 
 move_up={

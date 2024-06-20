@@ -1,27 +1,40 @@
+#Main.gd
+#This script is responsible for the main game logic, including the main menu, server creation, player connection, and game start.
+
 extends Node
 
+#References to UI elements
 @onready var main_menu = $CanvasLayer/MainMenu
 @onready var address_entry = $CanvasLayer/MainMenu/MarginContainer/VBoxContainer/Address
-@onready var world = $World  # Add a reference to the World node
 @onready var settings_menu = $SettingsMenu
 
+#Reference to the World node
+@onready var world = $World  
 
+#Preload player and the class selection menu scenes
 const Player = preload("res://Scenes/Player.tscn")
 const ClassSelectionMenu = preload("res://Scripts/Settings (GUIs)/ClassSelectionMenu.tscn")
+
+#Define server port and initialize the EnetMultiplayerPeer for networking
 const PORT = 9999
 var enet_peer = ENetMultiplayerPeer.new()
+
+#varialbe declarations
 var class_selection_menu
 var player
 
 func _ready():
-	world.visible = false  # Ensure the World is hidden initially
+	#Hide the World and Settings menu by default
+	world.visible = false  
 	settings_menu.visible = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)  # Ensure mouse is visible
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) 
 	
+	#If the game is running on a dedicated server, the server will start autmatically
 	if OS.has_feature("dedicated_server"):
 		print("Running in headless mode, starting server automatically")
 		_start_server()
 	else: 
+		#Otherwise, show the main menu
 		main_menu.show()
 
 func _unhandled_input(event):
@@ -31,11 +44,14 @@ func _unhandled_input(event):
 		
 
 func _on_host_button_pressed():
+	#Start server when the host button is pressed
 	_start_server()
 	
 
+#When the join button is pressed, connect to the server using the address entered in the text field
 func _on_join_button_pressed():
 	_show_class_selection_menu()
+	
 	
 	var address = address_entry.text 
 	var result = enet_peer.create_client(address, PORT)
@@ -46,6 +62,7 @@ func _on_join_button_pressed():
 	
 	print("Connecting to server at %s..." % address)
 	
+#Start the server and show the class selection menu
 func _start_server():
 	_show_class_selection_menu()
 	
@@ -53,15 +70,17 @@ func _start_server():
 	if result != OK:
 		print("Failed to create s!erver: %d" % result)
 		return
+	# Set the multiplayer peer and connect the peer_connected and peer_disconnected signals
 	multiplayer.multiplayer_peer = enet_peer
 	multiplayer.peer_connected.connect(add_player)
 	multiplayer.peer_disconnected.connect(remove_player)
 
 	if not OS.has_feature("dedicated_server"):
-		add_player(multiplayer.get_unique_id(),"")
+		print("no dedicated server")
 	
 	print("Server started. Waiting for clients to connect...")
 	
+#Show the class selection menu
 func _show_class_selection_menu():
 	main_menu.hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -69,25 +88,35 @@ func _show_class_selection_menu():
 	add_child(class_selection_menu)
 	class_selection_menu.connect("class_selected" , _on_class_selected)
 	
+#When a class is selected, start the game with the selected class
 func _on_class_selected(className):
 	print("Class selected: %s" % className)
-	_start_game(className)
 	class_selection_menu.queue_free()
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	_start_game(className)
 	
 func _start_game(className):
 	world.visible = true  # Make the World visible
 	add_player(multiplayer.get_unique_id(), className)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	print("Game started with class: %s" % className)
 
 func add_player(peer_id, className = ""):
 	if player == null:
 		player = Player.instantiate()
 		player.name = str(peer_id)
-		if className != "":
-			player.set_class(load("res://classes/%s.tres" % className))
 		add_child(player, true)
 		print("Player %s connected" % str(peer_id))
+		
+		if className != "":
+			var class_resource_path = "res://Scripts/Classes/%s.tres" % className
+			print("Loading class resource from: %s" % class_resource_path)
+			var class_resource = load(class_resource_path)
+			if class_resource != null:
+				print("Class resource loaded successfully")
+				player.set_class(class_resource)
+			else:
+				print("Failed to load class resource")
+		
 
 func remove_player(peer_id):
 	var player = get_node_or_null(str(peer_id))

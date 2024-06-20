@@ -46,6 +46,12 @@ func _ready():
 	GlobalSettings.connect("fov_updated", _on_fov_updated)
 	GlobalSettings.connect("mouse_sens_updated", _on_mouse_sens_updated)
 	print("Child Script is", movement)
+	print("Weapons Manager: ", weapons_manager)
+	
+	if weapons_manager:
+		print("weapons manager is ready")
+	else:
+		print("Weapons manager is not ready")
 
 func _input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
@@ -67,7 +73,10 @@ func set_class(new_class: CharacterClass):
 	current_class = new_class
 	self.player_speed = new_class.speed
 	self.health = new_class.health
-	weapons_manager.Initialize(new_class.start_weapons)
+	if weapons_manager:
+		weapons_manager.Initialize(new_class.start_weapons)
+	else:
+		print("Error: weapons_manager is null")
 
 func _process(delta):
 	if not is_multiplayer_authority():
