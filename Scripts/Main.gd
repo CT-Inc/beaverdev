@@ -11,6 +11,7 @@ const ClassSelectionMenu = preload("res://Scripts/Settings (GUIs)/ClassSelection
 const PORT = 9999
 var enet_peer = ENetMultiplayerPeer.new()
 var class_selection_menu
+var player
 
 func _ready():
 	world.visible = false  # Ensure the World is hidden initially
@@ -34,7 +35,7 @@ func _on_host_button_pressed():
 	
 
 func _on_join_button_pressed():
-	_start_game()
+	_show_class_selection_menu()
 	
 	var address = address_entry.text 
 	var result = enet_peer.create_client(address, PORT)
@@ -46,7 +47,7 @@ func _on_join_button_pressed():
 	print("Connecting to server at %s..." % address)
 	
 func _start_server():
-	_start_game()
+	_show_class_selection_menu()
 	
 	var result = enet_peer.create_server(PORT)
 	if result != OK:
@@ -57,30 +58,36 @@ func _start_server():
 	multiplayer.peer_disconnected.connect(remove_player)
 
 	if not OS.has_feature("dedicated_server"):
-		add_player(multiplayer.get_unique_id())
+		add_player(multiplayer.get_unique_id(),"")
 	
 	print("Server started. Waiting for clients to connect...")
-
-func _start_game():
+	
+func _show_class_selection_menu():
 	main_menu.hide()
-	world.visible = true  # Make the World visible
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	class_selection_menu = ClassSelectionMenu.instantiate()
 	add_child(class_selection_menu)
 	class_selection_menu.connect("class_selected" , _on_class_selected)
-
-
+	
 func _on_class_selected(className):
-	var player = Player.instantiate()
-	add_child(player)
-	player.set_class(load("res://Scripts/Classes/%s.tres" % className))
-	class_selection_menu.queue_free()
 	print("Class selected: %s" % className)
+	_start_game(className)
+	class_selection_menu.queue_free()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+func _start_game(className):
+	world.visible = true  # Make the World visible
+	add_player(multiplayer.get_unique_id(), className)
+	print("Game started with class: %s" % className)
 
-func add_player(peer_id):
-	var player = Player.instantiate()
-	player.name = str(peer_id)
-	add_child(player, true)
-	print("Player %s connected" % str(peer_id))
+func add_player(peer_id, className = ""):
+	if player == null:
+		player = Player.instantiate()
+		player.name = str(peer_id)
+		if className != "":
+			player.set_class(load("res://classes/%s.tres" % className))
+		add_child(player, true)
+		print("Player %s connected" % str(peer_id))
 
 func remove_player(peer_id):
 	var player = get_node_or_null(str(peer_id))
@@ -88,8 +95,6 @@ func remove_player(peer_id):
 		player.queue_free()
 		print("Player %s disconnected" % str(peer_id))
 		
-
-
 
 func _on_quit_game_pressed():
 	get_tree().quit()

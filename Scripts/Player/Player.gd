@@ -21,6 +21,8 @@ var _looking_at = null
 var MOUSE_SENS: float = 0.1
 
 var current_class: CharacterClass
+var health: int
+var player_speed
 
 # Signals
 signal player_hit
@@ -63,7 +65,7 @@ func _input(event: InputEvent) -> void:
 
 func set_class(new_class: CharacterClass):
 	current_class = new_class
-	self.speed = new_class.speed
+	self.player_speed = new_class.speed
 	self.health = new_class.health
 	weapons_manager.Initialize(new_class.start_weapons)
 
