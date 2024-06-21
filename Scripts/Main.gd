@@ -16,7 +16,7 @@ var settings_open = false
 
 #Preload player and the class selection menu scenes
 const Player = preload("res://Scenes/Player.tscn")
-const ClassSelectionMenu = preload("res://Scripts/Settings (GUIs)/ClassSelectionMenu.tscn")
+const ClassSelectionMenu = preload("res://Scenes/ClassSelectionMenu.tscn")
 
 #Define server port and initialize the EnetMultiplayerPeer for networking
 const PORT = 9999

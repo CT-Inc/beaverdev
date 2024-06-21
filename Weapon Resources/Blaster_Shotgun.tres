@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://ctcya7038muid"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/weapon_resource.gd" id="1_14vk5"]
+
+[resource]
+script = ExtResource("1_14vk5")
+Weapon_Name = "Blaster_Shotgun"
+Activate_Anim = "Blaster_Shotgun Activate"
+Shoot_Anim = "Blaster_Shotgun Shoot"
+Reload_Anim = "Blaster_Shotgun Reload"
+Deactivate_Anim = "Blaster_Shotgun Dectivate"
+Out_of_Ammo_Anim = "Blaster_Shotgun OOA"
+Current_Ammo = 20
+Reserve_Ammo = 40
+Magazine = 120
+Max_Ammo = 20
+Auto_Fire = false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c0o2kih0ktm8m"]
 
-[ext_resource type="Script" path="res://Scripts/Settings (GUIs)/ClassSelectionMenu.gd" id="1_6nynl"]
+[ext_resource type="Script" path="res://Scripts/Settings (GUIs)/ClassSelectionMenu.gd" id="1_75c1q"]
 
 [node name="ClassSelectionMenu" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_6nynl")
+script = ExtResource("1_75c1q")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -31,3 +31,8 @@ vertical_alignment = 1
 [node name="DefaultBeaver_Button" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "DefaultBeaver"
+
+[node name="BeaverShotgun_Button" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "BeaverShotgun
+"
