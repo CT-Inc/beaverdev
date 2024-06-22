@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=12 format=3 uid="uid://c636e4idxytf5"]
+
 
 [ext_resource type="PackedScene" uid="uid://bpskod2f8j3ks" path="res://Objects/Ground/grass_ground.tscn" id="1_we8se"]
 [ext_resource type="PackedScene" uid="uid://bi4l31af4yl3g" path="res://Objects/Cliffs/cliff_block_slope_half_walls_rock.tscn" id="3_eph3a"]
@@ -6,8 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://c8ejpvcm1qyjw" path="res://Objects/Rocks/rock_tall_a.tscn" id="5_nuue1"]
 [ext_resource type="PackedScene" uid="uid://d1xot4e8rgoty" path="res://Objects/Cliffs/cliff_half_corner_inner_rock.tscn" id="6_jgbmw"]
 [ext_resource type="PackedScene" uid="uid://1yu23sfi22ld" path="res://Objects/Cliffs/cliff_block_slope_rock.tscn" id="7_aj116"]
+
+[ext_resource type="PackedScene" uid="uid://b1pppi72hcyqj" path="res://Scenes/Dummy.tscn" id="8_b88mk"]
 [ext_resource type="PackedScene" uid="uid://brpyfedenclvb" path="res://Objects/Cliffs/cliff_block_cave_rock.tscn" id="8_58kuy"]
 [ext_resource type="PackedScene" uid="uid://ck1kbghxdhrx0" path="res://Objects/Cliffs/cliff_block_rock.tscn" id="9_1lpmc"]
+
 [ext_resource type="PackedScene" uid="uid://bf8ad11ay7nf7" path="res://Objects/Trees/tree_default.tscn" id="9_mwobl"]
 [ext_resource type="PackedScene" uid="uid://iusv8yb4r3wf" path="res://Objects/Bridge/bridge_side_wood.tscn" id="10_m2502"]
 [ext_resource type="PackedScene" uid="uid://cpgav6h2gag76" path="res://Objects/Bridge/bridge_center_wood.tscn" id="11_c8a8q"]
@@ -82,6 +87,12 @@ transform = Transform3D(-9.08279, 0, -2.41017, 0, 22.323, 0, 2.08041, 0, -10.522
 transform = Transform3D(-9.08279, 0, -2.41017, 0, 22.323, 0, 2.08041, 0, -10.5225, 19.5837, 0.0617855, -20.0819)
 
 [node name="cliff_blockSlope_rock2" parent="." instance=ExtResource("7_aj116")]
+
+transform = Transform3D(12.1047, 0, 3.0485, 0, 10.2385, 0, -2.7759, 0, 13.2934, 16.249, 0.366986, -31.8887)
+
+[node name="StaticBody3D" parent="." instance=ExtResource("8_b88mk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.20381, 1.29707, 0)
+
 transform = Transform3D(8.23718, 0, 3.04839, 0, 10.248, 0, -1.88898, 0, 13.2929, 15.0313, 0.366986, -40.7919)
 
 [node name="cliff_blockCave_rock2" parent="." instance=ExtResource("8_58kuy")]
@@ -95,3 +106,4 @@ transform = Transform3D(-0.271196, 0, 2.48996, 0, 1.13354, 0, -1.17524, 0, -0.57
 
 [node name="bridge_center_wood2" parent="." instance=ExtResource("11_c8a8q")]
 transform = Transform3D(0.796178, 0, -2.4789, 0, 1.11414, 0, 3.23975, 0, 0.609197, 18.8052, 10.1376, -28.2059)
+

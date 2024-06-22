@@ -25,7 +25,7 @@ var health: int
 var player_speed
 
 # Signals
-signal player_hit
+signal update_health
 signal send_ray
 
 @onready var head = $Head
@@ -47,7 +47,6 @@ func _ready():
 	GlobalSettings.connect("mouse_sens_updated", _on_mouse_sens_updated)
 	print("Child Script is", movement)
 	print("Weapons Manager: ", weapons_manager)
-	
 	if weapons_manager:
 		print("weapons manager is ready")
 	else:
@@ -73,6 +72,7 @@ func set_class(new_class: CharacterClass):
 	current_class = new_class
 	self.player_speed = new_class.speed
 	self.health = new_class.health
+	emit_signal("update_health", self.health, 0)
 	if weapons_manager:
 		weapons_manager.Initialize(new_class.start_weapons)
 	else:
@@ -93,17 +93,26 @@ func _process(delta):
 	var result := space_state.intersect_ray(query)
 	target = result.position if result else to
 	
-	if Input.is_action_pressed("shoot"):
+	weapons_manager.cur_ray = result
+	#if Input.is_action_pressed("shoot"):
 		#emitting the weapons_manager, and ray query to weapon_manager.gd
 		# weapons_manager.pos and transform.basis are used
-		emit_signal("send_ray", query, result)
+		
+		# consideration: sending a ray every process frame 
+		# better consideration: scrapping this entire thing and just updating weapons_manager.cur_ray
+		# every process frame! its easy
+		#emit_signal("send_ray", query, result)
 
 func _on_fov_updated(value):
 	camera.fov = value
 
 func _on_mouse_sens_updated(value):
 	MOUSE_SENS = value
-	print(value)
+	#print(value)
+	
+func _update_health(value):
+	emit_signal("update_health", self.health, value)
+	pass
 
 @rpc
 func shoot_bullet(origin, direction):

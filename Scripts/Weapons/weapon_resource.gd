@@ -15,3 +15,5 @@ class_name Weapon_Resource
 @export var Max_Ammo: int
 
 @export var Auto_Fire: bool
+
+@export var Projectile_Damage: int

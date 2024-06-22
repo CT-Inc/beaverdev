@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1pppi72hcyqj"]
+
+[ext_resource type="Script" path="res://Scripts/Dummy.gd" id="1_87vsr"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ungeb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhvsg"]
+albedo_color = Color(0, 0.423529, 1, 1)
+metallic = 1.0
+metallic_specular = 0.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l61p4"]
+
+[node name="StaticBody3D" type="StaticBody3D" groups=["enemy"]]
+script = ExtResource("1_87vsr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_ungeb")
+surface_material_override/0 = SubResource("StandardMaterial3D_yhvsg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_l61p4")

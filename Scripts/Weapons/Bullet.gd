@@ -18,7 +18,14 @@ func _process(delta):
 		particles.emitting = true
 		ray.enabled = true
 		if ray.get_collider().is_in_group("enemy"):
-			ray.get_collider().hit()
+			print("hit enemy")
+			#commenting this out for now because trying to see if weapons-manager
+			# can handle the collisions, not the individual bullets
+			# since we are doing hitscan, the bullet is just visual effect and a
+			# doesnt actually do anything, the ray is invisible
+			# annd the bullet is just trying to mimic it
+			# also this isnt as reliable as the other ray for some reason.
+			#ray.get_collider().hit()
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
 	

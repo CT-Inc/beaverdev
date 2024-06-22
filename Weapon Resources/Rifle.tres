@@ -15,3 +15,4 @@ Reserve_Ammo = 20
 Magazine = 120
 Max_Ammo = 20
 Auto_Fire = false
+Projectile_Damage = 40

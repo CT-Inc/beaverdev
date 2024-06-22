@@ -179,6 +179,173 @@ tracks/1/keys = {
 "values": [Vector3(0.0340082, 3.07397, 0.0121262)]
 }
 
+[sub_resource type="Animation" id="Animation_4l5q7"]
+resource_name = "Blaster_Shotgun Activate"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FPS_Rig/Blaster_Shotgun:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(3.48787e-16, 3.14159, 0.0139626), Vector3(0.518363, 3.14159, 0.015708), Vector3(3.48787e-16, 3.14159, 0.0139626)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FPS_Rig/Blaster_Shotgun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.00750366, 1.0748, 0), Vector3(0.00832003, 1.19173, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FPS_Rig/Blaster_Shotgun:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_c68n7"]
+resource_name = "Blaster_Shotgun Deactivate"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FPS_Rig/Blaster_Shotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.00832003, 1.19173, 0), Vector3(0.00750458, 1.07492, 0), Vector3(0.00173661, 0.248734, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FPS_Rig/Blaster_Shotgun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(3.48787e-16, 3.14159, 0.0139626), Vector3(0.466003, 3.12414, 0.0139626), Vector3(-0.0102447, 3.14152, 0.013963)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FPS_Rig/Blaster_Shotgun:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_p0xnj"]
+resource_name = "Blaster_Shotgun OOA"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FPS_Rig/Blaster_Shotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.00832003, 1.19173, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FPS_Rig/Blaster_Shotgun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(3.48787e-16, 3.14159, 0.0139626), Vector3(3.48787e-16, 3.14159, -0.58294), Vector3(3.48787e-16, 3.14159, 0.464258), Vector3(3.48787e-16, 3.14159, 0.0139626)]
+}
+
+[sub_resource type="Animation" id="Animation_4krob"]
+resource_name = "Blaster_Shotgun Reload"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FPS_Rig/Blaster_Shotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.00832003, 1.19173, 0), Vector3(0.00832003, 1.19173, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FPS_Rig/Blaster_Shotgun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(3.48787e-16, 3.14159, 0.0139626), Vector3(-0.710223, 3.09871, 0.660441), Vector3(3.48787e-16, 3.14159, 0.0139626)]
+}
+
+[sub_resource type="Animation" id="Animation_8v7qd"]
+resource_name = "Blaster_Shotgun Shoot"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FPS_Rig/Blaster_Shotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.00832003, 1.19173, 0), Vector3(0.0087083, 1.24735, 0.182024), Vector3(0.00832003, 1.19173, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FPS_Rig/Blaster_Shotgun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(3.48787e-16, 3.14159, 0.0139626), Vector3(-0.620779, 3.1366, 0.0155639), Vector3(3.48787e-16, 3.14159, 0.0139626)]
+}
+
 [sub_resource type="Animation" id="Animation_gggb3"]
 length = 0.001
 tracks/0/type = "value"
@@ -466,173 +633,6 @@ tracks/0/keys = {
 "values": [Vector3(0.0562436, 1.18531, -0.140154), Vector3(0.056, 1.185, -0.1), Vector3(0.056, 1.185, -0.14)]
 }
 
-[sub_resource type="Animation" id="Animation_4l5q7"]
-resource_name = "Blaster_Shotgun Activate"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FPS_Rig/Blaster_Shotgun:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(3.48787e-16, 3.14159, 0.0139626), Vector3(0.518363, 3.14159, 0.015708), Vector3(3.48787e-16, 3.14159, 0.0139626)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FPS_Rig/Blaster_Shotgun:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.00750366, 1.0748, 0), Vector3(0.00832003, 1.19173, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FPS_Rig/Blaster_Shotgun:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_c68n7"]
-resource_name = "Blaster_Shotgun Deactivate"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FPS_Rig/Blaster_Shotgun:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.00832003, 1.19173, 0), Vector3(0.00750458, 1.07492, 0), Vector3(0.00173661, 0.248734, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FPS_Rig/Blaster_Shotgun:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(3.48787e-16, 3.14159, 0.0139626), Vector3(0.466003, 3.12414, 0.0139626), Vector3(-0.0102447, 3.14152, 0.013963)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FPS_Rig/Blaster_Shotgun:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_8v7qd"]
-resource_name = "Blaster_Shotgun Shoot"
-length = 0.4
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FPS_Rig/Blaster_Shotgun:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.00832003, 1.19173, 0), Vector3(0.0087083, 1.24735, 0.182024), Vector3(0.00832003, 1.19173, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FPS_Rig/Blaster_Shotgun:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(3.48787e-16, 3.14159, 0.0139626), Vector3(-0.620779, 3.1366, 0.0155639), Vector3(3.48787e-16, 3.14159, 0.0139626)]
-}
-
-[sub_resource type="Animation" id="Animation_4krob"]
-resource_name = "Blaster_Shotgun Reload"
-length = 0.4
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FPS_Rig/Blaster_Shotgun:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.00832003, 1.19173, 0), Vector3(0.00832003, 1.19173, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FPS_Rig/Blaster_Shotgun:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(3.48787e-16, 3.14159, 0.0139626), Vector3(-0.710223, 3.09871, 0.660441), Vector3(3.48787e-16, 3.14159, 0.0139626)]
-}
-
-[sub_resource type="Animation" id="Animation_p0xnj"]
-resource_name = "Blaster_Shotgun OOA"
-length = 0.4
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FPS_Rig/Blaster_Shotgun:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.00832003, 1.19173, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FPS_Rig/Blaster_Shotgun:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(3.48787e-16, 3.14159, 0.0139626), Vector3(3.48787e-16, 3.14159, -0.58294), Vector3(3.48787e-16, 3.14159, 0.464258), Vector3(3.48787e-16, 3.14159, 0.0139626)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8jffx"]
 _data = {
 "Blaster_AR Activate": SubResource("Animation_niwau"),
@@ -664,7 +664,7 @@ properties/2/path = NodePath("Head/Camera3D:rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56028, 0)
 script = ExtResource("1_u3g2h")
 
@@ -703,6 +703,16 @@ layout_mode = 2
 text = "Weapon Stack:"
 
 [node name="WeaponStack" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Health:"
+
+[node name="Health" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -749,6 +759,7 @@ libraries = {
 replication_config = SubResource("SceneReplicationConfig_d8knc")
 
 [connection signal="send_ray" from="." to="Head/Camera3D/Weapons_Manager" method="_on_player_send_ray"]
+[connection signal="update_health" from="." to="CanvasLayer" method="_on_player_update_health"]
 [connection signal="Update_Ammo" from="Head/Camera3D/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_update_ammo"]
 [connection signal="Update_Weapon_Stack" from="Head/Camera3D/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_update_weapon_stack"]
 [connection signal="Weapon_Changed" from="Head/Camera3D/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_weapon_changed"]
