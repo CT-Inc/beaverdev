@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck1kbghxdhrx0"]
+
+[ext_resource type="PackedScene" uid="uid://bs8rguspr1y0i" path="res://Models/cliff_block_rock.glb" id="1_kneuh"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q7hqp"]
+data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, 0.5, 1, 0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, 0.5, 0, -0.5)
+
+[node name="cliff_block_rock2" instance=ExtResource("1_kneuh")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tmpParent/cliff_block_rock" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tmpParent/cliff_block_rock/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_q7hqp")
