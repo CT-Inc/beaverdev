@@ -100,7 +100,10 @@ func shoot():
 			# setting this to false will make the bullets follow the cursor and player
 			instance.set_as_top_level(true)
 			get_parent().add_child(instance)
-			print(cur_ray)
+			
+			#check ray collision here
+			handle_collision()
+			
 	else:
 		reload()
 	
@@ -122,17 +125,14 @@ func reload():
 
 func _on_player_send_ray(ray, result):
 	cur_ray = result
+	# dont need this anymore
 	
-	#The whole point of this signal is that whenever player.gd gets a mouse
-	#click, a signal is emitted with the player's position and transform, because, we
 	
-	#instance = bullet.instantiate()
-	#instance.position = self.position
-	#instance.transform.basis = self.transform.basis
-	##
-	# this here is a quick fix to align the bullet origin with the gun barrel
-	# should fix this as itll prob be different for all weapons
-	#instance.position += Vector3(.1, 0, -1)
-	##
-	
-	#shoot(instance)
+func handle_collision():
+	print("Current Ray: ", cur_ray)
+	if cur_ray:
+		if cur_ray.collider.is_in_group("enemy"):
+			cur_ray.collider.update_health(-Current_Weapon.Projectile_Damage)
+		print("handled_collison to shoot something")
+		return
+	print("didnt hit shit LOL")
