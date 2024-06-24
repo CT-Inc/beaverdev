@@ -1,23 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://c636e4idxytf5"]
+[gd_scene load_steps=3 format=3 uid="uid://c636e4idxytf5"]
 
-[ext_resource type="PackedScene" uid="uid://bpskod2f8j3ks" path="res://Objects/Ground/grass_ground.tscn" id="1_we8se"]
-[ext_resource type="PackedScene" uid="uid://bi4l31af4yl3g" path="res://Objects/Cliffs/cliff_block_slope_half_walls_rock.tscn" id="3_eph3a"]
-[ext_resource type="PackedScene" uid="uid://cs0io0xroqbi6" path="res://Objects/Rocks/rock_large_a.tscn" id="4_wjfyv"]
-[ext_resource type="PackedScene" uid="uid://c8ejpvcm1qyjw" path="res://Objects/Rocks/rock_tall_a.tscn" id="5_nuue1"]
-[ext_resource type="PackedScene" uid="uid://d1xot4e8rgoty" path="res://Objects/Cliffs/cliff_half_corner_inner_rock.tscn" id="6_jgbmw"]
-[ext_resource type="PackedScene" uid="uid://1yu23sfi22ld" path="res://Objects/Cliffs/cliff_block_slope_rock.tscn" id="7_aj116"]
-[ext_resource type="PackedScene" uid="uid://brpyfedenclvb" path="res://Objects/Cliffs/cliff_block_cave_rock.tscn" id="8_58kuy"]
+[ext_resource type="MeshLibrary" uid="uid://dj73u885u1dlm" path="res://Library.tres" id="2_5dm0p"]
 [ext_resource type="PackedScene" uid="uid://b1pppi72hcyqj" path="res://Scenes/Dummy.tscn" id="8_b88mk"]
-[ext_resource type="PackedScene" uid="uid://ck1kbghxdhrx0" path="res://Objects/Cliffs/cliff_block_rock.tscn" id="9_1lpmc"]
-[ext_resource type="PackedScene" uid="uid://bf8ad11ay7nf7" path="res://Objects/Trees/tree_default.tscn" id="9_mwobl"]
-[ext_resource type="PackedScene" uid="uid://iusv8yb4r3wf" path="res://Objects/Bridge/bridge_side_wood.tscn" id="10_m2502"]
-[ext_resource type="PackedScene" uid="uid://cpgav6h2gag76" path="res://Objects/Bridge/bridge_center_wood.tscn" id="11_c8a8q"]
 
 [node name="World" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00905228, 0.843547, -0.00338936)
-
-[node name="ground_grass3" parent="." instance=ExtResource("1_we8se")]
-transform = Transform3D(100, 0, 0, 0, 11.926, 0, 0, 0, 108.522, -0.0778561, -0.239476, 37.2154)
+transform = Transform3D(1.00204, 0, 0, 0, 1.00204, 0, 0, 0, 1.00204, 0.00905228, 0.843547, -0.00338936)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.224374, -0.821574, 0.524091, -0.9213, -0.00356684, 0.388836, -0.317588, -0.57009, -0.757717, 6.2151, 11.7734, -15.8617)
@@ -40,62 +27,13 @@ shadow_reverse_cull_face = true
 shadow_opacity = 0.75
 shadow_blur = 0.0
 
-[node name="cliff_blockSlopeHalfWalls_rock2" parent="." instance=ExtResource("3_eph3a")]
-transform = Transform3D(3.62977, 0, -9.88357, 0, 20.411, 0, 16.2547, 0, 2.20707, 36.0824, 0.9237, -10.4748)
-
-[node name="cliff_blockSlopeHalfWalls_rock3" parent="." instance=ExtResource("3_eph3a")]
-transform = Transform3D(-6.08884, 0, -2.72833e-07, 0, 5.71982, 0, 5.32304e-07, 0, -3.12085, 0.110442, 0.0527176, 43.1287)
-
-[node name="rock_largeA2" parent="." instance=ExtResource("4_wjfyv")]
-transform = Transform3D(9.61267, 0, 0, 0, 17.5939, 0, 0, 0, 6.62629, 8.37463, 0.753918, 23.0171)
-
-[node name="rock_largeA3" parent="." instance=ExtResource("4_wjfyv")]
-transform = Transform3D(6.43114, 0, -4.92491, 0, 17.5939, 0, 7.14451, 0, 4.43316, 0.991103, 0.753918, 6.38072)
-
-[node name="rock_tallA2" parent="." instance=ExtResource("5_nuue1")]
-transform = Transform3D(4.32272, 0, 0, 0, 4.95662, 0, 0, 0, 3.032, 21.3891, -0.0843987, 12.2472)
-
-[node name="rock_tallA3" parent="." instance=ExtResource("5_nuue1")]
-transform = Transform3D(3.35514, 0, 2.52178, 0, 2.91447, 0, -3.30009, 0, 2.56386, -13.5564, -0.0843987, -22.9226)
-
-[node name="tree_default2" parent="." instance=ExtResource("9_mwobl")]
-transform = Transform3D(2.21175, 0, 0, 0, 1.87059, 0, 0, 0, 1.64877, -8.35638, -0.0843987, -8.50039)
-
-[node name="tree_default3" parent="." instance=ExtResource("9_mwobl")]
-transform = Transform3D(2.21175, 0, 0, 0, 1.87059, 0, 0, 0, 1.64877, -4.6375, -0.0843987, -6.80038)
-
-[node name="tree_default5" parent="." instance=ExtResource("9_mwobl")]
-transform = Transform3D(2.21175, 0, 0, 0, 1.87059, 0, 0, 0, 1.64877, 3.71476, -0.0843987, -19.9415)
-
-[node name="tree_default6" parent="." instance=ExtResource("9_mwobl")]
-transform = Transform3D(2.21175, 0, 0, 0, 1.87059, 0, 0, 0, 1.64877, -0.236647, -0.0843987, -18.7895)
-
-[node name="tree_default4" parent="." instance=ExtResource("9_mwobl")]
-transform = Transform3D(2.21175, 0, 0, 0, 1.87059, 0, 0, 0, 1.64877, -7.59865, -0.0843987, -5.37895)
-
-[node name="cliff_halfCornerInner_rock3" parent="." instance=ExtResource("6_jgbmw")]
-transform = Transform3D(-3.97111, 0, 9.28501, 0, 22.4287, 0, -18.1417, 0, -2.03244, 22.6439, 0.00883585, -5.81142)
-
-[node name="cliff_halfCornerInner_rock4" parent="." instance=ExtResource("6_jgbmw")]
-transform = Transform3D(-9.08279, 0, -2.41017, 0, 22.323, 0, 2.08041, 0, -10.5225, 19.5837, 0.0617855, -20.0819)
-
-[node name="cliff_halfCornerInner_rock5" parent="." instance=ExtResource("6_jgbmw")]
-transform = Transform3D(-9.08279, 0, -2.41017, 0, 22.323, 0, 2.08041, 0, -10.5225, 19.5837, 0.0617855, -20.0819)
-
-[node name="cliff_blockSlope_rock2" parent="." instance=ExtResource("7_aj116")]
-transform = Transform3D(12.1047, 0, 3.0485, 0, 10.2385, 0, -2.7759, 0, 13.2934, 16.249, 0.366986, -31.8887)
-
 [node name="StaticBody3D" parent="." instance=ExtResource("8_b88mk")]
 transform = Transform3D(8.23718, 0, 3.04839, 0, 10.248, 0, -1.88898, 0, 13.2929, 15.0313, 0.366986, -40.7919)
 
-[node name="cliff_blockCave_rock2" parent="." instance=ExtResource("8_58kuy")]
-transform = Transform3D(6.58233, 0, 1.13675, 0, 10.6396, 0, -1.57663, 0, 4.74587, 39.025, 2.08165e-12, -24.76)
-
-[node name="cliff_block_rock2" parent="." instance=ExtResource("9_1lpmc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.2375, -0.236431, -28.8499)
-
-[node name="bridge_side_wood2" parent="." instance=ExtResource("10_m2502")]
-transform = Transform3D(-0.271196, 0, 2.48996, 0, 1.13354, 0, -1.17524, 0, -0.574578, 19.3247, 10.1297, -26.0522)
-
-[node name="bridge_center_wood2" parent="." instance=ExtResource("11_c8a8q")]
-transform = Transform3D(0.796178, 0, -2.4789, 0, 1.11414, 0, 3.23975, 0, 0.609197, 18.8052, 10.1376, -28.2059)
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("2_5dm0p")
+cell_size = Vector3(0.5, 0.25, 0.5)
+data = {
+"cells": PackedInt32Array(65533, 0, 131074, 131067, 1, 131074, 131071, 65534, 131074, 131066, 4, 131074, 131069, 1, 131074, 131071, 65532, 131074, 131069, 0, 131074, 131070, 0, 131074, 131070, 65535, 131074, 131071, 0, 131074, 131071, 1, 131074, 131071, 2, 131074, 65536, 3, 131074, 131071, 4, 131074, 65536, 4, 131074, 65536, 9, 131074, 65536, 10, 131074, 131071, 12, 131074, 131071, 13, 131074, 131070, 14, 131074, 131070, 16, 131074, 131070, 17, 131074, 131070, 20, 131074, 131070, 22, 131074, 131070, 24, 131074, 131070, 27, 131074, 131071, 29, 131074, 65539, 42, 131074, 65539, 41, 131074, 65539, 40, 131074, 65539, 38, 131074, 65539, 37, 131074, 65539, 35, 131074, 65539, 33, 131074, 65539, 30, 131074, 65539, 27, 131074, 65539, 26, 131074, 65540, 65518, 131074, 65540, 65519, 131074, 65540, 65520, 131074, 65539, 65521, 131074, 65539, 65522, 131074, 65539, 65523, 131074, 65539, 65524, 131074, 65539, 65525, 131074, 65539, 65526, 131074, 65538, 65527, 131074, 65538, 65528, 131074, 65538, 65529, 131074, 65538, 65530, 131074, 65537, 65531, 131074, 65537, 65532, 131074, 65536, 65532, 131074, 65536, 65533, 131074, 131071, 65535, 131074, 131070, 1, 131074, 131069, 2, 131074, 131069, 3, 131074, 131069, 4, 131074, 131069, 5, 131074, 131069, 6, 131074, 65544, 9, 131074, 65545, 9, 131074, 65545, 10, 131074, 131068, 23, 131074, 131068, 22, 131074, 131067, 22, 131074, 131064, 16, 131074, 131064, 15, 131074, 131061, 0, 131074, 65532, 3, 131074, 65535, 65535, 131074, 8, 4, 131074, 4, 16, 131074, 3, 16, 131074, 3, 17, 131074, 2, 18, 131074, 2, 19, 131074, 1, 19, 131074, 1, 20, 131074, 65530, 5, 131074, 65529, 5, 131074, 65529, 4, 131074, 65529, 3, 131074, 65529, 2, 131074, 65532, 65534, 131074, 65533, 65534, 131074, 65533, 65535, 131074, 65534, 65535, 131074, 65535, 0, 131074, 65531, 2, 131074, 65532, 2, 131074, 65528, 4, 131074, 65532, 1, 131074, 65531, 0, 131074, 65531, 1, 131074, 65530, 3, 131074, 65535, 1, 131074, 65535, 2, 131074, 65534, 0, 131074, 65534, 1, 131074, 65534, 2, 131074, 65533, 1, 131074, 65532, 0, 131074, 65532, 65535, 131074, 65531, 65535, 131074, 65531, 65534, 131074, 65530, 65534, 131074, 65530, 65533, 131074, 65530, 65535, 131074, 65532, 7, 131074, 65531, 7, 131074, 65530, 6, 131074, -131074, 0, 131074, 524283, 1, 131074, 327683, 1, 1441803, 393211, 1, 1441803, 393211, 3, 1441794, 393213, 3, 1441794, 393215, 3, 1441794, 327681, 3, 1441794, 327683, 3, 1441794, 393211, 65535, 1441794, 393215, 65535, 1441794, 327681, 65535, 1441794, 327683, 65535, 1441794, 393211, 5, 1441794, 393213, 5, 1441794, 393215, 5, 1441794, 327681, 5, 1441794, 327683, 5, 1441794, 393211, 65533, 1441794, 393213, 65533, 1441794, 393215, 65533, 1441794, 327681, 65533, 1441794, 327683, 65533, 1441794, 393209, 65533, 1441794, 393209, 65535, 1441794, 327681, 1, 1441803, 393213, 1, 1441803, 393215, 1, 1441803, 393209, 3, 2, 393209, 5, 2, 393209, 1, 1441807, 393207, 1, 1441807, 393205, 1, 3, 393205, 3, 11, 393207, 3, 2, 393207, 65535, 2, 393208, 65534, 152, 393208, 65535, 152, 393209, 65534, 152, 393211, 65534, 152, 393210, 65534, 152, 393215, 4, 152, 393214, 5, 151, 327680, 5, 151, 327680, 4, 151, 393213, 4, 151, 393212, 5, 151, 393212, 4, 151, 393210, 5, 151, 393211, 4, 151, 393210, 4, 151, 393214, 3, 151, 393214, 4, 151, 327680, 3, 151, 327681, 2, 151, 327680, 2, 151, 327682, 4, 151, 327682, 3, 151, 327682, 2, 151, 327681, 4, 151, 393210, 65535, 151, 393213, 65535, 1441794)
+}
+metadata/_editor_floor_ = Vector3(0, 5, 5)
