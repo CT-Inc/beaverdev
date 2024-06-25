@@ -665,7 +665,7 @@ properties/2/spawn = true
 properties/2/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D" groups=["enemy"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56028, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08238, 0)
 script = ExtResource("1_u3g2h")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
