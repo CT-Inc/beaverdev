@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://car5o216tw28j"]
+[gd_scene load_steps=31 format=3 uid="uid://car5o216tw28j"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_u3g2h"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Weapons_Manager.gd" id="2_jli8k"]
@@ -664,6 +664,9 @@ properties/2/path = NodePath("Head/Camera3D:rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_t57oq"]
+size = Vector3(1.36747, 1.3186, 1.98816)
+
 [node name="Player" type="CharacterBody3D" groups=["enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56028, 0)
 script = ExtResource("1_u3g2h")
@@ -757,6 +760,14 @@ libraries = {
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_d8knc")
+
+[node name="Pick_Up_Detection" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pick_Up_Detection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00992012, -0.406616, 0.0209351)
+shape = SubResource("BoxShape3D_t57oq")
 
 [connection signal="send_ray" from="." to="Head/Camera3D/Weapons_Manager" method="_on_player_send_ray"]
 [connection signal="update_health" from="." to="CanvasLayer" method="_on_player_update_health"]
