@@ -10,6 +10,7 @@ Shoot_Anim = "Blaster_Shotgun Shoot"
 Reload_Anim = "Blaster_Shotgun Reload"
 Deactivate_Anim = "Blaster_Shotgun Dectivate"
 Out_of_Ammo_Anim = "Blaster_Shotgun OOA"
+Melee_Anim = ""
 Current_Ammo = 20
 Reserve_Ammo = 40
 Magazine = 120

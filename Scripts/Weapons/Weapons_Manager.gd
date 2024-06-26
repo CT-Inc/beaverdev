@@ -129,11 +129,15 @@ func reload():
 func melee():
 	if !Animation_Player.is_playing():
 		Animation_Player.play(Current_Weapon.Melee_Anim)
+		print(cur_ray.collider.is_in_group("tree"))
+		if cur_ray:
+			if cur_ray.collider.is_in_group("tree"):
+				cur_ray.collider.get_parent().get_parent()._interacted()
+				print("just interacted with tree")
+			else:
+				print("meleeing something else")
 	
 
-func _on_player_send_ray(ray, result):
-	cur_ray = result
-	# dont need this anymore
 	
 	
 func handle_collision():

@@ -10,6 +10,7 @@ Shoot_Anim = "Rifle Shoot"
 Reload_Anim = "Rifle Reload"
 Deactivate_Anim = "Rifle Deactivate"
 Out_of_Ammo_Anim = "Rifle OOA"
+Melee_Anim = ""
 Current_Ammo = 20
 Reserve_Ammo = 20
 Magazine = 120

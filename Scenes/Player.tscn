@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://car5o216tw28j"]
+[gd_scene load_steps=30 format=3 uid="uid://car5o216tw28j"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_u3g2h"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Weapons_Manager.gd" id="2_jli8k"]
@@ -468,18 +468,6 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("FPS_Rig/Blaster_AR:scale")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.999999, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_b1ew0"]
 resource_name = "Rifle Activate"
@@ -645,51 +633,10 @@ tracks/0/keys = {
 "values": [Vector3(0.0562436, 1.18531, -0.140154), Vector3(0.056, 1.185, -0.1), Vector3(0.056, 1.185, -0.14)]
 }
 
-[sub_resource type="Animation" id="Animation_ffva4"]
-resource_name = "Blaster_AR Melee"
-length = 0.9
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FPS_Rig/Blaster_AR:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.8),
-"transitions": PackedFloat32Array(1, 0.217638, 0.258816),
-"update": 0,
-"values": [Vector3(0.00842756, 1.16916, -5.96046e-08), Vector3(0.118029, 1.16219, -0.16672), Vector3(0.00842756, 1.16916, -5.96046e-08)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FPS_Rig/Blaster_AR:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.999999, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FPS_Rig/Blaster_AR:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5, 0.8),
-"transitions": PackedFloat32Array(1, 0.318646, 0.143588, 0.15932),
-"update": 0,
-"values": [Vector3(0.0340082, 3.07397, 0.0121262), Vector3(0.010472, 4.79442, 0.0349066), Vector3(0.37001, 4.11898, 0.0366519), Vector3(0.0340082, 3.07397, 0.0121262)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8jffx"]
 _data = {
 "Blaster_AR Activate": SubResource("Animation_niwau"),
 "Blaster_AR Deactivate": SubResource("Animation_3xvay"),
-"Blaster_AR Melee": SubResource("Animation_ffva4"),
 "Blaster_AR OOA": SubResource("Animation_euath"),
 "Blaster_AR Reload": SubResource("Animation_qbrpt"),
 "Blaster_AR Shoot": SubResource("Animation_4gmmo"),
@@ -718,7 +665,7 @@ properties/2/spawn = true
 properties/2/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D" groups=["enemy"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08238, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56028, 0)
 script = ExtResource("1_u3g2h")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
