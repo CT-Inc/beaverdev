@@ -41,6 +41,9 @@ func _input(event):
 		
 	if event.is_action_pressed("Reload"):
 		reload()
+		
+	if event.is_action_pressed("Melee"):
+		melee()
 
 func Initialize(_start_weapons: Array):
 	#Creating dictionary to refer to weapons
@@ -122,6 +125,11 @@ func reload():
 			
 		else:
 			Animation_Player.play(Current_Weapon.Out_of_Ammo_Anim)
+
+func melee():
+	if !Animation_Player.is_playing():
+		Animation_Player.play(Current_Weapon.Melee_Anim)
+	
 
 func _on_player_send_ray(ray, result):
 	cur_ray = result
