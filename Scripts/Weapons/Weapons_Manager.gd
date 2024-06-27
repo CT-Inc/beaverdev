@@ -35,9 +35,10 @@ func _input(event):
 	if event.is_action_pressed("switch_weapon_down"):
 		Weapon_Indicator = max(Weapon_Indicator-1,0)
 		exit(Weapon_Stack[Weapon_Indicator])
-		
-	if event.is_action_pressed("shoot"):
-		shoot()
+	
+	if Current_Weapon.Weapon_Name != "Log":
+		if event.is_action_pressed("shoot"):
+			shoot()
 		
 	if event.is_action_pressed("Reload"):
 		reload()
@@ -149,13 +150,26 @@ func handle_collision():
 		return
 	print("didnt hit shit LOL")
 
-
+#This is a generalized function for weapons but in our specific case logs
 func _on_pick_up_detection_body_entered(body):
+	#Check if the log/weaoon is already in the players current stack of weapons
 	var weapon_in_stack = Weapon_Stack.find(body.weapon_name, 0 )
 	
+	#If the log is not in the stack, add it
 	if weapon_in_stack == -1:
 		Weapon_Stack.push_front(body.weapon_name)
 		emit_signal("Update_Weapon_Stack", Weapon_Stack)
 		exit(body.weapon_name)
+		#removes log from scene
+		body.queue_free()
+	else:
+		add_log(body.weapon_name, body.reserve_ammo)
 		body.queue_free()
 	print(body.weapon_name) # Replace with function body.
+
+#this is a generalized function for adding *ammo* to logs
+#Parameter is named Weapon since it techincally is a weapon under the stack
+func add_log(_Weapon: String, Ammo: int):
+	var _weapon = Weapon_List[_Weapon]
+	_weapon.Reserve_Ammo += 1
+	emit_signal("Update_Ammo", [Current_Weapon.Current_Ammo, Current_Weapon.Reserve_Ammo])

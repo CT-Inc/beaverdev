@@ -118,6 +118,8 @@ shadow_mesh = SubResource("ArrayMesh_3x5rv")
 collision_layer = 8
 script = ExtResource("1_uwpgg")
 weapon_name = "Log"
+current_ammo = 1
+reserve_ammo = 1
 
 [node name="Cylinder" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.367073, 0, 0, 0, -1.26504e-08, 0.324438, 0, -0.289408, -1.41816e-08, 4.72367e-05, 3.97116e-05, -0.000279188)
