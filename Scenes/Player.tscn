@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://car5o216tw28j"]
+[gd_scene load_steps=37 format=3 uid="uid://car5o216tw28j"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_u3g2h"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.gd" id="2_6q0td"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://b1soh3ki3bxkw" path="res://Scenes/Guns/blaster_AR.tscn" id="7_lmmfa"]
 [ext_resource type="PackedScene" uid="uid://bmjhxo45lqgrj" path="res://Scenes/Guns/Blaster_Shotgun.tscn" id="8_dlg1i"]
 [ext_resource type="PackedScene" uid="uid://b20peruff533j" path="res://Log.tscn" id="10_h8f7k"]
-[ext_resource type="Script" path="res://Scenes/Water Detection.gd" id="12_364dp"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mmfmj"]
 
@@ -795,7 +794,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56028, 0)
 collision_layer = 4
 script = ExtResource("1_u3g2h")
 
-[node name="Player Movement" type="CharacterBody3D" parent="."]
+[node name="PlayerMovement" type="CharacterBody3D" parent="."]
 script = ExtResource("2_6q0td")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -901,7 +900,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00992012, -0.381591, 0.135
 shape = SubResource("BoxShape3D_t57oq")
 
 [node name="Water Detection" type="Area3D" parent="."]
-script = ExtResource("12_364dp")
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Water Detection"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00531006, -0.424893, 0.131531)
@@ -914,3 +914,5 @@ shape = SubResource("BoxShape3D_ivgp3")
 [connection signal="Weapon_Changed" from="Head/Camera3D/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_weapon_changed"]
 [connection signal="animation_finished" from="Head/Camera3D/Weapons_Manager/FPS_Rig/AnimationPlayer" to="Head/Camera3D/Weapons_Manager" method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Pick_Up_Detection" to="Head/Camera3D/Weapons_Manager" method="_on_pick_up_detection_body_entered"]
+[connection signal="area_entered" from="Water Detection" to="PlayerMovement" method="_on_water_detection_area_entered"]
+[connection signal="area_exited" from="Water Detection" to="PlayerMovement" method="_on_water_detection_area_exited"]

@@ -117,3 +117,7 @@ func shoot_bullet(origin, direction):
 		bullet.look_at(origin + direction)
 		get_parent().add_child(bullet)
 
+
+
+func _on_water_detection_area_exited(area):
+	pass # Replace with function body.

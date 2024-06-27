@@ -1,21 +1,19 @@
 extends CharacterBody3D
 
 # Constants
-const WALK_SPEED = 8.0
-const SPRINT_SPEED = 10.0
+var WALK_SPEED = 8.0
+var SPRINT_SPEED = 10.0
 const JUMP_VELOCITY = 4.5
 const FRICTION: float = 4.0
 const ACCEL_AIR: float = 40.0
 const ACCEL: float = 12.0
 const TOP_SPEED_AIR: float = 2.5
-const TOP_SPEED_GROUND: float = 15.0
+var TOP_SPEED_GROUND: float = 15.0
 const GRAVITY: float = 40.0
 const JUMP_FORCE: float = 14
 const LIN_FRICTION_SPEED: float = 10.0
 
-const WATER_SPEED_MULTIPLIER = 100.5
-var current_walk_speed = WALK_SPEED
-var current_sprint_speed = SPRINT_SPEED
+const WATER_SPEED_MULTIPLIER = 10
 
 # Variables
 var gravity = 9.8
@@ -68,12 +66,18 @@ func air_move(delta):
 	player.velocity.y -= GRAVITY * delta
 
 func ground_move(delta):
+	var current_speed: float = 0
+	
+	current_speed = player.velocity.length()
 	floor_snap_length = 0.4
 	apply_acceleration(ACCEL, TOP_SPEED_GROUND, delta)
 	
 	if Input.is_action_pressed("jump"):
 		print("jump")
 		player.velocity.y = JUMP_FORCE
+	
+	if Input.is_action_pressed("move_up"):
+		print("Current Speed: ", current_speed)
 	
 	if grounded == grounded_prev:
 		apply_friction(delta)
@@ -130,10 +134,16 @@ func apply_acceleration(acceleration: float, top_speed: float, delta):
 
 func _on_player_entered_water(player_body):
 	print("Entered Water: Changing Speed")
-	current_walk_speed *= WATER_SPEED_MULTIPLIER
-	current_sprint_speed *= WATER_SPEED_MULTIPLIER
 	
 func _on_player_exited_water(player_body):
 	print("Exited Water: Changing Speed")
-	current_walk_speed /= WATER_SPEED_MULTIPLIER
-	current_sprint_speed /= WATER_SPEED_MULTIPLIER
+
+func _on_water_detection_area_entered(area):
+	if area.is_in_group("Water"):
+		print("Entered Water: Changing Speed")
+		TOP_SPEED_GROUND *= WATER_SPEED_MULTIPLIER
+		
+func _on_water_detection_area_exited(area):
+	if area.is_in_group("Water"):
+		print("Exited: Changing Speed")
+		TOP_SPEED_GROUND /= WATER_SPEED_MULTIPLIER
