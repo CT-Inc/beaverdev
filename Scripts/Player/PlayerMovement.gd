@@ -13,6 +13,10 @@ const GRAVITY: float = 40.0
 const JUMP_FORCE: float = 14
 const LIN_FRICTION_SPEED: float = 10.0
 
+const WATER_SPEED_MULTIPLIER = 100.5
+var current_walk_speed = WALK_SPEED
+var current_sprint_speed = SPRINT_SPEED
+
 # Variables
 var gravity = 9.8
 var projected_speed: float = 0
@@ -24,8 +28,11 @@ var _velocity := Vector3.ZERO
 
 const HIT_STAGGER = 8.0
 
-
 @onready var player : CharacterBody3D = get_parent() as CharacterBody3D
+
+func _ready():
+	add_to_group("Player")
+	
 
 func _physics_process(delta):
 	if not player.is_multiplayer_authority():
@@ -120,3 +127,13 @@ func apply_acceleration(acceleration: float, top_speed: float, delta):
 	
 	player.velocity.x += accel_final * wish_dir.x
 	player.velocity.z += accel_final * wish_dir.z
+
+func _on_player_entered_water(player_body):
+	print("Entered Water: Changing Speed")
+	current_walk_speed *= WATER_SPEED_MULTIPLIER
+	current_sprint_speed *= WATER_SPEED_MULTIPLIER
+	
+func _on_player_exited_water(player_body):
+	print("Exited Water: Changing Speed")
+	current_walk_speed /= WATER_SPEED_MULTIPLIER
+	current_sprint_speed /= WATER_SPEED_MULTIPLIER

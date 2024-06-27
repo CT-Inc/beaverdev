@@ -6,9 +6,9 @@
 script = ExtResource("1_lf06u")
 Weapon_Name = "Log"
 Activate_Anim = "Log Activate"
-Shoot_Anim = "Log Deactivate"
+Shoot_Anim = ""
 Reload_Anim = ""
-Deactivate_Anim = ""
+Deactivate_Anim = "Log Deactivate"
 Out_of_Ammo_Anim = ""
 Melee_Anim = ""
 Current_Ammo = 1

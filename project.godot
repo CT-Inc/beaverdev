@@ -22,7 +22,9 @@ Save="*res://Scripts/Settings (GUIs)/save.gd"
 
 [display]
 
-window/size/mode=3
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/mode=2
 
 [input]
 
@@ -89,4 +91,5 @@ Melee={
 
 [layer_names]
 
+3d_physics/layer_3="Water"
 3d_physics/layer_4="Log"

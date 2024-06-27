@@ -40,18 +40,12 @@ func _enter_tree():
 func _ready():
 	if not is_multiplayer_authority():
 		return 
-	add_child(movement)
+	#add_child(movement)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera.current = true
 	GlobalSettings.connect("fov_updated", _on_fov_updated)
 	GlobalSettings.connect("mouse_sens_updated", _on_mouse_sens_updated)
-	print("Child Script is", movement)
-	print("Weapons Manager: ", weapons_manager)
-	if weapons_manager:
-		print("weapons manager is ready")
-	else:
-		print("Weapons manager is not ready")
-
+	
 func _input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
 		return 
@@ -122,3 +116,4 @@ func shoot_bullet(origin, direction):
 		bullet.global_transform.origin = origin
 		bullet.look_at(origin + direction)
 		get_parent().add_child(bullet)
+

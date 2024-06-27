@@ -1,6 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://car5o216tw28j"]
+[gd_scene load_steps=38 format=3 uid="uid://car5o216tw28j"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_u3g2h"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerMovement.gd" id="2_6q0td"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Weapons_Manager.gd" id="2_jli8k"]
 [ext_resource type="Script" path="res://Scripts/Settings (GUIs)/HUD.gd" id="2_n8aej"]
 [ext_resource type="Resource" uid="uid://cwj06778101um" path="res://Weapon Resources/Rifle.tres" id="3_i24px"]
@@ -11,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b1soh3ki3bxkw" path="res://Scenes/Guns/blaster_AR.tscn" id="7_lmmfa"]
 [ext_resource type="PackedScene" uid="uid://bmjhxo45lqgrj" path="res://Scenes/Guns/Blaster_Shotgun.tscn" id="8_dlg1i"]
 [ext_resource type="PackedScene" uid="uid://b20peruff533j" path="res://Log.tscn" id="10_h8f7k"]
+[ext_resource type="Script" path="res://Scenes/Water Detection.gd" id="12_364dp"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mmfmj"]
 
@@ -348,6 +350,84 @@ tracks/1/keys = {
 "values": [Vector3(3.48787e-16, 3.14159, 0.0139626), Vector3(-0.620779, 3.1366, 0.0155639), Vector3(3.48787e-16, 3.14159, 0.0139626)]
 }
 
+[sub_resource type="Animation" id="Animation_062hp"]
+resource_name = "Log Activate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FPS_Rig/Log:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FPS_Rig/Log:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.208335), Vector3(0.22913, 1.06361, 0.208335)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FPS_Rig/Log:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.01247e-09), Vector3(0.52055, -0.0638441, -0.00105149)]
+}
+
+[sub_resource type="Animation" id="Animation_ageo5"]
+resource_name = "Log Deactivate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FPS_Rig/Log:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.52055, -0.0638441, -0.00105149), Vector3(-0.256433, -0.0518241, 0.0431897), Vector3(0.00787067, -0.0519577, 0.0293962)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FPS_Rig/Log:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.22913, 1.06361, 0.208335), Vector3(0.22863, 0.991883, 0.208335), Vector3(0.222451, 0.106812, 0.208335)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FPS_Rig/Log:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="Animation" id="Animation_gggb3"]
 length = 0.001
 tracks/0/type = "value"
@@ -671,84 +751,6 @@ tracks/0/keys = {
 "values": [Vector3(0.0562436, 1.18531, -0.140154), Vector3(0.056, 1.185, -0.1), Vector3(0.056, 1.185, -0.14)]
 }
 
-[sub_resource type="Animation" id="Animation_062hp"]
-resource_name = "Log Activate"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FPS_Rig/Log:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FPS_Rig/Log:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0.208335), Vector3(0.22913, 1.06361, 0.208335)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FPS_Rig/Log:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 1.01247e-09), Vector3(0.52055, -0.0638441, -0.00105149)]
-}
-
-[sub_resource type="Animation" id="Animation_ageo5"]
-resource_name = "Log Deactivate"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FPS_Rig/Log:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.52055, -0.0638441, -0.00105149), Vector3(-0.256433, -0.0518241, 0.0431897), Vector3(0.00787067, -0.0519577, 0.0293962)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FPS_Rig/Log:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.22913, 1.06361, 0.208335), Vector3(0.22863, 0.991883, 0.208335), Vector3(0.222451, 0.106812, 0.208335)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FPS_Rig/Log:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8jffx"]
 _data = {
 "Blaster_AR Activate": SubResource("Animation_niwau"),
@@ -785,9 +787,16 @@ properties/2/replication_mode = 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_t57oq"]
 size = Vector3(1.36747, 0.934081, 1.75824)
 
-[node name="Player" type="CharacterBody3D" groups=["enemy"]]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ivgp3"]
+size = Vector3(1.38708, 1, 1.56873)
+
+[node name="Player" type="CharacterBody3D" groups=["Player", "enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56028, 0)
+collision_layer = 4
 script = ExtResource("1_u3g2h")
+
+[node name="Player Movement" type="CharacterBody3D" parent="."]
+script = ExtResource("2_6q0td")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("2_n8aej")
@@ -871,7 +880,7 @@ transform = Transform3D(0.999998, -5.63723e-11, 0, 5.63724e-11, 0.999997, 0, 0, 
 visible = false
 
 [node name="Log" parent="Head/Camera3D/Weapons_Manager/FPS_Rig" instance=ExtResource("10_h8f7k")]
-transform = Transform3D(0.156, -1.53896e-10, 0, 1.57946e-10, 0.152, 0, 0, 0, 0.15, 0, 0, 0.208335)
+transform = Transform3D(0.156, -1.53895e-10, 0, 1.57945e-10, 0.152, 0, 0, 0, 0.15, 0, 0, 0.208335)
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/Weapons_Manager/FPS_Rig"]
@@ -890,6 +899,13 @@ collision_mask = 8
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pick_Up_Detection"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00992012, -0.381591, 0.135895)
 shape = SubResource("BoxShape3D_t57oq")
+
+[node name="Water Detection" type="Area3D" parent="."]
+script = ExtResource("12_364dp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Water Detection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00531006, -0.424893, 0.131531)
+shape = SubResource("BoxShape3D_ivgp3")
 
 [connection signal="send_ray" from="." to="Head/Camera3D/Weapons_Manager" method="_on_player_send_ray"]
 [connection signal="update_health" from="." to="CanvasLayer" method="_on_player_update_health"]
