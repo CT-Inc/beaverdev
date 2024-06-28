@@ -145,7 +145,7 @@ func handle_collision():
 	print("Current Ray: ", cur_ray)
 	if cur_ray:
 		if cur_ray.collider.is_in_group("enemy"):
-			cur_ray.collider.update_health(-Current_Weapon.Projectile_Damage)
+			cur_ray.collider._update_health(-Current_Weapon.Projectile_Damage)
 		print("handled_collison to shoot something")
 		return
 	print("didnt hit shit LOL")

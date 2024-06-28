@@ -111,7 +111,7 @@ func _update_health(value):
 		queue_free()
 	else:
 		print("Player health", health)
-	#emit_signal("update_health", self.health, value)
+	emit_signal("update_health", self.health, value)
 	
 
 @rpc
