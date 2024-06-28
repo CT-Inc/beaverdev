@@ -789,9 +789,9 @@ size = Vector3(1.36747, 0.934081, 1.75824)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ivgp3"]
 size = Vector3(1.38708, 1, 1.56873)
 
-[node name="Player" type="CharacterBody3D" groups=["Player", "enemy"]]
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56028, 0)
-collision_layer = 4
+collision_layer = 6
 script = ExtResource("1_u3g2h")
 
 [node name="PlayerMovement" type="CharacterBody3D" parent="."]

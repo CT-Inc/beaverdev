@@ -105,8 +105,14 @@ func _on_mouse_sens_updated(value):
 	#print(value)
 	
 func _update_health(value):
-	emit_signal("update_health", self.health, value)
-	pass
+	health += value
+	if health <= 0:
+		print("Player died")
+		queue_free()
+	else:
+		print("Player health", health)
+	#emit_signal("update_health", self.health, value)
+	
 
 @rpc
 func shoot_bullet(origin, direction):
@@ -116,8 +122,3 @@ func shoot_bullet(origin, direction):
 		bullet.global_transform.origin = origin
 		bullet.look_at(origin + direction)
 		get_parent().add_child(bullet)
-
-
-
-func _on_water_detection_area_exited(area):
-	pass # Replace with function body.

@@ -76,8 +76,8 @@ func ground_move(delta):
 		print("jump")
 		player.velocity.y = JUMP_FORCE
 	
-	if Input.is_action_pressed("move_up"):
-		print("Current Speed: ", current_speed)
+	#if Input.is_action_pressed("move_up"):
+		#print("Current Speed: ", current_speed)
 	
 	if grounded == grounded_prev:
 		apply_friction(delta)
@@ -132,11 +132,6 @@ func apply_acceleration(acceleration: float, top_speed: float, delta):
 	player.velocity.x += accel_final * wish_dir.x
 	player.velocity.z += accel_final * wish_dir.z
 
-func _on_player_entered_water(player_body):
-	print("Entered Water: Changing Speed")
-	
-func _on_player_exited_water(player_body):
-	print("Exited Water: Changing Speed")
 
 func _on_water_detection_area_entered(area):
 	if area.is_in_group("Water"):
