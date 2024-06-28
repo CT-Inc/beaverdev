@@ -1,0 +1,16 @@
+// Game: FuncGodot
+// Format: Standard
+// entity 0
+{
+"classname" "worldspawn"
+"_tb_textures" "textures;textures\Bricks;textures\Grass;textures\Roofs;textures\Tile;textures\Wood"
+// brush 0
+{
+( -736 -448 -16 ) ( -736 -447 -16 ) ( -736 -448 -15 ) Grass/Grass_05-256x256 0 0 0 1 1
+( -736 -640 -16 ) ( -736 -640 -15 ) ( -735 -640 -16 ) Grass/Grass_05-256x256 0 0 0 1 1
+( -736 -448 -16 ) ( -735 -448 -16 ) ( -736 -447 -16 ) Grass/Grass_05-256x256 0 0 0 1 1
+( -608 -320 0 ) ( -608 -319 0 ) ( -607 -320 0 ) Grass/Grass_05-256x256 0 0 0 1 1
+( -608 1312 16 ) ( -607 1312 16 ) ( -608 1312 17 ) Grass/Grass_05-256x256 0 0 0 1 1
+( 1744 -320 16 ) ( 1744 -320 17 ) ( 1744 -319 16 ) Grass/Grass_05-256x256 0 0 0 1 1
+}
+}

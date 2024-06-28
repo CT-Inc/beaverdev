@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://c73br106cga3c"
+path="res://.godot/imported/graasstest.map-1a9c90c0f5b160d982367388694a8be0.tres"
+
+[deps]
+
+source_file="res://maps/graasstest.map"
+dest_files=["res://.godot/imported/graasstest.map-1a9c90c0f5b160d982367388694a8be0.tres"]
+
+[params]
+
