@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://75ct2tlcn8in"
+path="res://.godot/imported/grass-cabin.map-9febc4b2a7b966b4ccf45f87790adb19.tres"
+
+[deps]
+
+source_file="res://maps/grass-cabin.map"
+dest_files=["res://.godot/imported/grass-cabin.map-9febc4b2a7b966b4ccf45f87790adb19.tres"]
+
+[params]
+
