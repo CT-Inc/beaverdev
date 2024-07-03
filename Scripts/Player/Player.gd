@@ -32,7 +32,9 @@ signal send_ray
 @onready var camera: Camera3D = $Head/Camera3D
 @onready var weapons_manager = $Head/Camera3D/Weapons_Manager
 @onready var fps_rig = $Head/Camera3D/Weapons_Manager/FPS_Rig
+
 @onready var movement = preload("res://Scripts/Player/PlayerMovement.gd").new()
+
 
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
