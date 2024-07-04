@@ -1,0 +1,211 @@
+[gd_scene load_steps=77 format=3 uid="uid://d1shqeha3ih1u"]
+
+[ext_resource type="Script" path="res://addons/terrabrush/TerraBrush.cs" id="1_yys3q"]
+[ext_resource type="Texture2D" uid="uid://donts8wvkdjnm" path="res://Node3D/Heightmap_0_0.res" id="2_75dcc"]
+[ext_resource type="Texture2D" uid="uid://do8svqk4uemoi" path="res://Textures/Grass/Grass004_1K-JPG_Color.jpg" id="2_666q7"]
+[ext_resource type="Script" path="res://addons/terrabrush/Scripts/EditorResources/ZoneResource.cs" id="3_7qp44"]
+[ext_resource type="Texture2D" uid="uid://36464dma5y8d" path="res://Textures/Grass/Grass004_1K-JPG_NormalGL.jpg" id="3_ddaht"]
+[ext_resource type="Script" path="res://addons/terrabrush/Scripts/EditorResources/ZonesResource.cs" id="4_3o3du"]
+[ext_resource type="Texture2D" uid="uid://ct5e64vhgoje1" path="res://Textures/Grass/Grass004_1K-JPG_Roughness.jpg" id="4_eb7ry"]
+[ext_resource type="Script" path="res://addons/terrabrush/Scripts/EditorResources/TextureSetResource.cs" id="5_t3lpd"]
+[ext_resource type="Texture2D" uid="uid://bgte1uw41o8u" path="res://Textures/Rocks/Rocks011_1K-JPG_Color.jpg" id="6_cxdq7"]
+[ext_resource type="Texture2D" uid="uid://cnbkwdagq6x08" path="res://Textures/Rocks/Rocks011_1K-JPG_NormalGL.jpg" id="7_j6xi1"]
+[ext_resource type="Texture2D" uid="uid://uyd4jw5kxu0w" path="res://Textures/Rocks/Rocks011_1K-JPG_Roughness.jpg" id="8_1fn0f"]
+[ext_resource type="Texture2D" uid="uid://u1scyvr0cdc2" path="res://Textures/Sand/Ground033_1K-JPG_Color.jpg" id="9_67vok"]
+[ext_resource type="Texture2D" uid="uid://co2r7fbmkoi8g" path="res://Textures/Sand/Ground033_1K-JPG_NormalGL.jpg" id="10_oexka"]
+[ext_resource type="Texture2D" uid="uid://c3lmyfvj1vxg2" path="res://Textures/Sand/Ground033_1K-JPG_Roughness.jpg" id="11_xgv2d"]
+[ext_resource type="Script" path="res://addons/terrabrush/Scripts/EditorResources/TextureSetsResource.cs" id="12_887rt"]
+[ext_resource type="PackedScene" uid="uid://80rrkjk1k3tf" path="res://Scenes/tree.tscn" id="13_ae22u"]
+[ext_resource type="Texture2D" uid="uid://sp67mtb4sgwe" path="res://sprite_0001.png" id="13_f6h3d"]
+[ext_resource type="Script" path="res://addons/terrabrush/Scripts/EditorResources/FoliageDefinitionResource.cs" id="14_56has"]
+[ext_resource type="Script" path="res://addons/terrabrush/Scripts/EditorResources/ObjectDefinitionResource.cs" id="14_y33qd"]
+[ext_resource type="Texture2D" uid="uid://02ysbx80e5dc" path="res://Node3D/Splatmap_0_0_0.res" id="15_147ka"]
+[ext_resource type="Script" path="res://addons/terrabrush/Scripts/EditorResources/FoliageResource.cs" id="15_i0k04"]
+[ext_resource type="Script" path="res://addons/terrabrush/Scripts/EditorResources/ObjectResource.cs" id="15_v3nhg"]
+[ext_resource type="Texture2D" uid="uid://djdwhsuy4k4cc" path="res://Node3D/Heightmap_0_1.res" id="16_3fwy6"]
+[ext_resource type="Texture2D" uid="uid://b8g7id74m0gid" path="res://Node3D/Object_0_0_0.res" id="17_bntmj"]
+[ext_resource type="Texture2D" uid="uid://yrn1wvc1ox4g" path="res://Node3D/Splatmap_0_1_0.res" id="17_fedtf"]
+[ext_resource type="Texture2D" uid="uid://c4hkqndpncwme" path="res://Node3D/Heightmap_-1_1.res" id="18_31peg"]
+[ext_resource type="Texture2D" uid="uid://dk15tj3dxbixr" path="res://Node3D/Foliage_0_0_0.res" id="18_61uyr"]
+[ext_resource type="Texture2D" uid="uid://12jmlj5r03a4" path="res://Node3D/Splatmap_-1_1_0.res" id="19_lwryv"]
+[ext_resource type="Texture2D" uid="uid://cneijdlaedrqs" path="res://Node3D/Heightmap_-1_0.res" id="20_5sw66"]
+[ext_resource type="Texture2D" uid="uid://c1lqw4lry2id6" path="res://Node3D/Splatmap_-1_0_0.res" id="21_4yhv0"]
+[ext_resource type="Texture2D" uid="uid://cy5fh6gbihjt" path="res://Node3D/Object_0_1_0.res" id="21_qltef"]
+[ext_resource type="Texture2D" uid="uid://c501krldg17qh" path="res://Node3D/Heightmap_0_-1.res" id="22_bl1ql"]
+[ext_resource type="Texture2D" uid="uid://d3swdmbgx4j6x" path="res://Node3D/Foliage_0_1_0.res" id="23_cihpm"]
+[ext_resource type="Texture2D" uid="uid://rnrlqu8orfak" path="res://Node3D/Splatmap_0_-1_0.res" id="23_uv4mi"]
+[ext_resource type="Texture2D" uid="uid://bmud84cwn7ift" path="res://Node3D/Heightmap_-1_-1.res" id="24_okxys"]
+[ext_resource type="Texture2D" uid="uid://d2witny0bd2w7" path="res://Node3D/Object_-1_1_0.res" id="24_pgvb3"]
+[ext_resource type="Texture2D" uid="uid://c5fnk2w0x8o3d" path="res://Node3D/Splatmap_-1_-1_0.res" id="25_8wep3"]
+[ext_resource type="Texture2D" uid="uid://cj03wjhykuepx" path="res://Node3D/Heightmap_1_1.res" id="26_tw3v5"]
+[ext_resource type="Texture2D" uid="uid://eur2dh7pqne4" path="res://Node3D/Splatmap_1_1_0.res" id="27_a6wud"]
+[ext_resource type="Texture2D" uid="uid://dt07bgycqkvuv" path="res://Node3D/Foliage_-1_1_0.res" id="27_ss3r0"]
+[ext_resource type="Texture2D" uid="uid://cvqbnjj51f45x" path="res://Node3D/Object_-1_0_0.res" id="27_wxs80"]
+[ext_resource type="Texture2D" uid="uid://bvnk425dai42e" path="res://Node3D/Heightmap_1_0.res" id="28_fd34n"]
+[ext_resource type="Texture2D" uid="uid://dwqumgtqxtajx" path="res://Node3D/Splatmap_1_0_0.res" id="29_55i6o"]
+[ext_resource type="Texture2D" uid="uid://qdwswtyp22qe" path="res://Node3D/Heightmap_1_-1.res" id="30_6xit5"]
+[ext_resource type="Texture2D" uid="uid://cudlmhamepqbv" path="res://Node3D/Object_0_-1_0.res" id="30_pmg4i"]
+[ext_resource type="Texture2D" uid="uid://2bfd3r8egwmd" path="res://Node3D/Splatmap_1_-1_0.res" id="31_lmfyy"]
+[ext_resource type="Texture2D" uid="uid://cphdt4o1y6aqm" path="res://Node3D/Foliage_-1_0_0.res" id="31_pigbg"]
+[ext_resource type="Texture2D" uid="uid://60i0fonuah4w" path="res://Node3D/Object_-1_-1_0.res" id="33_xvcb6"]
+[ext_resource type="Texture2D" uid="uid://kiaqsjocsh0p" path="res://Node3D/Foliage_0_-1_0.res" id="35_o86c0"]
+[ext_resource type="Texture2D" uid="uid://2h7ipfeiig2b" path="res://Node3D/Object_1_1_0.res" id="36_rnqxb"]
+[ext_resource type="Texture2D" uid="uid://2ngma62jwrx5" path="res://Node3D/Object_1_0_0.res" id="39_0iq4s"]
+[ext_resource type="Texture2D" uid="uid://djjwolt65sb1q" path="res://Node3D/Foliage_-1_-1_0.res" id="39_ow5sd"]
+[ext_resource type="Texture2D" uid="uid://bx1ogsel7kspy" path="res://Node3D/Object_1_-1_0.res" id="42_aj27j"]
+[ext_resource type="Texture2D" uid="uid://cifcixeld7ys4" path="res://Node3D/Foliage_1_1_0.res" id="43_hbw3p"]
+[ext_resource type="Texture2D" uid="uid://b83oi4tcehwl1" path="res://Node3D/Foliage_1_0_0.res" id="47_wjasx"]
+[ext_resource type="Texture2D" uid="uid://davr66jcehsqb" path="res://Node3D/Foliage_1_-1_0.res" id="51_uv5ve"]
+
+[sub_resource type="Resource" id="Resource_ymb2j"]
+script = ExtResource("5_t3lpd")
+Name = "Grass"
+AlbedoTexture = ExtResource("2_666q7")
+NormalTexture = ExtResource("3_ddaht")
+RoughnessTexture = ExtResource("4_eb7ry")
+TextureDetail = -1
+
+[sub_resource type="Resource" id="Resource_fy4ns"]
+script = ExtResource("5_t3lpd")
+Name = "Rock"
+AlbedoTexture = ExtResource("6_cxdq7")
+NormalTexture = ExtResource("7_j6xi1")
+RoughnessTexture = ExtResource("8_1fn0f")
+TextureDetail = -1
+
+[sub_resource type="Resource" id="Resource_jpmke"]
+script = ExtResource("5_t3lpd")
+Name = "Sand"
+AlbedoTexture = ExtResource("9_67vok")
+NormalTexture = ExtResource("10_oexka")
+RoughnessTexture = ExtResource("11_xgv2d")
+TextureDetail = -1
+
+[sub_resource type="Resource" id="Resource_qc4ij"]
+script = ExtResource("12_887rt")
+TextureSets = [SubResource("Resource_ymb2j"), SubResource("Resource_fy4ns"), SubResource("Resource_jpmke")]
+
+[sub_resource type="QuadMesh" id="QuadMesh_5m2rd"]
+center_offset = Vector3(0, 0.5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rje34"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("13_f6h3d")
+
+[sub_resource type="Resource" id="Resource_sss0c"]
+script = ExtResource("14_56has")
+Mesh = SubResource("QuadMesh_5m2rd")
+MeshMaterial = SubResource("StandardMaterial3D_rje34")
+MeshScale = Vector3(3, 3, 3)
+MaximumRenderDistance = 200
+EditorMaximumRenderDistance = 1000
+WindStrength = 0.1
+VisualInstanceLayers = 1
+
+[sub_resource type="Resource" id="Resource_sv4da"]
+script = ExtResource("15_i0k04")
+Definition = SubResource("Resource_sss0c")
+
+[sub_resource type="Resource" id="Resource_07gvx"]
+script = ExtResource("14_y33qd")
+ObjectFrequency = -1
+RandomRange = 3.0
+RandomYRotation = true
+ObjectScenes = [ExtResource("13_ae22u")]
+
+[sub_resource type="Resource" id="Resource_jxfii"]
+script = ExtResource("15_v3nhg")
+Definition = SubResource("Resource_07gvx")
+Hide = false
+
+[sub_resource type="Resource" id="Resource_6ta7k"]
+script = ExtResource("3_7qp44")
+ZonePosition = Vector2i(0, 0)
+HeightMapTexture = ExtResource("2_75dcc")
+SplatmapsTexture = [ExtResource("15_147ka")]
+FoliagesTexture = [ExtResource("18_61uyr")]
+ObjectsTexture = [ExtResource("17_bntmj")]
+
+[sub_resource type="Resource" id="Resource_5c1wn"]
+script = ExtResource("3_7qp44")
+ZonePosition = Vector2i(0, 1)
+HeightMapTexture = ExtResource("16_3fwy6")
+SplatmapsTexture = [ExtResource("17_fedtf")]
+FoliagesTexture = [ExtResource("23_cihpm")]
+ObjectsTexture = [ExtResource("21_qltef")]
+
+[sub_resource type="Resource" id="Resource_gnr32"]
+script = ExtResource("3_7qp44")
+ZonePosition = Vector2i(-1, 1)
+HeightMapTexture = ExtResource("18_31peg")
+SplatmapsTexture = [ExtResource("19_lwryv")]
+FoliagesTexture = [ExtResource("27_ss3r0")]
+ObjectsTexture = [ExtResource("24_pgvb3")]
+
+[sub_resource type="Resource" id="Resource_6mr77"]
+script = ExtResource("3_7qp44")
+ZonePosition = Vector2i(-1, 0)
+HeightMapTexture = ExtResource("20_5sw66")
+SplatmapsTexture = [ExtResource("21_4yhv0")]
+FoliagesTexture = [ExtResource("31_pigbg")]
+ObjectsTexture = [ExtResource("27_wxs80")]
+
+[sub_resource type="Resource" id="Resource_ygt8h"]
+script = ExtResource("3_7qp44")
+ZonePosition = Vector2i(0, -1)
+HeightMapTexture = ExtResource("22_bl1ql")
+SplatmapsTexture = [ExtResource("23_uv4mi")]
+FoliagesTexture = [ExtResource("35_o86c0")]
+ObjectsTexture = [ExtResource("30_pmg4i")]
+
+[sub_resource type="Resource" id="Resource_hkd25"]
+script = ExtResource("3_7qp44")
+ZonePosition = Vector2i(-1, -1)
+HeightMapTexture = ExtResource("24_okxys")
+SplatmapsTexture = [ExtResource("25_8wep3")]
+FoliagesTexture = [ExtResource("39_ow5sd")]
+ObjectsTexture = [ExtResource("33_xvcb6")]
+
+[sub_resource type="Resource" id="Resource_l8e4y"]
+script = ExtResource("3_7qp44")
+ZonePosition = Vector2i(1, 1)
+HeightMapTexture = ExtResource("26_tw3v5")
+SplatmapsTexture = [ExtResource("27_a6wud")]
+FoliagesTexture = [ExtResource("43_hbw3p")]
+ObjectsTexture = [ExtResource("36_rnqxb")]
+
+[sub_resource type="Resource" id="Resource_5chx3"]
+script = ExtResource("3_7qp44")
+ZonePosition = Vector2i(1, 0)
+HeightMapTexture = ExtResource("28_fd34n")
+SplatmapsTexture = [ExtResource("29_55i6o")]
+FoliagesTexture = [ExtResource("47_wjasx")]
+ObjectsTexture = [ExtResource("39_0iq4s")]
+
+[sub_resource type="Resource" id="Resource_cde66"]
+script = ExtResource("3_7qp44")
+ZonePosition = Vector2i(1, -1)
+HeightMapTexture = ExtResource("30_6xit5")
+SplatmapsTexture = [ExtResource("31_lmfyy")]
+FoliagesTexture = [ExtResource("51_uv5ve")]
+ObjectsTexture = [ExtResource("42_aj27j")]
+
+[sub_resource type="Resource" id="Resource_3qx6f"]
+script = ExtResource("4_3o3du")
+Zones = [SubResource("Resource_6ta7k"), SubResource("Resource_5c1wn"), SubResource("Resource_gnr32"), SubResource("Resource_6mr77"), SubResource("Resource_ygt8h"), SubResource("Resource_hkd25"), SubResource("Resource_l8e4y"), SubResource("Resource_5chx3"), SubResource("Resource_cde66")]
+
+[node name="Terrain" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 68.3705)
+
+[node name="TerraBrush" type="Node3D" parent="."]
+script = ExtResource("1_yys3q")
+DataPath = "res://Node3D"
+TextureSets = SubResource("Resource_qc4ij")
+Foliages = [SubResource("Resource_sv4da")]
+DefaultObjectFrequency = 3
+Objects = [SubResource("Resource_jxfii")]
+TerrainZones = SubResource("Resource_3qx6f")
+metadata/_edit_lock_ = true
