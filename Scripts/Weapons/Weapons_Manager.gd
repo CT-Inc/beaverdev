@@ -7,17 +7,12 @@ signal Update_Weapon_Stack
 @onready var Animation_Player = get_node("FPS_Rig/AnimationPlayer")
 
 var Current_Weapon = null
-
 var Weapon_Stack = [] #Array of Weapons currently held by player 
-
 var Weapon_Indicator = 0
-
 var Next_Weapon: String
-
 var Weapon_List = {}
 
 @export var _weapon_resources: Array[Weapon_Resource]
-
 @export var Start_Weapons: Array[String]
 
 var bullet = load("res://Scenes/Bullet.tscn")
@@ -45,6 +40,9 @@ func _input(event):
 		
 	if event.is_action_pressed("Melee"):
 		melee()
+		
+	if event.is_action_pressed("Interact"):
+		interact()
 
 func Initialize(_start_weapons: Array):
 	#Creating dictionary to refer to weapons
@@ -138,8 +136,6 @@ func melee():
 			else:
 				print("meleeing something else")
 	
-
-	
 	
 func handle_collision():
 	print("Current Ray: ", cur_ray)
@@ -173,3 +169,16 @@ func add_log(_Weapon: String, Ammo: int):
 	var _weapon = Weapon_List[_Weapon]
 	_weapon.Reserve_Ammo += 1
 	emit_signal("Update_Ammo", [Current_Weapon.Current_Ammo, Current_Weapon.Reserve_Ammo])
+
+func interact():
+	if Current_Weapon.Weapon_Name == "Log" and cur_ray and cur_ray.collider.is_in_group("dam_area"):
+		var dam = cur_ray.collider.get_parent()
+		if dam == self.team:
+			dam.add_wood(Current_Weapon.Reserve_Ammo)
+			print("adding wood")
+			Current_Weapon.Current_Ammo -= 1 
+			emit_signal("Update_Ammo", [Current_Weapon.Current_Ammo, Current_Weapon.Reserve_Ammo])
+			if Weapon_Stack.size() > 0:
+				exit(Weapon_Stack[0])
+			else:
+				Current_Weapon = null

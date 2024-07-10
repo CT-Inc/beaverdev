@@ -22,6 +22,7 @@ var MOUSE_SENS: float = 0.1
 
 var current_class: CharacterClass
 var health: int
+var spawn_points: Array[Node] = []
 var player_speed
 
 # Signals
@@ -45,6 +46,7 @@ func _ready():
 	camera.current = true
 	GlobalSettings.connect("fov_updated", _on_fov_updated)
 	GlobalSettings.connect("mouse_sens_updated", _on_mouse_sens_updated)
+	spawn_points = get_tree().get_nodes_in_group("SpawnPoints")
 	
 func _input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
@@ -108,11 +110,21 @@ func _update_health(value):
 	health += value
 	if health <= 0:
 		print("Player died")
-		queue_free()
+		die()
 	else:
 		print("Player health", health)
 	emit_signal("update_health", self.health, value)
 	
+func die():
+	respawn()
+	
+func respawn():
+	if spawn_points.size() > 0:
+		var spawn_point = spawn_points[randi() % spawn_points.size()]
+		global_transform.origin = spawn_point.global_transform.origin
+		health = 100
+	else:
+		print("no spawn points available")
 
 @rpc
 func shoot_bullet(origin, direction):

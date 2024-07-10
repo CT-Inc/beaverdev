@@ -1,11 +1,13 @@
-[gd_scene load_steps=126 format=3 uid="uid://c636e4idxytf5"]
+[gd_scene load_steps=128 format=3 uid="uid://c636e4idxytf5"]
 
 [ext_resource type="MeshLibrary" uid="uid://dnp2mr2u22xdx" path="res://Library.tres" id="2_5dm0p"]
 [ext_resource type="Texture2D" uid="uid://cxqbdefpbxboa" path="res://Models/tree_lowrestreeback.png" id="3_t3uu6"]
 [ext_resource type="Texture2D" uid="uid://jgyetnp62eu5" path="res://Models/tree_treeleaves.png" id="4_bxt51"]
 [ext_resource type="PackedScene" uid="uid://80rrkjk1k3tf" path="res://Scenes/tree.tscn" id="5_vttpr"]
 [ext_resource type="PackedScene" uid="uid://c0paxw43hrf3l" path="res://Spawnable Objects/Log.tscn" id="6_3g046"]
+[ext_resource type="PackedScene" uid="uid://xxlasgovbs0g" path="res://Scenes/blue_dam.tscn" id="7_kq3a7"]
 [ext_resource type="PackedScene" uid="uid://b1pppi72hcyqj" path="res://Scenes/Dummy.tscn" id="8_b88mk"]
+[ext_resource type="PackedScene" uid="uid://bwo4r48bvsq1i" path="res://Scenes/red_dam.tscn" id="8_m4dkg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vvh2p"]
 resource_name = "grass"
@@ -7581,3 +7583,12 @@ collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Water/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_nd8my")
+
+[node name="SpawnPoint" type="Marker3D" parent="." groups=["SpawnPoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5, 0.5007, 15)
+
+[node name="BlueDam" parent="." instance=ExtResource("7_kq3a7")]
+transform = Transform3D(-0.978433, 0, -0.206563, 0, 1, 0, 0.206563, 0, -0.978433, 86.091, 1.4805, 75.2925)
+
+[node name="RedDam" parent="." instance=ExtResource("8_m4dkg")]
+transform = Transform3D(-0.963186, 0, 0.268836, 0, 1, 0, -0.268836, 0, -0.963186, 67.3038, 0.125001, 75.2743)
