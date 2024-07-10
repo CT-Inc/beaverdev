@@ -19,8 +19,14 @@ var bullet = load("res://Scenes/Bullet.tscn")
 var instance = null
 var cur_ray
 
+var current_dam = null
+
 func _ready():
-	pass
+	var dam_nodes = get_tree().get_nodes_in_group("Dam")
+	for dam_area in dam_nodes:
+		var dam = dam_area.get_parent()
+		print("Connecting to dam:", dam.name)
+		dam.connect("player_near_dam", _on_player_near_dam)
 
 func _input(event):
 	if event.is_action_pressed("switch_weapon_up"):
@@ -170,15 +176,31 @@ func add_log(_Weapon: String, Ammo: int):
 	_weapon.Reserve_Ammo += 1
 	emit_signal("Update_Ammo", [Current_Weapon.Current_Ammo, Current_Weapon.Reserve_Ammo])
 
+func _on_player_near_dam(dam, is_near):
+	if is_near:
+		current_dam = dam
+	else:
+		if current_dam == dam:
+			current_dam = null
+	
 func interact():
-	if Current_Weapon.Weapon_Name == "Log" and cur_ray and cur_ray.collider.is_in_group("dam_area"):
-		var dam = cur_ray.collider.get_parent()
-		if dam == self.team:
-			dam.add_wood(Current_Weapon.Reserve_Ammo)
-			print("adding wood")
-			Current_Weapon.Current_Ammo -= 1 
-			emit_signal("Update_Ammo", [Current_Weapon.Current_Ammo, Current_Weapon.Reserve_Ammo])
-			if Weapon_Stack.size() > 0:
-				exit(Weapon_Stack[0])
-			else:
-				Current_Weapon = null
+	print("Interacting")
+	if Current_Weapon.Weapon_Name != "Log":
+		print("Not Holding Log")
+		return
+	
+	if not current_dam:
+		print("No dam in range")
+		return
+		
+	print("Adding wood to dam")
+	current_dam.add_wood(1)
+	Current_Weapon.Current_Ammo -= 1
+	emit_signal("Update_Ammo", [Current_Weapon.Current_Ammo, Current_Weapon.Reserve_Ammo])
+	if Current_Weapon.Current_Ammo <= 0:
+		Weapon_Stack.erase(Current_Weapon.Weapon_Name)
+		emit_signal("Update_Weapon_Stack", Weapon_Stack)
+		if Weapon_Stack.size() > 0:
+			exit(Weapon_Stack[0])
+		else:
+			Current_Weapon = null

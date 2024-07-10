@@ -7531,7 +7531,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2964, 0, -77.2498)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.8554, 0.936455, -34.6855)
 
 [node name="Log2" parent="." instance=ExtResource("6_3g046")]
-transform = Transform3D(0.841067, 0, 0.54093, 0, 1, 0, -0.54093, 0, 0.841067, 52.4751, 0.538812, -28.8351)
+transform = Transform3D(0.841067, 0, 0.54093, 0, 1, 0, -0.54093, 0, 0.841067, 41.9601, 0.538812, -30.3951)
+
+[node name="Log3" parent="." instance=ExtResource("6_3g046")]
+transform = Transform3D(0.45792, 0, 0.888993, 0, 1, 0, -0.888993, 0, 0.45792, 58.2439, 0.538812, -25.4115)
+
+[node name="Log4" parent="." instance=ExtResource("6_3g046")]
+transform = Transform3D(0.212229, 0, 0.977219, 0, 1, 0, -0.977219, 0, 0.212229, 55.4964, 0.538812, -20.0775)
+
+[node name="Log5" parent="." instance=ExtResource("6_3g046")]
+transform = Transform3D(0.212229, 0, 0.977219, 0, 1, 0, -0.977219, 0, 0.212229, 51.2074, 0.538812, -9.75258)
+
+[node name="Log6" parent="." instance=ExtResource("6_3g046")]
+transform = Transform3D(0.841067, 0, 0.54093, 0, 1, 0, -0.54093, 0, 0.841067, 43.3671, 0.538812, -21.4401)
+
+[node name="Log7" parent="." instance=ExtResource("6_3g046")]
+transform = Transform3D(0.841067, 0, 0.54093, 0, 1, 0, -0.54093, 0, 0.841067, 35.7975, 0.538812, -16.5717)
+
+[node name="Log8" parent="." instance=ExtResource("6_3g046")]
+transform = Transform3D(0.841067, 0, 0.54093, 0, 1, 0, -0.54093, 0, 0.841067, 30.3882, 0.538812, -24.9824)
+
+[node name="Log9" parent="." instance=ExtResource("6_3g046")]
+transform = Transform3D(0.977219, 0, -0.212229, 0, 1, 0, 0.212229, 0, 0.977219, 8.26154, 0.538812, -38.4709)
+
+[node name="Log10" parent="." instance=ExtResource("6_3g046")]
+transform = Transform3D(0.212229, 0, 0.977219, 0, 1, 0, -0.977219, 0, 0.212229, 25.7232, 0.538812, -38.7719)
+
+[node name="Log11" parent="." instance=ExtResource("6_3g046")]
+transform = Transform3D(-0.54093, 0, 0.841067, 0, 1, 0, -0.841067, 0, -0.54093, 21.9031, 0.538812, -21.1819)
 
 [node name="cliff_half_rock2" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-06, 0, -10, 0, 4, 0, 100, 0, -4.37114e-07, 126.783, 0.124998, 111.972)
