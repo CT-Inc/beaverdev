@@ -154,12 +154,13 @@ func handle_collision():
 
 #This is a generalized function for weapons but in our specific case logs
 func _on_pick_up_detection_body_entered(body):
-	#Check if the log/weaoon is already in the players current stack of weapons
+	#Check if the log/weapon is already in the players current stack of weapons
 	var weapon_in_stack = Weapon_Stack.find(body.weapon_name, 0 )
 	
 	#If the log is not in the stack, add it
 	if weapon_in_stack == -1:
 		Weapon_Stack.push_front(body.weapon_name)
+		Weapon_List[body.weapon_name].Current_Ammo = 1 #Initialize the ammo for the log
 		emit_signal("Update_Weapon_Stack", Weapon_Stack)
 		exit(body.weapon_name)
 		#removes log from scene
@@ -173,7 +174,7 @@ func _on_pick_up_detection_body_entered(body):
 #Parameter is named Weapon since it techincally is a weapon under the stack
 func add_log(_Weapon: String, Ammo: int):
 	var _weapon = Weapon_List[_Weapon]
-	_weapon.Reserve_Ammo += 1
+	_weapon.Current_Ammo += Ammo
 	emit_signal("Update_Ammo", [Current_Weapon.Current_Ammo, Current_Weapon.Reserve_Ammo])
 
 func _on_player_near_dam(dam, is_near):
@@ -192,15 +193,29 @@ func interact():
 	if not current_dam:
 		print("No dam in range")
 		return
+	
+	if Current_Weapon.Current_Ammo > 0:
+		print("Adding wood to dam")
+		current_dam.add_wood(1)
+		Current_Weapon.Current_Ammo -= 1
+		emit_signal("Update_Ammo", [Current_Weapon.Current_Ammo, Current_Weapon.Reserve_Ammo])
 		
-	print("Adding wood to dam")
-	current_dam.add_wood(1)
-	Current_Weapon.Current_Ammo -= 1
-	emit_signal("Update_Ammo", [Current_Weapon.Current_Ammo, Current_Weapon.Reserve_Ammo])
-	if Current_Weapon.Current_Ammo <= 0:
-		Weapon_Stack.erase(Current_Weapon.Weapon_Name)
+		if Current_Weapon.Current_Ammo <= 0:
+			Weapon_Stack.erase(Current_Weapon.Weapon_Name)
+			emit_signal("Update_Weapon_Stack", Weapon_Stack)
+			if Weapon_Stack.size() > 0:
+				exit(Weapon_Stack[0])
+			else:
+				Current_Weapon = null
+func clear_logs():
+	var logs_to_remove = []
+	for weapon_name in Weapon_Stack:
+		if Weapon_List[weapon_name].Weapon_Name == 'Log':
+			logs_to_remove.append(weapon_name)
+		for log in logs_to_remove:
+			Weapon_Stack.erase(log)
 		emit_signal("Update_Weapon_Stack", Weapon_Stack)
-		if Weapon_Stack.size() > 0:
+		if Weapon_Stack.size() > 0 :
 			exit(Weapon_Stack[0])
 		else:
 			Current_Weapon = null

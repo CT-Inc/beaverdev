@@ -19,7 +19,7 @@ func _on_area_3d_body_entered(body):
 		
 
 func _on_area_3d_body_exited(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("Player"):
 		print("Player has left the blue dam")
 		emit_signal("player_near_dam", self,  false)
 

@@ -116,6 +116,8 @@ func _update_health(value):
 	emit_signal("update_health", self.health, value)
 	
 func die():
+	if weapons_manager:
+		weapons_manager.clear_logs()
 	respawn()
 	
 func respawn():

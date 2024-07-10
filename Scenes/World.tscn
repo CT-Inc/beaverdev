@@ -1680,7 +1680,7 @@ points = PackedVector3Array(4.5, 0.75, 50, 4.5, -0.75, 50, 4.5, 0.75, -50, -4.5,
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -41.9579, 0.843547, -2.00339)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.224374, -0.821574, 0.524092, -0.9213, -0.00356682, 0.388835, -0.317588, -0.57009, -0.757717, 42.1418, 11.7734, -15.8617)
+transform = Transform3D(0.112187, -0.410787, 0.262046, -0.46065, -0.0017834, 0.194418, -0.158794, -0.285045, -0.378858, 72.1418, 11.7734, -50.8617)
 shadow_enabled = true
 shadow_reverse_cull_face = true
 shadow_opacity = 0.75
@@ -7528,34 +7528,34 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2964, 0, -77.2498)
 
 [node name="Log" parent="." instance=ExtResource("6_3g046")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.8554, 0.936455, -34.6855)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.3554, 0.936455, -34.6855)
 
 [node name="Log2" parent="." instance=ExtResource("6_3g046")]
-transform = Transform3D(0.841067, 0, 0.54093, 0, 1, 0, -0.54093, 0, 0.841067, 41.9601, 0.538812, -30.3951)
+transform = Transform3D(0.841067, 0, 0.54093, 0, 1, 0, -0.54093, 0, 0.841067, 41.8601, 0.538812, -30.5451)
 
 [node name="Log3" parent="." instance=ExtResource("6_3g046")]
-transform = Transform3D(0.45792, 0, 0.888993, 0, 1, 0, -0.888993, 0, 0.45792, 58.2439, 0.538812, -25.4115)
+transform = Transform3D(0.45792, 0, 0.888993, 0, 1, 0, -0.888993, 0, 0.45792, 76.1439, 0.538812, -21.0615)
 
 [node name="Log4" parent="." instance=ExtResource("6_3g046")]
-transform = Transform3D(0.212229, 0, 0.977219, 0, 1, 0, -0.977219, 0, 0.212229, 55.4964, 0.538812, -20.0775)
+transform = Transform3D(0.212229, 0, 0.977219, 0, 1, 0, -0.977219, 0, 0.212229, 73.4964, 0.538812, -15.5775)
 
 [node name="Log5" parent="." instance=ExtResource("6_3g046")]
-transform = Transform3D(0.212229, 0, 0.977219, 0, 1, 0, -0.977219, 0, 0.212229, 51.2074, 0.538812, -9.75258)
+transform = Transform3D(0.212229, 0, 0.977219, 0, 1, 0, -0.977219, 0, 0.212229, 60.2074, 0.538812, -9.75258)
 
 [node name="Log6" parent="." instance=ExtResource("6_3g046")]
-transform = Transform3D(0.841067, 0, 0.54093, 0, 1, 0, -0.54093, 0, 0.841067, 43.3671, 0.538812, -21.4401)
+transform = Transform3D(0.841067, 0, 0.54093, 0, 1, 0, -0.54093, 0, 0.841067, 50.8671, 0.538812, -21.4401)
 
 [node name="Log7" parent="." instance=ExtResource("6_3g046")]
-transform = Transform3D(0.841067, 0, 0.54093, 0, 1, 0, -0.54093, 0, 0.841067, 35.7975, 0.538812, -16.5717)
+transform = Transform3D(0.841067, 0, 0.54093, 0, 1, 0, -0.54093, 0, 0.841067, 79.2975, 0.538812, -61.0717)
 
 [node name="Log8" parent="." instance=ExtResource("6_3g046")]
-transform = Transform3D(0.841067, 0, 0.54093, 0, 1, 0, -0.54093, 0, 0.841067, 30.3882, 0.538812, -24.9824)
+transform = Transform3D(0.841067, 0, 0.54093, 0, 1, 0, -0.54093, 0, 0.841067, 48.8882, 0.538812, -58.4824)
 
 [node name="Log9" parent="." instance=ExtResource("6_3g046")]
-transform = Transform3D(0.977219, 0, -0.212229, 0, 1, 0, 0.212229, 0, 0.977219, 8.26154, 0.538812, -38.4709)
+transform = Transform3D(0.977219, 0, -0.212229, 0, 1, 0, 0.212229, 0, 0.977219, 52.2615, 0.538812, -38.4709)
 
 [node name="Log10" parent="." instance=ExtResource("6_3g046")]
-transform = Transform3D(0.212229, 0, 0.977219, 0, 1, 0, -0.977219, 0, 0.212229, 25.7232, 0.538812, -38.7719)
+transform = Transform3D(0.212229, 0, 0.977219, 0, 1, 0, -0.977219, 0, 0.212229, 44.2232, 0.538812, -72.2719)
 
 [node name="Log11" parent="." instance=ExtResource("6_3g046")]
 transform = Transform3D(-0.54093, 0, 0.841067, 0, 1, 0, -0.841067, 0, -0.54093, 21.9031, 0.538812, -21.1819)
@@ -7611,6 +7611,57 @@ collision_mask = 5
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Water/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_nd8my")
 
+[node name="cliff_half_rock5" type="Node3D" parent="."]
+transform = Transform3D(-100, 0, 8.74228e-07, 0, 4, 0, -8.74228e-06, 0, -10, -58.5307, 0.124998, -45.7003)
+
+[node name="cliff_half_rock" type="MeshInstance3D" parent="cliff_half_rock5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = SubResource("ArrayMesh_sjvsg")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="cliff_half_rock5/cliff_half_rock"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cliff_half_rock5/cliff_half_rock/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_0d6b6")
+
+[node name="cliff_half_rock6" type="Node3D" parent="."]
+transform = Transform3D(-1.51682e-06, 0, -10, 0, 4, 0, 16, 0, -9.48011e-07, -3.53075, 0.124998, -54.7003)
+
+[node name="cliff_half_rock" type="MeshInstance3D" parent="cliff_half_rock6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = SubResource("ArrayMesh_sjvsg")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="cliff_half_rock6/cliff_half_rock"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cliff_half_rock6/cliff_half_rock/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_0d6b6")
+
+[node name="cliff_half_rock7" type="Node3D" parent="."]
+transform = Transform3D(100, 0, 1.7053e-13, 0, 4, 0, -1.36424e-12, 0, 10, -58.5307, 0.124998, -64.2003)
+
+[node name="cliff_half_rock" type="MeshInstance3D" parent="cliff_half_rock7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = SubResource("ArrayMesh_sjvsg")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="cliff_half_rock7/cliff_half_rock"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cliff_half_rock7/cliff_half_rock/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_0d6b6")
+
+[node name="Water2" type="MeshInstance3D" parent="." groups=["Water"]]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -58.5587, 0.5, -54.4832)
+mesh = SubResource("BoxMesh_fb8r8")
+
+[node name="Area3D" type="Area3D" parent="Water2" groups=["Water"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+collision_layer = 4
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Water2/Area3D"]
+shape = SubResource("ConvexPolygonShape3D_nd8my")
+
 [node name="SpawnPoint" type="Marker3D" parent="." groups=["SpawnPoints"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5, 0.5007, 15)
 
@@ -7618,4 +7669,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5, 0.5007, 15)
 transform = Transform3D(-0.978433, 0, -0.206563, 0, 1, 0, 0.206563, 0, -0.978433, 86.091, 1.4805, 75.2925)
 
 [node name="RedDam" parent="." instance=ExtResource("8_m4dkg")]
-transform = Transform3D(-0.963186, 0, 0.268836, 0, 1, 0, -0.268836, 0, -0.963186, 67.3038, 0.125001, 75.2743)
+transform = Transform3D(0.0103847, 0, 0.999946, 0, 1, 0, -0.999946, 0, 0.0103847, -34.6962, 0.125001, -34.7257)
