@@ -14,7 +14,7 @@ metallic_specular = 0.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_1sj11"]
 size = Vector3(30.2754, 1, 36.0731)
 
-[node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
+[node name="Enemy" type="CharacterBody3D" groups=["blue", "enemy"]]
 script = ExtResource("1_87vsr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -31,4 +31,4 @@ func add_wood(amount):
 
 func update_dam_progress():
 	print("Blue team wood count is", wood_count)
-	$ProgressBar.value = float(wood_count) / wood_needed * 100
+	$CanvasLayer/HBoxContainer/ProgressBar.value = float(wood_count) / wood_needed * 100

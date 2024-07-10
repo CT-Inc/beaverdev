@@ -25,6 +25,9 @@ var health: int
 var spawn_points: Array[Node] = []
 var player_speed
 
+var team
+var enemy_team
+
 # Signals
 signal update_health
 signal send_ray
@@ -47,6 +50,8 @@ func _ready():
 	GlobalSettings.connect("fov_updated", _on_fov_updated)
 	GlobalSettings.connect("mouse_sens_updated", _on_mouse_sens_updated)
 	spawn_points = get_tree().get_nodes_in_group("SpawnPoints")
+	weapons_manager.team = team
+	weapons_manager.enemy_team = enemy_team
 	
 func _input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():

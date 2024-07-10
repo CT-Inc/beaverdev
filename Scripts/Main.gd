@@ -26,6 +26,9 @@ var enet_peer = ENetMultiplayerPeer.new()
 var class_selection_menu
 var player
 
+var red_team
+var blue_team
+
 func _ready():
 	#Hide the World and Settings menu by default
 	world.visible = false  
@@ -70,6 +73,9 @@ func _on_join_button_pressed():
 	
 #Start the server and show the class selection menu
 func _start_server():
+	# clear teams
+	red_team = []
+	blue_team = []
 	_show_class_selection_menu()
 	
 	var result = enet_peer.create_server(PORT)
@@ -110,9 +116,9 @@ func add_player(peer_id, className = ""):
 	if player == null:
 		player = Player.instantiate()
 		player.name = str(peer_id)
+		_assign_team(player)
 		add_child(player, true)
 		print("Player %s connected" % str(peer_id))
-		
 		if className != "":
 			var class_resource_path = "res://Scripts/Classes/%s.tres" % className
 			print("Loading class resource from: %s" % class_resource_path)
@@ -142,6 +148,9 @@ func _on_settings_pressed():
 	
 func _handle_gui_shit(state):
 	settings_open = state
+	print(get_tree().get_nodes_in_group("blue"))
+	print(get_tree().get_nodes_in_group("red"))
+	print(get_tree().get_nodes_in_group("Player"))
 	if settings_open:
 		print("we are visible/OPEN MENU MODE/taking control from you")
 		GlobalSettings.update_game_state(0)
@@ -156,3 +165,15 @@ func _handle_gui_shit(state):
 
 func _on_settings_menu_popup_hide():
 	_handle_gui_shit(false)
+	
+func _assign_team(player):
+	if red_team.size() > blue_team.size():
+		_add_to_team(player, blue_team, "blue", "red")
+	else:
+		_add_to_team(player, red_team, "red", "blue")
+		
+func _add_to_team(player, team, team_color, enemy_color):
+	team.append(player)
+	player.add_to_group(team_color)
+	player.team = team_color
+	player.enemy_team = enemy_color

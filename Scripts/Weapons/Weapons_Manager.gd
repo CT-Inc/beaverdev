@@ -18,6 +18,8 @@ var Weapon_List = {}
 var bullet = load("res://Scenes/Bullet.tscn")
 var instance = null
 var cur_ray
+var team
+var enemy_team
 
 var current_dam = null
 
@@ -146,7 +148,7 @@ func melee():
 func handle_collision():
 	print("Current Ray: ", cur_ray)
 	if cur_ray:
-		if cur_ray.collider.is_in_group("enemy"):
+		if cur_ray.collider.is_in_group(enemy_team):
 			cur_ray.collider._update_health(-Current_Weapon.Projectile_Damage)
 		print("handled_collison to shoot something")
 		return
@@ -179,7 +181,8 @@ func add_log(_Weapon: String, Ammo: int):
 
 func _on_player_near_dam(dam, is_near):
 	if is_near:
-		current_dam = dam
+		if dam.is_in_group(team):
+			current_dam = dam
 	else:
 		if current_dam == dam:
 			current_dam = null

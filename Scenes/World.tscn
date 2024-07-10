@@ -7665,8 +7665,8 @@ shape = SubResource("ConvexPolygonShape3D_nd8my")
 [node name="SpawnPoint" type="Marker3D" parent="." groups=["SpawnPoints"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5, 0.5007, 15)
 
-[node name="BlueDam" parent="." instance=ExtResource("7_kq3a7")]
+[node name="BlueDam" parent="." groups=["blue"] instance=ExtResource("7_kq3a7")]
 transform = Transform3D(-0.978433, 0, -0.206563, 0, 1, 0, 0.206563, 0, -0.978433, 86.091, 1.4805, 75.2925)
 
-[node name="RedDam" parent="." instance=ExtResource("8_m4dkg")]
+[node name="RedDam" parent="." groups=["red"] instance=ExtResource("8_m4dkg")]
 transform = Transform3D(0.0103847, 0, 0.999946, 0, 1, 0, -0.999946, 0, 0.0103847, -34.6962, 0.125001, -34.7257)

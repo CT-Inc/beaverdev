@@ -22,10 +22,6 @@ shape = SubResource("BoxShape3D_l246t")
 transform = Transform3D(8.4942, 0, 0, 0, 3.042, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_gtm4e")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_right = 124.0
-offset_bottom = 27.0
-
 [node name="BlueDamn Label" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 pixel_size = 0.05
@@ -37,6 +33,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 pixel_size = 0.03
 text = "E to interact
 "
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+z_as_relative = false
+anchors_preset = -1
+anchor_top = 0.922
+anchor_right = 0.287
+anchor_bottom = 0.96
+offset_top = 0.159973
+offset_right = 0.640015
+offset_bottom = -0.200012
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.78
+text = " Red Dam Progress"
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
