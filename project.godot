@@ -26,6 +26,14 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/mode=2
 
+[dotnet]
+
+project/assembly_name="beaverDev"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
+
 [input]
 
 move_up={
