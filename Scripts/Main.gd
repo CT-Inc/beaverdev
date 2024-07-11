@@ -34,7 +34,8 @@ func _ready():
 	world.visible = false  
 	settings_menu.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE) 
-	
+	red_team = []
+	blue_team = []
 	#If the game is running on a dedicated server, the server will start autmatically
 	if OS.has_feature("dedicated_server"):
 		print("Running in headless mode, starting server automatically")
@@ -76,8 +77,6 @@ func _on_join_button_pressed():
 #Start the server and show the class selection menu
 func _start_server():
 	# clear teams
-	red_team = []
-	blue_team = []
 	_show_class_selection_menu()
 	
 	var result = enet_peer.create_server(PORT)
