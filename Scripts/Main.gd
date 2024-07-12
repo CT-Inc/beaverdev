@@ -25,6 +25,7 @@ var enet_peer = ENetMultiplayerPeer.new()
 #varialbe declarations
 var class_selection_menu
 var player
+var Weapon_Stack = [] # Add this line to declare Weapon_Stack
 
 func _ready():
 	#Hide the World and Settings menu by default
@@ -48,17 +49,14 @@ func _unhandled_input(event):
 		_handle_gui_shit(true)
 		
 		
-
 func _on_host_button_pressed():
 	#Start server when the host button is pressed
 	_start_server()
 	
-
+	
 #When the join button is pressed, connect to the server using the address entered in the text field
 func _on_join_button_pressed():
 	_show_class_selection_menu()
-	
-	
 	var address = address_entry.text 
 	var result = enet_peer.create_client(address, PORT)
 	if result != OK:
@@ -71,15 +69,14 @@ func _on_join_button_pressed():
 #Start the server and show the class selection menu
 func _start_server():
 	_show_class_selection_menu()
-	
 	var result = enet_peer.create_server(PORT)
 	if result != OK:
 		print("Failed to create s!erver: %d" % result)
 		return
 	# Set the multiplayer peer and connect the peer_connected and peer_disconnected signals
 	multiplayer.multiplayer_peer = enet_peer
-	multiplayer.peer_connected.connect(add_player)
-	multiplayer.peer_disconnected.connect(remove_player)
+	multiplayer.peer_connected.connect(_on_peer_connected)
+	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 
 	if not OS.has_feature("dedicated_server"):
 		print("no dedicated server")
@@ -107,22 +104,28 @@ func _start_game(className):
 	print("Game started with class: %s" % className)
 
 func add_player(peer_id, className = ""):
-	if player == null:
-		player = Player.instantiate()
-		player.name = str(peer_id)
-		add_child(player, true)
-		print("Player %s connected" % str(peer_id))
-		
-		if className != "":
-			var class_resource_path = "res://Scripts/Classes/%s.tres" % className
-			print("Loading class resource from: %s" % class_resource_path)
-			var class_resource = load(class_resource_path)
-			if class_resource != null:
-				print("Class resource loaded successfully")
-				player.set_class(class_resource)
-			else:
-				print("Failed to load class resource")
-		
+
+	var new_player = Player.instantiate()
+	new_player.name = str(peer_id)
+	add_child(new_player, true)
+	print("Player %s connected" % str(peer_id))
+	
+	if className != "":
+		var class_resource_path = "res://Scripts/Classes/%s.tres" % className
+		print("Loading class resource from: %s" % class_resource_path)
+		var class_resource = load(class_resource_path)
+		if class_resource != null:
+			print("Class resource loaded successfully")
+			new_player.set_class(class_resource)
+		else:
+			print("Failed to load class resource")
+			
+	rpc_id(peer_id, "_init_player_weapons", Weapon_Stack)
+
+@rpc("any_peer")		
+func _init_player_weapons(start_weapons):
+	if player != null:
+		player.weapon_manager.Initialize(start_weapons)
 
 func remove_player(peer_id):
 	var player = get_node_or_null(str(peer_id))
@@ -130,6 +133,14 @@ func remove_player(peer_id):
 		player.queue_free()
 		print("Player %s disconnected" % str(peer_id))
 		
+func _on_peer_connected(peer_id):
+	print("Peer connected: %d" % peer_id)
+	if OS.has_feature("dedicated_server"):
+		add_player(peer_id)
+		
+func _on_peer_disconnected(peer_id):
+	print("Peer disconnected: %d" % peer_id)
+	remove_player(peer_id)
 
 func _on_quit_game_pressed():
 	get_tree().quit()

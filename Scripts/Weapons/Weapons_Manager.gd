@@ -24,8 +24,12 @@ var bullet = load("res://Scenes/Bullet.tscn")
 var instance = null
 var cur_ray
 
+func _enter_tree():
+	set_multiplayer_authority(str(name).to_int())
+
 func _ready():
-	pass
+	if not is_multiplayer_authority():
+		return 
 
 func _input(event):
 	if event.is_action_pressed("switch_weapon_up"):
@@ -35,7 +39,7 @@ func _input(event):
 	if event.is_action_pressed("switch_weapon_down"):
 		Weapon_Indicator = max(Weapon_Indicator-1,0)
 		exit(Weapon_Stack[Weapon_Indicator])
-		
+	
 	if event.is_action_pressed("shoot"):
 		shoot()
 		
@@ -44,22 +48,34 @@ func _input(event):
 
 func Initialize(_start_weapons: Array):
 	#Creating dictionary to refer to weapons
+	print("Initializing weapons with: ", _start_weapons)
 	for weapon in _weapon_resources:
 		Weapon_List[weapon.Weapon_Name] = weapon
 		
 	for i in _start_weapons:
-		Weapon_Stack.push_back(i) #Add our start weapons
-		
-	Current_Weapon = Weapon_List[Weapon_Stack[0]] #Set the first weapon in the stack to current
-	emit_signal("Update_Weapon_Stack", Weapon_Stack)
-	enter()
+		if i in Weapon_List:
+			Weapon_Stack.push_back(i) #Add our start weapons
+		else:
+			print("Weapon", i, "not found in Weapon_List")
 	
+	if Weapon_Stack.size() > 0:
+		Current_Weapon = Weapon_List[Weapon_Stack[0]] #Set the first weapon in the stack to current
+		if Current_Weapon:
+			emit_signal("Update_Weapon_Stack", Weapon_Stack)
+			enter()
+		else:
+			print("Error: Could not initialize Current_Weapon")
+	else:
+		print("No starting weapons provided")
 	
 func enter():
 	#Call when first "entering" into a weapon
-	Animation_Player.queue(Current_Weapon.Activate_Anim)
-	emit_signal("Weapon_Changed", Current_Weapon.Weapon_Name)
-	emit_signal("Update_Ammo", [Current_Weapon.Current_Ammo, Current_Weapon.Reserve_Ammo])
+	if Current_Weapon:
+		Animation_Player.queue(Current_Weapon.Activate_Anim)
+		emit_signal("Weapon_Changed", Current_Weapon.Weapon_Name)
+		emit_signal("Update_Ammo", [Current_Weapon.Current_Ammo, Current_Weapon.Reserve_Ammo])
+	else: 
+		print("Error: Current_Weapon is null in enter()")
 	
 func exit(_next_weapon: String ):
 	#in order to change weapons first call exit
@@ -70,9 +86,12 @@ func exit(_next_weapon: String ):
 			
 	
 func Change_Weapon(weapon_name: String):
-	Current_Weapon = Weapon_List[weapon_name]
-	Next_Weapon = ""
-	enter()
+	if weapon_name in Weapon_List:
+		Current_Weapon = Weapon_List[weapon_name]
+		Next_Weapon = ""
+		enter()
+	else:
+		print("Error: Weapon '%s' not found in Weapon_List" % weapon_name)
 
 
 func _on_animation_player_animation_finished(anim_name):
@@ -84,6 +103,8 @@ func _on_animation_player_animation_finished(anim_name):
 			shoot()
 
 func shoot():
+	if Current_Weapon == null:
+		return
 	#print(get_global_transform().basis.z)
 	if Current_Weapon.Current_Ammo != 0:
 		if !Animation_Player.is_playing(): #enforces the fire rate set by the animation

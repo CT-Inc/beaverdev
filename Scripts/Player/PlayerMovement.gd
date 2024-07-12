@@ -27,6 +27,17 @@ const HIT_STAGGER = 8.0
 
 @onready var player : CharacterBody3D = get_parent() as CharacterBody3D
 
+@onready var multiplayer_synchronizer = $MultiplayerSynchronizer
+
+func _ready():
+	if not is_multiplayer_authority():
+		return 
+	if multiplayer_synchronizer:
+		multiplayer_synchronizer.set_multiplayer_authority(get_tree().get_multiplayer().get_unique_id())
+		print("MultiplayerSynchronizer configured for authority: ", get_tree().get_multiplayer().get_unique_id())
+	else:
+		print("MultiplayerSynchronizer not found")
+
 func _physics_process(delta):
 	if not player.is_multiplayer_authority():
 		return

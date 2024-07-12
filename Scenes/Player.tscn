@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://car5o216tw28j"]
+[gd_scene load_steps=31 format=3 uid="uid://car5o216tw28j"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_u3g2h"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Weapons_Manager.gd" id="2_jli8k"]
@@ -653,6 +653,17 @@ _data = {
 "Rifle Shoot": SubResource("Animation_of1s8")
 }
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_mataa"]
+properties/0/path = NodePath(".:Current_Weapon")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:Weapon_Stack")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:Start_Weapons")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_d8knc"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
@@ -663,6 +674,27 @@ properties/1/replication_mode = 1
 properties/2/path = NodePath("Head/Camera3D:rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
+properties/3/path = NodePath(".:transform")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath(".:current_class")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath(".:health")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath(".:velocity")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("Head/Camera3D/Weapons_Manager/FPS_Rig/AnimationPlayer:current_animation")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath("Head/Camera3D/Weapons_Manager/FPS_Rig/AnimationPlayer:movie_quit_on_finish")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath("Head/Camera3D/Weapons_Manager:Start_Weapons")
+properties/9/spawn = true
+properties/9/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D" groups=["enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56028, 0)
@@ -754,6 +786,10 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_8jffx")
 }
+
+[node name="WeaponSynchronizer" type="MultiplayerSynchronizer" parent="."]
+root_path = NodePath("../Head/Camera3D/Weapons_Manager")
+replication_config = SubResource("SceneReplicationConfig_mataa")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_d8knc")

@@ -34,12 +34,19 @@ signal send_ray
 @onready var fps_rig = $Head/Camera3D/Weapons_Manager/FPS_Rig
 @onready var movement = preload("res://Scripts/Player/PlayerMovement.gd").new()
 
+@onready var multiplayer_synchronizer = $MultiplayerSynchronizer
+
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
 
 func _ready():
 	if not is_multiplayer_authority():
 		return 
+	if multiplayer_synchronizer:
+		multiplayer_synchronizer.set_multiplayer_authority(get_tree().get_multiplayer().get_unique_id())
+		print("MultiplayerSynchronizer configured for authority: ", get_tree().get_multiplayer().get_unique_id())
+	else:
+		print("MultiplayerSynchronizer not found")
 	add_child(movement)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera.current = true
@@ -113,6 +120,14 @@ func _on_mouse_sens_updated(value):
 func _update_health(value):
 	emit_signal("update_health", self.health, value)
 	pass
+
+@rpc()
+func _init_weapons(start_weapons):
+	if weapons_manager:
+		weapons_manager.Initialize(start_weapons)
+	else:
+		print("Error: WeaponManager not found")
+ 
 
 @rpc
 func shoot_bullet(origin, direction):
