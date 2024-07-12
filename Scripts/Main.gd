@@ -27,7 +27,17 @@ var class_selection_menu
 var player
 var Weapon_Stack = [] # Add this line to declare Weapon_Stack
 
+enum GameState{
+	MAIN_MENU,
+	CLASS_SELECTION,
+	IN_GAME
+}
+
+var current_state = GameState.MAIN_MENU
+@onready var main = $"."
+
 func _ready():
+	print("I am main node", main)
 	#Hide the World and Settings menu by default
 	world.visible = false  
 	settings_menu.visible = false
@@ -40,6 +50,8 @@ func _ready():
 	else: 
 		#Otherwise, show the main menu
 		main_menu.show()
+		
+	current_state = GameState.MAIN_MENU
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Quit"):
@@ -65,6 +77,7 @@ func _on_join_button_pressed():
 	multiplayer.multiplayer_peer = enet_peer
 	
 	print("Connecting to server at %s..." % address)
+	current_state = GameState.CLASS_SELECTION
 	
 #Start the server and show the class selection menu
 func _start_server():
@@ -90,6 +103,7 @@ func _show_class_selection_menu():
 	class_selection_menu = ClassSelectionMenu.instantiate()
 	add_child(class_selection_menu)
 	class_selection_menu.connect("class_selected" , _on_class_selected)
+	current_state = GameState.CLASS_SELECTION
 	
 #When a class is selected, start the game with the selected class
 func _on_class_selected(className):
@@ -98,13 +112,14 @@ func _on_class_selected(className):
 	_start_game(className)
 	
 func _start_game(className):
+	current_state = GameState.IN_GAME
 	world.visible = true  # Make the World visible
 	add_player(multiplayer.get_unique_id(), className)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	print("Game started with class: %s" % className)
 
 func add_player(peer_id, className = ""):
-
+	print("Adding player with ID: %s" % str(peer_id))
 	var new_player = Player.instantiate()
 	new_player.name = str(peer_id)
 	add_child(new_player, true)
@@ -119,10 +134,10 @@ func add_player(peer_id, className = ""):
 			new_player.set_class(class_resource)
 		else:
 			print("Failed to load class resource")
-			
-	rpc_id(peer_id, "_init_player_weapons", Weapon_Stack)
+	#rpc_id(peer_id, "_init_player_weapons", Weapon_Stack)
+	
 
-@rpc("any_peer")		
+@rpc
 func _init_player_weapons(start_weapons):
 	if player != null:
 		player.weapon_manager.Initialize(start_weapons)

@@ -27,9 +27,10 @@ const HIT_STAGGER = 8.0
 
 @onready var player : CharacterBody3D = get_parent() as CharacterBody3D
 
-@onready var multiplayer_synchronizer = $MultiplayerSynchronizer
+@onready var multiplayer_synchronizer = player.get_node("MultiplayerSynchronizer")
 
 func _ready():
+	print("Multiplayer synchronizer", multiplayer_synchronizer)
 	if not is_multiplayer_authority():
 		return 
 	if multiplayer_synchronizer:

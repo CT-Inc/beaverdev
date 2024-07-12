@@ -23,6 +23,7 @@ var MOUSE_SENS: float = 0.1
 var current_class: CharacterClass
 var health: int
 var player_speed
+var state = "idle"
 
 # Signals
 signal update_health
@@ -34,17 +35,23 @@ signal send_ray
 @onready var fps_rig = $Head/Camera3D/Weapons_Manager/FPS_Rig
 @onready var movement = preload("res://Scripts/Player/PlayerMovement.gd").new()
 
+@onready var main = get_parent().get_node("/root/Main")
+
 @onready var multiplayer_synchronizer = $MultiplayerSynchronizer
 
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
 
 func _ready():
+	print("Main is ", main)
+	print("Main current state", main.current_state)
+	print("Main game state", main.GameState.IN_GAME)
 	if not is_multiplayer_authority():
 		return 
 	if multiplayer_synchronizer:
-		multiplayer_synchronizer.set_multiplayer_authority(get_tree().get_multiplayer().get_unique_id())
-		print("MultiplayerSynchronizer configured for authority: ", get_tree().get_multiplayer().get_unique_id())
+		var unique_id = get_tree().get_multiplayer().get_unique_id()
+		multiplayer_synchronizer.set_multiplayer_authority(unique_id)
+		print("MultiplayerSynchronizer configured for authority: ", unique_id)
 	else:
 		print("MultiplayerSynchronizer not found")
 	add_child(movement)
@@ -62,7 +69,9 @@ func _ready():
 func _input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
 		return 
-
+		
+	if main.current_state != main.GameState.IN_GAME:
+		return
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):

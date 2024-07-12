@@ -82,14 +82,14 @@ text = "Quit Game"
 [node name="World" parent="." instance=ExtResource("1_5dtit")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0205917, 0.843543, -0.0820026)
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Scenes/Player.tscn")
-spawn_path = NodePath("..")
-
 [node name="SettingsMenu" parent="." instance=ExtResource("3_8mi8s")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8lb14")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Scenes/Player.tscn")
+spawn_path = NodePath("..")
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/Host Button" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/Join Button" to="." method="_on_join_button_pressed"]

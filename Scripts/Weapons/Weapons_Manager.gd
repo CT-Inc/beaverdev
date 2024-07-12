@@ -5,6 +5,7 @@ signal Update_Ammo
 signal Update_Weapon_Stack
 
 @onready var Animation_Player = get_node("FPS_Rig/AnimationPlayer")
+@onready var main = get_parent().get_parent().get_node("/root/Main")
 
 var Current_Weapon = null
 
@@ -30,8 +31,13 @@ func _enter_tree():
 func _ready():
 	if not is_multiplayer_authority():
 		return 
+	
+	print("Weapon Manager main node is ", main)
 
 func _input(event):
+	if main.current_state != main.GameState.IN_GAME:
+		return
+	
 	if event.is_action_pressed("switch_weapon_up"):
 		Weapon_Indicator = min(Weapon_Indicator+1, Weapon_Stack.size()-1)
 		exit(Weapon_Stack[Weapon_Indicator])
@@ -42,6 +48,7 @@ func _input(event):
 	
 	if event.is_action_pressed("shoot"):
 		shoot()
+		print("Weapon Manager main node is ", main)
 		
 	if event.is_action_pressed("Reload"):
 		reload()
